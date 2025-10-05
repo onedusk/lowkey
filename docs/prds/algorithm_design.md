@@ -30,9 +30,10 @@ HYBRID_MONITOR(dirs[], poll_interval):
   event_queue = PRIORITY_QUEUE()
   last_poll = CURRENT_TIME()
 
-  // Setup filesystem watchers
+  // Setup cross-platform filesystem watchers via fsnotify backend
+  watcher_backend = INIT_EVENT_BACKEND()            // abstracts inotify/FSEvents/ReadDirectoryChangesW
   FOR each dir IN dirs:
-    watcher = CREATE_INOTIFY_WATCHER(dir)
+    watcher = watcher_backend.WATCH(dir)
     watcher.ON_EVENT(event):
       event_queue.ENQUEUE(event, CURRENT_TIME())
     END ON_EVENT
@@ -47,15 +48,18 @@ HYBRID_MONITOR(dirs[], poll_interval):
 
     // Periodic safety scan
     IF (CURRENT_TIME() - last_poll) > poll_interval:
-      INCREMENTAL_SCAN(dirs, last_poll)       // O(changed_files)
+      scan_results = INCREMENTAL_SCAN(dirs, last_poll)   // returns changed paths + metadata
+      FOR each change IN scan_results:
+        event_queue.ENQUEUE(change, CURRENT_TIME())
+      END FOR
       last_poll = CURRENT_TIME()
     END IF
 
     SLEEP(0.1)                                // Reduce CPU spinning
   END WHILE
 
-Time Complexity: O(c + s) where:
-  c = number of actual changes (event-driven)
+Time Complexity: O(c log c + s) where:
+  c = number of actual changes (event-driven + safety scan)
   s = periodic scan cost (much less frequent)
 Space Complexity: O(active_events + baseline_state)
 ```
@@ -64,7 +68,8 @@ Space Complexity: O(active_events + baseline_state)
 
 ```
 INCREMENTAL_SCAN(dirs[], last_scan_time):
-  changed_files = []
+  // STATE_CACHE is the persistent map from COMPRESSED_STATE_STORAGE()
+  changed_events = []
 
   FOR each dir IN dirs:
     dir_mtime = DIR_STAT(dir).mtime
@@ -75,25 +80,53 @@ INCREMENTAL_SCAN(dirs[], last_scan_time):
     END IF
 
     cached_dir_times[dir] = dir_mtime
+    observed = SET()
 
     files[] = GLOB(dir + "/**/*")
     FOR each file IN files:
-      file_mtime = FILE_STAT(file).mtime
+      observed.ADD(file)
+      file_stat = FILE_STAT(file)
+      prev_entry = STATE_CACHE.GET(file)
+      new_signature = COMPUTE_SIGNATURE(file, file_stat)
 
-      // Only process changed files
-      IF file_mtime > last_scan_time:         // O(1) comparison
-        changed_files.APPEND(file)
-        UPDATE_STATE(file)                    // O(1)
+      IF prev_entry == null:
+        change_type = 'CREATED'
+      ELSE IF new_signature != prev_entry.signature:
+        change_type = 'MODIFIED'
+      ELSE:
+        CONTINUE
+      END IF
+
+      STATE_CACHE.SET(file, new_signature)
+
+      changed_events.APPEND({
+        type: change_type,
+        path: file,
+        mtime: file_stat.mtime,
+        signature: new_signature,
+      })
+    END FOR
+
+    // Detect deletions relative to cached state
+    FOR each cached_file IN STATE_CACHE.FILES_UNDER(dir):
+      IF NOT observed.CONTAINS(cached_file):
+        STATE_CACHE.DELETE(cached_file)
+        changed_events.APPEND({
+          type: 'DELETED',
+          path: cached_file,
+          mtime: CURRENT_TIME(),
+          signature: null,
+        })
       END IF
     END FOR
   END FOR
 
-  RETURN changed_files
+  RETURN changed_events
 
-Time Complexity: O(d + c) where:
+Time Complexity: O(d + f_d) where:
   d = number of directories (for dir stat checks)
-  c = number of actually changed files
-Space Complexity: O(c) for changed files list
+  f_d = files contained in directories whose metadata changed (degenerates to full scan but typically ≈ changed files)
+Space Complexity: O(c) for event buffer + O(f) for state cache
 ```
 
 ## 3. Smart Filtering with Bloom Filters
@@ -103,16 +136,27 @@ SMART_FILTER_INIT(expected_files):
   ignore_bloom = BLOOM_FILTER(expected_files * 0.1, 0.01)  // 1% false positive
 
   FOR each pattern IN IGNORE_PATTERNS:
-    ignore_bloom.ADD(HASH(pattern))
+    tokens = EXTRACT_IGNORE_TOKENS(pattern)
+    FOR each token IN tokens:
+      ignore_bloom.ADD(HASH(token))
+    END FOR
   END FOR
 
   RETURN ignore_bloom
 
 SHOULD_MONITOR(file_path, ignore_bloom):
-  file_hash = HASH(file_path)
+  // Fast bloom filter check - O(k × t) where t = number of tokens
+  tokens = EXTRACT_PATH_TOKENS(file_path)
+  matches_bloom = false
 
-  // Fast bloom filter check - O(k) where k = hash functions
-  IF ignore_bloom.MIGHT_CONTAIN(file_hash):
+  FOR each token IN tokens:
+    IF ignore_bloom.MIGHT_CONTAIN(HASH(token)):
+      matches_bloom = true
+      BREAK
+    END IF
+  END FOR
+
+  IF matches_bloom:
     // Slow but accurate check only for potential matches
     FOR each pattern IN IGNORE_PATTERNS:      // O(p) where p = patterns
       IF FNMATCH(pattern, file_path):
@@ -123,7 +167,28 @@ SHOULD_MONITOR(file_path, ignore_bloom):
 
   RETURN true
 
-Time Complexity: O(k) for most files, O(k + p) for potential ignores
+EXTRACT_IGNORE_TOKENS(pattern):
+  // Normalize globs into comparable anchors (extension, basename, fixed directories)
+  tokens = []
+  IF pattern CONTAINS '*':
+    tokens.APPEND(EXTENSION(pattern))
+    tokens.APPEND(BASENAME(pattern))
+  ELSE:
+    tokens.APPEND(NORMALIZE_PATH(pattern))
+  END IF
+  RETURN [t FOR t IN tokens IF t != null]
+
+EXTRACT_PATH_TOKENS(file_path):
+  tokens = [
+    EXTENSION(file_path),
+    BASENAME(file_path),
+    TOP_LEVEL_DIR(file_path),
+    NORMALIZE_PATH(file_path),
+  ]
+
+  RETURN [t FOR t IN DEDUP(tokens) IF t != null]
+
+Time Complexity: O(k × t) for most files, O(k × t + p) for potential ignores
 Space Complexity: O(m) where m = bloom filter size
 ```
 
@@ -210,11 +275,23 @@ Space Complexity: O(b) where b = largest batch size
 
 ```
 COMPRESSED_STATE_STORAGE():
-  file_states = HASH_MAP()
+  file_states = HASH_MAP()                    // maps path → {dir, signature}
 
-  STORE_FILE_STATE(file_path, stat):
-    signature = COMPUTE_SIGNATURE(file_path, stat)
-    file_states[file_path] = signature
+  GET(file_path):
+    RETURN file_states.GET(file_path)
+
+  SET(file_path, signature):
+    file_states[file_path] = { dir: DIRNAME(file_path), signature: signature }
+
+  DELETE(file_path):
+    file_states.REMOVE(file_path)
+
+  FILES_UNDER(dir):
+    RETURN [
+      path
+      FOR path, entry IN file_states
+      IF entry.dir == dir OR entry.dir.STARTS_WITH(dir + PATH_SEPARATOR)
+    ]
 
   COMPUTE_SIGNATURE(file_path, stat):
     IF stat.size < SMALL_FILE_THRESHOLD:
@@ -229,9 +306,12 @@ COMPRESSED_STATE_STORAGE():
     current_stat = FILE_STAT(file_path)
     new_signature = COMPUTE_SIGNATURE(file_path, current_stat)
 
-    RETURN old_signature != new_signature
+    IF old_signature == null:
+      RETURN true
 
-Space Complexity: O(f × 16) bytes instead of O(f × 64) bytes
+    RETURN old_signature.signature != new_signature
+
+Space Complexity: O(f × 24) bytes instead of O(f × 64) bytes (stores dir + signature)
 Time Complexity: O(1) for large files, O(s) for small files where s = file size
 ```
 

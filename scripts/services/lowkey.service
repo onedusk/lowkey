@@ -1,0 +1,11 @@
+# systemd service template for lowkey. Copy to /etc/systemd/system and adjust
+# ExecStart once the daemon binary path is finalized.
+# [Unit]
+# Description=Lowkey filesystem watcher daemon
+#
+# [Service]
+# ExecStart=/usr/local/bin/lowkey daemon
+# Restart=on-failure
+#
+# [Install]
+# WantedBy=multi-user.target

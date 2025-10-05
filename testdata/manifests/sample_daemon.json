@@ -1,0 +1,7 @@
+{
+  "_comment": "Sample manifest for tests. Adjust directories before running `go test`.",
+  "directories": [
+    "/tmp/example"
+  ],
+  "log_path": "/tmp/lowkey.log"
+}

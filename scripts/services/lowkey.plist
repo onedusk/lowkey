@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- launchd plist placeholder for running lowkey as a user agent. Populate
+     ProgramArguments and KeepAlive once the daemon is ready. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- TODO: define ProgramArguments, RunAtLoad, and WorkingDirectory. -->
+</dict>
+</plist>
