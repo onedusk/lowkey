@@ -1,0 +1,51 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>8</totalDocs>
+  </metadata>
+  <sections>
+    <chapter id="changelog" path="CHANGELOG.md" modified="2025-10-03T23:23:10Z" size="420" words="53" readTime="1min" hash="sha256:40e6067a4ccdb23f">
+      <title>Changelog</title>
+      <summary>Changelog All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semanti...</summary>
+      <keywords>project</keywords>
+    </chapter>
+    <chapter id="code-of-conduct" path="CODE_OF_CONDUCT.md" modified="2025-10-03T23:23:10Z" size="4978" words="677" readTime="2min" hash="sha256:37d9c841986439f8">
+      <title>Contributor Covenant Code of Conduct</title>
+      <summary>Contributor Covenant Code of Conduct ## Our Pledge We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of a...</summary>
+      <keywords>permanent, they, harassment, official, identity, standards, sexual, impact**, representing, guidelines</keywords>
+    </chapter>
+    <chapter id="contributing" path="CONTRIBUTING.md" modified="2025-10-03T23:23:10Z" size="1920" words="279" readTime="1min" hash="sha256:2d12b95879fe214d">
+      <title>Contributing to Lowkey</title>
+      <summary>Contributing to Lowkey First off, thank you for considering contributing to Lowkey! It&apos;s people like you that make Lowkey such a great tool. ## Where do I go from here? If you&apos;ve noticed a bug or...</summary>
+      <keywords>thank, pull, first, feature, code, please, lowkey, create, contributing, request</keywords>
+    </chapter>
+    <chapter id="readme" path="README.md" modified="2025-10-03T23:23:10Z" size="866" words="123" readTime="1min" hash="sha256:195226d150a7a492">
+      <title>Lowkey</title>
+      <summary>Lowkey ## Overview Lowkey is a high-performance, cross-platform file monitoring tool written in Go. It watches specified directories for changes (creations, modifications, deletions) and logs them...</summary>
+      <keywords>simple, lowkey, uses, easy, file, license, features, files, directories, details</keywords>
+    </chapter>
+    <section id="adrs">
+      <title>Adrs</title>
+      <chapter id="adrs-0001-use-go-for-development" path="adrs/0001-use-go-for-development.md" modified="2025-10-05T14:00:23Z" size="1765" words="255" readTime="1min" hash="sha256:99bb6edc46934b19">
+        <title>1. Use Go for Development</title>
+        <summary>1. Use Go for Development * **Status:** Accepted * **Date:** 2025-10-03 ## Context and Problem Statement We have a working prototype of `lowkey` in [Ruby](../.arc/lokee.rb) and [shell script]...</summary>
+        <keywords>needs, file, consequences, system, easy, large, build, distribute, events, performance</keywords>
+      </chapter>
+    </section>
+    <section id="prds">
+      <title>Prds</title>
+      <chapter id="prds-prd" path="prds/PRD.md" modified="2025-10-03T23:23:10Z" size="2401" words="376" readTime="1min" hash="sha256:c202eaedade7f2dd">
+        <title>Product Requirements Document: Lowkey</title>
+        <summary>Product Requirements Document: Lowkey ## 1. Introduction Lowkey is a high-performance, cross-platform file monitoring tool for developers and power users. It provides a simple and efficient way to...</summary>
+        <keywords>clear, work, show, monitor, tool, watch, system, high-performance, them, file</keywords>
+      </chapter>
+      <chapter id="prds-algorithm-design" path="prds/algorithm_design.md" modified="2025-10-05T13:55:02Z" size="10209" words="1172" readTime="4min" hash="sha256:eb7b43a301bfa336">
+        <title>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements</title>
+        <summary>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements ## Current Algorithm Complexity ``` CURRENT_ALGORITHM(dirs[], interval): WHILE true: FOR each dir IN dirs: files[] = GLOB(d...</summary>
+        <keywords>mathematical, polling, algorithm, state, processing</keywords>
+      </chapter>
+    </section>
+    <chapter id="security" path="security.md" modified="2025-10-05T13:52:32Z" readTime="1min" hash="sha256:e3b0c44298fc1c14">
+      <title>Untitled</title>
+    </chapter>
+  </sections>
+</toc>

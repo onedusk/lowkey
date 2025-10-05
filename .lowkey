@@ -3,3 +3,6 @@
 .vscode
 node_modules
 target
+.lowlog
+.turbo
+.next

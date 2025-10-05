@@ -5,7 +5,7 @@
 
 ## Context and Problem Statement
 
-We have a working prototype of `lowkey` in Ruby and shell script. While these were excellent for rapid prototyping, they have limitations in terms of performance, cross-platform support, and maintainability. We need to choose a language for the production version of `lowkey` that is fast, reliable, and easy to maintain.
+We have a working prototype of `lowkey` in [Ruby](../.arc/lokee.rb) and [shell script](../.arc/lokee.sh). While these were excellent for rapid prototyping, they have limitations in terms of performance, cross-platform support, and maintainability. We need to choose a language for the production version of `lowkey` that is fast, reliable, and easy to maintain.
 
 ## Decision Drivers
 
