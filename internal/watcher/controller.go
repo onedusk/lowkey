@@ -58,6 +58,13 @@ func (c *Controller) Start() error {
 		c.config.Logger.Info("watcher controller started")
 	}
 	// TODO: spawn event + polling goroutines; integrate filters and reporters.
+	// - Create a new event backend (from internal/events).
+	// - Start a goroutine to listen for events from the backend and dispatch them.
+	// - Start a polling goroutine for the incremental safety scan.
+	// - This polling loop should use the cache (from internal/state) to check for
+	//   missed events.
+	// - Integrate the filter chain (from internal/filters) to ignore irrelevant events.
+	// - Pass the filtered events to the aggregator (from internal/reporting).
 	return nil
 }
 

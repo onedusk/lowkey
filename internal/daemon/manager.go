@@ -72,6 +72,8 @@ func (m *Manager) Start() error {
 	if err := m.store.Save(m.manifest); err != nil {
 		return fmt.Errorf("daemon: save manifest: %w", err)
 	}
+	// TODO: The controller.Start() call is currently a stub. This needs to be
+	// replaced with the actual implementation that starts the monitoring loops.
 	if err := m.controller.Start(); err != nil {
 		return err
 	}

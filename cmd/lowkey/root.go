@@ -61,6 +61,10 @@ func execute(args []string) error {
 }
 
 func initConfig() {
+	// This function initializes the application configuration. It searches for a
+	// configuration file in standard locations (e.g., user's home directory)
+	// and loads it if found. It also sets up Viper for environment variable
+	// support.
 	if cfgFile == "" {
 		home, err := os.UserHomeDir()
 		if err == nil {
@@ -103,6 +107,9 @@ func initConfig() {
 	appConfig.AutomaticEnv()
 }
 
+// parseConfigFlag manually parses the --config flag from the arguments list.
+// This is necessary to ensure the config file is loaded by initConfig before
+// Cobra parses the rest of the flags.
 func parseConfigFlag(args []string) (string, []string, error) {
 	var cfg string
 	remaining := make([]string, 0, len(args))
@@ -157,6 +164,9 @@ func renderStatus(status daemon.ManagerStatus) error {
 	return outputRenderer.Status(status)
 }
 
+// extractOption manually parses a key-value option from the arguments list.
+// This is used for options that need to be processed before Cobra's parsing,
+// such as the --output format.
 func extractOption(args []string, keys ...string) (string, []string) {
 	if len(keys) == 0 {
 		return "", args

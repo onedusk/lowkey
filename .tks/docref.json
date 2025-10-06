@@ -1,0 +1,66 @@
+{
+  "structure": {
+    "internal/daemon/": {
+      "purpose": "Manages the background monitoring process, its lifecycle, and configuration.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/guides/daemon.md",
+        "/Users/macadelic/dracos/utils/lowkey/prds/PRD.md",
+        "/Users/macadelic/dracos/utils/lowkey/architecture/STRUCTURE_OVERVIEW.md",
+        "/Users/macadelic/dracos/utils/lowkey/adrs/0001-use-go-for-development.md"
+      ]
+    },
+    "internal/daemon/manager.go": {
+      "purpose": "Coordinates the watcher lifecycle and manifest persistence. Starts and stops the controller.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/guides/daemon.md",
+        "/Users/macadelic/dracos/utils/lowkey/internal/state/manifest_store.go",
+        "/Users/macadelic/dracos/utils/lowkey/internal/watcher/controller.go"
+      ]
+    },
+    "internal/daemon/supervisor.go": {
+      "purpose": "Supervises watcher goroutines, handling restarts and health checks.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/PRD.md",
+        "/Users/macadelic/dracos/utils/lowkey/eng-practices/review/developer/small-cls.md"
+      ]
+    },
+    "internal/events/": {
+      "purpose": "Provides the platform-specific filesystem event backend.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/algorithm_design.md",
+        "/Users/macadelic/dracos/utils/lowkey/adrs/0001-use-go-for-development.md",
+        "/Users/macadelic/dracos/utils/lowkey/architecture/STRUCTURE_OVERVIEW.md"
+      ]
+    },
+    "internal/filters/": {
+      "purpose": "Implements logic for ignoring files and directories based on glob patterns.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/algorithm_design.md",
+        "/Users/macadelic/dracos/utils/lowkey/architecture/STRUCTURE_OVERVIEW.md"
+      ]
+    },
+    "internal/state/": {
+      "purpose": "Manages application state, including file signature caches and durable persistence.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/algorithm_design.md",
+        "/Users/macadelic/dracos/utils/lowkey/architecture/STRUCTURE_OVERVIEW.md"
+      ]
+    },
+    "internal/watcher/": {
+      "purpose": "Contains the core file monitoring logic.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/algorithm_design.md",
+        "/Users/macadelic/dracos/utils/lowkey/prds/PRD.md",
+        "/Users/macadelic/dracos/utils/lowkey/architecture/STRUCTURE_OVERVIEW.md"
+      ]
+    },
+    "internal/watcher/hybrid_monitor.go": {
+      "purpose": "Implements the core algorithm that blends real-time fsnotify events with periodic safety scans.",
+      "docs": [
+        "/Users/macadelic/dracos/utils/lowkey/prds/algorithm_design.md",
+        "/Users/macadelic/dracos/utils/lowkey/internal/state/cache.go",
+        "/Users/macadelic/dracos/utils/lowkey/internal/events/backend.go"
+      ]
+    }
+  }
+}

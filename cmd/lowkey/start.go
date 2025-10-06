@@ -45,6 +45,13 @@ func newStartCmd() *cobra.Command {
 			if err := renderStatus(status); err != nil {
 				return err
 			}
+			// TODO: Implement the logic to launch the daemon process.
+			// The current implementation only prepares the manifest and starts the controller
+			// in the current process. A true daemon would be launched as a separate
+			// background process.
+			// - Re-exec `lowkey` with a specific flag or environment variable to indicate
+			//   it should run as the daemon.
+			// - The daemon process should then create and run the watcher.Controller.
 			fmt.Println("start: daemon process not yet implemented; controller Start is currently a stub")
 			return nil
 		},
