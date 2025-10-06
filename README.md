@@ -25,7 +25,7 @@ Lowkey is a high-performance, cross-platform file monitoring tool written in Go.
 
 ## Contributing
 
-Please see the [CONTRIBUTING.md](docs/CONTRIBUTING.md) file for details.
+Review the [Contributor Guide](AGENTS.md) for repository structure, workflows, and coding standards, then see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for contribution logistics.
 
 ## License
 

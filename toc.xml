@@ -1,6 +1,6 @@
 <toc version="1.0" llm-optimized="true">
   <metadata>
-    <totalDocs>8</totalDocs>
+    <totalDocs>40</totalDocs>
   </metadata>
   <sections>
     <chapter id="changelog" path="CHANGELOG.md" modified="2025-10-03T23:23:10Z" size="420" words="53" readTime="1min" hash="sha256:40e6067a4ccdb23f">
@@ -11,37 +11,231 @@
     <chapter id="code-of-conduct" path="CODE_OF_CONDUCT.md" modified="2025-10-03T23:23:10Z" size="4978" words="677" readTime="2min" hash="sha256:37d9c841986439f8">
       <title>Contributor Covenant Code of Conduct</title>
       <summary>Contributor Covenant Code of Conduct ## Our Pledge We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of a...</summary>
-      <keywords>permanent, they, harassment, official, identity, standards, sexual, impact**, representing, guidelines</keywords>
+      <keywords>representing, lead, personal, time, pledge, code, responsible, harassment, **consequence**, language</keywords>
     </chapter>
     <chapter id="contributing" path="CONTRIBUTING.md" modified="2025-10-03T23:23:10Z" size="1920" words="279" readTime="1min" hash="sha256:2d12b95879fe214d">
       <title>Contributing to Lowkey</title>
       <summary>Contributing to Lowkey First off, thank you for considering contributing to Lowkey! It&apos;s people like you that make Lowkey such a great tool. ## Where do I go from here? If you&apos;ve noticed a bug or...</summary>
-      <keywords>thank, pull, first, feature, code, please, lowkey, create, contributing, request</keywords>
+      <keywords>contributing, branch, it&apos;s, you&apos;re, name, lowkey, first, please, feature, thank</keywords>
     </chapter>
-    <chapter id="readme" path="README.md" modified="2025-10-03T23:23:10Z" size="866" words="123" readTime="1min" hash="sha256:195226d150a7a492">
-      <title>Lowkey</title>
-      <summary>Lowkey ## Overview Lowkey is a high-performance, cross-platform file monitoring tool written in Go. It watches specified directories for changes (creations, modifications, deletions) and logs them...</summary>
-      <keywords>simple, lowkey, uses, easy, file, license, features, files, directories, details</keywords>
+    <chapter id="readme" path="README.md" modified="2025-10-02T08:54:35Z" size="7670" words="955" readTime="3min" hash="sha256:51fde656a4e79f45">
+      <title>Claude Code Project Configuration</title>
+      <summary>Claude Code Project Configuration This directory contains Claude Code configurations, hooks, and subagents for enhanced development workflows. ## For Claude: Your Operating Instructions **IMPORTA...</summary>
+      <keywords>oober, context, change, dry-run, operations, preview, systems, operation, directly, provides</keywords>
     </chapter>
     <section id="adrs">
       <title>Adrs</title>
-      <chapter id="adrs-0001-use-go-for-development" path="adrs/0001-use-go-for-development.md" modified="2025-10-05T14:00:23Z" size="1765" words="255" readTime="1min" hash="sha256:99bb6edc46934b19">
+      <chapter id="adrs-0001-use-go-for-development" path="adrs/0001-use-go-for-development.md" modified="2025-10-05T15:16:08Z" size="1767" words="255" readTime="1min" hash="sha256:c5ff39289a2dfc8e">
         <title>1. Use Go for Development</title>
-        <summary>1. Use Go for Development * **Status:** Accepted * **Date:** 2025-10-03 ## Context and Problem Statement We have a working prototype of `lowkey` in [Ruby](../.arc/lokee.rb) and [shell script]...</summary>
-        <keywords>needs, file, consequences, system, easy, large, build, distribute, events, performance</keywords>
+        <summary>1. Use Go for Development * **Status:** Accepted * **Date:** 2025-10-03 ## Context and Problem Statement We have a working prototype of `lowkey` in [Ruby](../.arc/lowkey.rb) and [shell script...</summary>
+        <keywords>easy, file, needs, distribute, community, performance, language, maintainability, events, handling</keywords>
       </chapter>
+    </section>
+    <section id="agents">
+      <title>Agents</title>
+      <chapter id="agents-docs-aware-developer" path="agents/docs-aware-developer.md" modified="2025-10-02T08:54:35Z" size="3517" words="469" readTime="1min" hash="sha256:acc5fa51f5a6f323">
+        <title>Untitled</title>
+        <summary>You are a documentation-aware development specialist who ensures all implementations follow established patterns and best practices from the project documentation. ## Primary Responsibilities 1. *...</summary>
+        <keywords>patterns, conventions, include, appropriate, needed, identified, naming, applied, proper, reference</keywords>
+      </chapter>
+      <section id="agents-rust">
+        <title>Rust</title>
+        <chapter id="agents-rust-benchmark-creator" path="agents/rust/benchmark-creator.md" modified="2025-10-02T08:54:35Z" size="15932" words="1276" readTime="5min" hash="sha256:cd8f097f8e6a051f">
+          <title>Benchmark Creator Agent</title>
+          <summary>Benchmark Creator Agent ## Mission Add performance benchmarks to validate &quot;ultra-fast&quot; claims and establish baseline metrics. ## Prerequisites - Module Splitter and Pattern Optimizer must complete...</summary>
+          <keywords>benchmark, performance, claims, comparison, memory, benchmarks</keywords>
+        </chapter>
+        <chapter id="agents-rust-error-handler" path="agents/rust/error-handler.md" modified="2025-10-02T08:54:35Z" size="7444" words="773" readTime="3min" hash="sha256:6e77e3502079a0c3">
+          <title>Error Handler Agent</title>
+          <summary>Error Handler Agent ## Mission Replace lazy `Box&lt;dyn Error&gt;` with proper error types that provide context and help users understand what went wrong. ## Prerequisites - Module Splitter agent must c...</summary>
+          <keywords>pattern, messages, recovery, error, context, processing, config, create, line, handling</keywords>
+        </chapter>
+        <chapter id="agents-rust-module-splitter" path="agents/rust/module-splitter.md" modified="2025-10-02T08:54:35Z" size="4407" words="573" readTime="2min" hash="sha256:f369dd4cbf425442">
+          <title>Module Splitter Agent</title>
+          <summary>Module Splitter Agent ## Mission Break the 847-line main.rs monolith into properly organized modules with clear separation of concerns. ## Current State Analysis - main.rs has everything: CLI pars...</summary>
+          <keywords>functions, lines, structures, tests, clear, business, structure, proper, config, basic</keywords>
+        </chapter>
+        <chapter id="agents-rust-pattern-optimizer" path="agents/rust/pattern-optimizer.md" modified="2025-10-02T08:54:35Z" size="13031" words="1260" readTime="5min" hash="sha256:ace0482711136d7d">
+          <title>Pattern Optimizer Agent</title>
+          <summary>Pattern Optimizer Agent ## Mission Optimize regex compilation and caching to eliminate redundant compilation and improve performance. ## Prerequisites - Module Splitter agent must complete first -...</summary>
+          <keywords>10mb, patterns, fail, memory, time, config, every, agent, caching, performance</keywords>
+        </chapter>
+        <chapter id="agents-rust-preset-migrator" path="agents/rust/preset-migrator.md" modified="2025-10-02T08:54:35Z" size="13034" words="1336" readTime="5min" hash="sha256:83a62e1ad29208df">
+          <title>Preset Migrator Agent</title>
+          <summary>Preset Migrator Agent ## Mission Extract 170 lines of hardcoded preset patterns from main.rs into maintainable YAML configurations. ## Prerequisites - Can work independently from other agents - ...</summary>
+          <keywords>presets, files, yaml, structure, patterns, function, users, directory, create, hardcoded</keywords>
+        </chapter>
+        <chapter id="agents-rust-test-writer" path="agents/rust/test-writer.md" modified="2025-10-02T08:54:35Z" size="10532" words="932" readTime="3min" hash="sha256:1bb628dbee946738">
+          <title>Test Writer Agent</title>
+          <summary>Test Writer Agent ## Mission Add comprehensive test coverage to a codebase that currently has ZERO tests. Target 80%+ coverage with focus on edge cases. ## Prerequisites - Module Splitter agent mu...</summary>
+          <keywords>test, edge, 85%+, coverage, 80%+, agent, tests, performance, cases, target</keywords>
+        </chapter>
+      </section>
+    </section>
+    <section id="api">
+      <title>Api</title>
+      <chapter id="api-cli-reference" path="api/cli_reference.md" modified="2025-10-05T16:15:59Z" size="186" words="27" readTime="1min" hash="sha256:2e2ad6f831e17111">
+        <title>CLI Reference (Placeholder)</title>
+        <summary>CLI Reference (Placeholder) Document each Cobra command (`watch`, `start`, `status`, etc.) here once their flags and behaviors solidify. Link back to the PRD for acceptance criteria.</summary>
+      </chapter>
+    </section>
+    <section id="architecture">
+      <title>Architecture</title>
+      <chapter id="architecture-project-tree" path="architecture/PROJECT_TREE.md" modified="2025-10-05T16:07:55Z" size="2432" words="267" readTime="1min" hash="sha256:d59d67e9c7750f5a">
+        <title>Planned Project Tree</title>
+        <summary>Planned Project Tree ```text lowkey/ ├── cmd/ │ └── lowkey/ │ ├── main.go │ ├── root.go │ ├── watch.go │ ├── start.go │ ...</summary>
+      </chapter>
+      <chapter id="architecture-structure-overview" path="architecture/STRUCTURE_OVERVIEW.md" modified="2025-10-05T16:12:32Z" size="6352" words="756" readTime="3min" hash="sha256:29b7c2b0e564552a">
+        <title>Code Structure &amp; Dependency Map</title>
+        <summary>Code Structure &amp; Dependency Map ## Top-Level Modules - `cmd/` – Entry points compiled into binaries. `cmd/lowkey` wires CLI commands to runtime services. - `internal/` – Core implementation det...</summary>
+        <keywords>json, data, file, depends, exports, instrumentation, output, expose, patterns, standard</keywords>
+      </chapter>
+    </section>
+    <section id="context">
+      <title>Context</title>
+      <chapter id="context-current-focus" path="context/current-focus.md" modified="2025-10-02T08:54:35Z" size="2009" words="253" readTime="1min" hash="sha256:4838aa6d6a0964b3">
+        <title>Current Development Focus</title>
+        <summary>Current Development Focus ## Active Context Management System ### Current Implementation Building a comprehensive context-aware documentation system for Claude Code that maintains understanding du...</summary>
+        <keywords>development, dynamic, structure, documentation-aware, focus, index, created, during, pattern, precompact</keywords>
+      </chapter>
+      <chapter id="context-implementation-patterns" path="context/implementation-patterns.md" modified="2025-10-02T08:54:35Z" size="2550" words="348" readTime="1min" hash="sha256:1b29c3254a574d14">
+        <title>Implementation Patterns Reference</title>
+        <summary>Implementation Patterns Reference ## Claude Code Development Patterns ### Hook Implementation Patterns #### Pattern 1: Validation Hooks - Use PreToolUse with exit code 2 to block operations - Pro...</summary>
+        <keywords>code, imports, files, clear, workflow, formatting, focused, patterns, tool, reference</keywords>
+      </chapter>
+    </section>
+    <section id="eng-practices">
+      <title>Eng Practices</title>
+      <chapter id="eng-practices-readme" path="eng-practices/README.md" modified="2025-10-06T07:50:53Z" size="1568" words="194" readTime="1min" hash="sha256:fc8e999b9e95bc77">
+        <title>Google Engineering Practices Documentation</title>
+        <summary>Google Engineering Practices Documentation Google has many generalized engineering practices that cover all languages and all projects. These documents represent our collective experience of variou...</summary>
+        <keywords>projects, review, change, code, terminology, documents, possible, google, other, practices</keywords>
+      </chapter>
+      <section id="eng-practices-review">
+        <title>Review</title>
+        <section id="eng-practices-review-developer">
+          <title>Developer</title>
+          <chapter id="eng-practices-review-developer-cl-descriptions" path="eng-practices/review/developer/cl-descriptions.md" modified="2025-10-06T07:50:53Z" size="8007" words="1324" readTime="5min" hash="sha256:f1231472e6769e01">
+            <title>Writing good CL descriptions</title>
+            <summary>Writing good CL descriptions A CL description is a public record of change, and it is important that it communicates: 1. **What** change is being made? This should summarize the major changes s...</summary>
+            <keywords>details, timekeeper, written, specific, other, eventually, does, enough, reader, entries</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-developer-handling-comments" path="eng-practices/review/developer/handling-comments.md" modified="2025-10-06T07:50:53Z" size="4367" words="717" readTime="2min" hash="sha256:db3cab260f177821">
+            <title>How to handle reviewer comments</title>
+            <summary>How to handle reviewer comments When you&apos;ve sent a CL out for review, it&apos;s likely that your reviewer will respond with several comments on your CL. Here are some useful things to know about handl...</summary>
+            <keywords>comment, asking, sometimes, them, writing, should, reviewers, come, they, yourself</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-developer-index" path="eng-practices/review/developer/index.md" modified="2025-10-06T07:50:53Z" size="647" words="95" readTime="1min" hash="sha256:10421c370a34c711">
+            <title>The CL author&apos;s guide to getting through code review</title>
+            <summary>The CL author&apos;s guide to getting through code review The pages in this section contain best practices for developers going through code review. These guidelines should help you get through reviews ...</summary>
+            <keywords>read, [how, review, code, through</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-developer-small-cls" path="eng-practices/review/developer/small-cls.md" modified="2025-10-06T07:50:53Z" size="12289" words="2010" readTime="8min" hash="sha256:6bc55ce9a752bbb2">
+            <title>Small CLs</title>
+            <summary>Small CLs ## Why Write Small CLs? {#why} Small, simple CLs are: - **Reviewed more quickly.** It&apos;s easier for a reviewer to find five minutes several times to review small CLs than to set ...</summary>
+            <keywords>across, count, multiplication, time, somehow, **easier, understand, situations, wrong, take</keywords>
+          </chapter>
+        </section>
+        <chapter id="eng-practices-review-emergencies" path="eng-practices/review/emergencies.md" modified="2025-10-06T07:50:53Z" size="3157" words="536" readTime="2min" hash="sha256:f6123a06a6a86b93">
+          <title>Emergencies</title>
+          <summary>Emergencies Sometimes there are emergency CLs that must pass through the entire code review process as quickly as possible. ## What Is An Emergency? {#what} An emergency CL would be a **small**...</summary>
+          <keywords>miss, they, however, rolling, long, time, deadline, ship, major, speed</keywords>
+        </chapter>
+        <chapter id="eng-practices-review-index" path="eng-practices/review/index.md" modified="2025-10-06T07:50:53Z" size="2767" words="436" readTime="1min" hash="sha256:c1f1f98dde14d0bb">
+          <title>Untitled</title>
+          <summary>## Introduction {#intro} A code review is a process where someone other than the author(s) of a piece of code examines that code. At Google, we use code review to maintain the quality of our code a...</summary>
+          <keywords>clear, should, means, look, documentation, people, reviewer, piece, different, code</keywords>
+        </chapter>
+        <section id="eng-practices-review-reviewer">
+          <title>Reviewer</title>
+          <chapter id="eng-practices-review-reviewer-comments" path="eng-practices/review/reviewer/comments.md" modified="2025-10-06T07:50:53Z" size="4432" words="704" readTime="2min" hash="sha256:35118ebf2eec64df">
+            <title>How to write code review comments</title>
+            <summary>How to write code review comments ## Summary - Be kind. - Explain your reasoning. - Balance giving explicit directions with just pointing out problems and letting the developer decide....</summary>
+            <keywords>future, good, helps, makes, suggestions, general, concurrency, direct, thing, reviewer</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-index" path="eng-practices/review/reviewer/index.md" modified="2025-10-06T07:50:53Z" size="786" words="120" readTime="1min" hash="sha256:06299c5d45d89545">
+            <title>How to do a code review</title>
+            <summary>How to do a code review The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up ...</summary>
+            <keywords>read, review, many, code</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-looking-for" path="eng-practices/review/reviewer/looking-for.md" modified="2025-10-06T07:50:53Z" size="11330" words="1909" readTime="7min" hash="sha256:0a6643fc4ce2bc73">
+            <title>What to look for in a code review</title>
+            <summary>What to look for in a code review Note: Always make sure to take into account [The Standard of Code Review](standard.md) when considering each of these points. ## Design The most important thin...</summary>
+            <keywords>aren&apos;t, *what*, whole, languages, recommendations, judgment, clarify, scan, data, change</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-navigate" path="eng-practices/review/reviewer/navigate.md" modified="2025-10-06T07:50:53Z" size="4157" words="723" readTime="2min" hash="sha256:6742ba45208ef35a">
+            <title>Navigating a CL in review</title>
+            <summary>Navigating a CL in review ## Summary Now that you know [what to look for](looking-for.md), what&apos;s the most efficient way to manage a review that&apos;s spread across multiple files? 1. Does the cha...</summary>
+            <keywords>instead, right, want, other, figure, review, comments, them, take, changes</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-pushback" path="eng-practices/review/reviewer/pushback.md" modified="2025-10-06T07:50:53Z" size="4369" words="711" readTime="2min" hash="sha256:a6eeefeee0f786c5">
+            <title>Handling pushback in code reviews</title>
+            <summary>Handling pushback in code reviews Sometimes a developer will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in gene...</summary>
+            <keywords>become, [the, common, issue, happens, quality, later, away, review, them</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-speed" path="eng-practices/review/reviewer/speed.md" modified="2025-10-06T07:50:53Z" size="7154" words="1184" readTime="4min" hash="sha256:06d02508ad748ed9">
+            <title>Speed of Code Reviews</title>
+            <summary>Speed of Code Reviews ## Why Should Code Reviews Be Fast? {#why} **At Google, we optimize for the speed at which a team of developers can produce a product together**, as opposed to optimizing f...</summary>
+            <keywords>process, next, guidelines, improvements, otherwise, typical, reviewers, quick, comments, changes</keywords>
+          </chapter>
+          <chapter id="eng-practices-review-reviewer-standard" path="eng-practices/review/reviewer/standard.md" modified="2025-10-06T07:50:53Z" size="5745" words="948" readTime="3min" hash="sha256:c37144f9f8880092">
+            <title>The Standard of Code Review</title>
+            <summary>The Standard of Code Review The primary purpose of code review is to make sure that the overall code health of Google&apos;s code base is improving over time. All of the tools and processes of code re...</summary>
+            <keywords>approval, especially, improves, something, style, leave, definitely, isn&apos;t, always, instead</keywords>
+          </chapter>
+        </section>
+      </section>
+    </section>
+    <section id="guides">
+      <title>Guides</title>
+      <chapter id="guides-daemon" path="guides/daemon.md" modified="2025-10-05T16:15:59Z" size="198" words="27" readTime="1min" hash="sha256:a43818949237b505">
+        <title>Daemon Guide (Placeholder)</title>
+        <summary>Daemon Guide (Placeholder) This guide will explain how to run the background daemon, configure manifests, and debug lifecycle issues. Expand it alongside the implementation of `internal/daemon`.</summary>
+        <keywords>daemon, guide</keywords>
+      </chapter>
+    </section>
+    <chapter id="hooks-guide" path="hooks-guide.md" modified="2025-10-02T08:54:34Z" size="9549" words="1128" readTime="4min" hash="sha256:a8347a1951dfe7a5">
+      <title>Get started with Claude Code hooks</title>
+      <summary>Get started with Claude Code hooks &gt; Learn how to customize and extend Claude Code&apos;s behavior by registering shell commands Claude Code hooks are user-defined shell commands that execute at variou...</summary>
+      <keywords>always, files, encoding=&apos;utf-8&apos;), events, runs, tool, behavior, hook, hooks, input</keywords>
+    </chapter>
+    <chapter id="hooks" path="hooks.md" modified="2025-10-02T08:54:34Z" size="23040" words="2920" readTime="11min" hash="sha256:218596daf32354ca">
+      <title>Hooks reference</title>
+      <summary>Hooks reference &gt; This page provides reference documentation for implementing hooks in Claude Code. &lt;Tip&gt; For a quickstart guide with examples, see [Get started with Claude Code hooks](/en/docs/...</summary>
+      <keywords>startup, started, claude, call, &lt;note&gt;, subagent, reference, provide, block, prompt</keywords>
+    </chapter>
+    <section id="hooks">
+      <title>Hooks</title>
+      <chapter id="hooks-readme" path="hooks/README.md" modified="2025-10-02T08:54:35Z" size="3723" words="475" readTime="1min" hash="sha256:f66895205d2a72be">
+        <title>Claude Code Hooks Organization</title>
+        <summary>Claude Code Hooks Organization This directory contains hooks organized by functionality to keep the codebase maintainable as we add more automation. ## Directory Structure ``` .claude/hooks/ ├�...</summary>
+        <keywords>planned, 🔜, posttooluse, purpose, pretooluse, descriptive, **status**, (planned), functionality, oober</keywords>
+      </chapter>
+      <chapter id="hooks-protodoc" path="hooks/protodoc.md" modified="2025-10-02T08:54:35Z" size="20569" words="2612" readTime="10min" hash="sha256:c0575866cf120db1">
+        <title>Complete Acronym Protocol Reference</title>
+        <summary>Complete Acronym Protocol Reference ## Eliminating Ambiguity in AI &amp; Agent Communication --- ## Original AI Communication Framework ### Core Operations - **VET** = &quot;Validate input, Error handli...</summary>
+        <keywords>communication, ready, blocking, implementation, handling, work, stdin, validation, configured, scope</keywords>
+      </chapter>
+      <section id="hooks-validation">
+        <title>Validation</title>
+        <chapter id="hooks-validation-readme" path="hooks/validation/README.md" modified="2025-10-02T08:54:35Z" size="7116" words="841" readTime="3min" hash="sha256:605fef3d048ca16e">
+          <title>Validation Hook System</title>
+          <summary>Validation Hook System A comprehensive validation framework for Claude Code that ensures safety, security, and code quality through modular validators. ## Overview The validation system provides ...</summary>
+          <keywords>conventions, enforces, configuration, warning, validation, **test, block, issues, hook, comprehensive</keywords>
+        </chapter>
+      </section>
     </section>
     <section id="prds">
       <title>Prds</title>
-      <chapter id="prds-prd" path="prds/PRD.md" modified="2025-10-03T23:23:10Z" size="2401" words="376" readTime="1min" hash="sha256:c202eaedade7f2dd">
+      <chapter id="prds-prd" path="prds/PRD.md" modified="2025-10-05T15:15:53Z" size="3709" words="539" readTime="2min" hash="sha256:6b1e564868a286b0">
         <title>Product Requirements Document: Lowkey</title>
         <summary>Product Requirements Document: Lowkey ## 1. Introduction Lowkey is a high-performance, cross-platform file monitoring tool for developers and power users. It provides a simple and efficient way to...</summary>
-        <keywords>clear, work, show, monitor, tool, watch, system, high-performance, them, file</keywords>
+        <keywords>commands, logs, daemon, features, should, rotated, heartbeat, system, goals, monitor</keywords>
       </chapter>
-      <chapter id="prds-algorithm-design" path="prds/algorithm_design.md" modified="2025-10-05T13:55:02Z" size="10209" words="1172" readTime="4min" hash="sha256:eb7b43a301bfa336">
+      <chapter id="prds-algorithm-design" path="prds/algorithm_design.md" modified="2025-10-05T15:18:31Z" size="12564" words="1407" readTime="5min" hash="sha256:362c3ac08af1a0c0">
         <title>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements</title>
         <summary>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements ## Current Algorithm Complexity ``` CURRENT_ALGORITHM(dirs[], interval): WHILE true: FOR each dir IN dirs: files[] = GLOB(d...</summary>
-        <keywords>mathematical, polling, algorithm, state, processing</keywords>
+        <keywords>polling, mathematical, processing, algorithm, state</keywords>
       </chapter>
     </section>
     <chapter id="security" path="security.md" modified="2025-10-05T13:52:32Z" readTime="1min" hash="sha256:e3b0c44298fc1c14">
