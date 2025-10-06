@@ -1,0 +1,269 @@
+[2025-10-05 13:29:23] [NEW] AGENTS.md (2467 bytes)
+[2025-10-05 13:52:34] [NEW] docs/security.md (0 bytes)
+[2025-10-05 13:54:29] [NEW] docs/prds/algorithm_design.md (0 bytes)
+[2025-10-05 13:55:04] [MODIFIED] docs/prds/algorithm_design.md (+10209 bytes)
+[2025-10-05 14:00:25] [MODIFIED] docs/adrs/0001-use-go-for-development.md (+40 bytes)
+[2025-10-05 14:04:30] [NEW] dist/CHANGELOG.html (6505 bytes)
+[2025-10-05 14:04:30] [NEW] dist/CODE_OF_CONDUCT.html (11544 bytes)
+[2025-10-05 14:04:30] [NEW] dist/CONTRIBUTING.html (8588 bytes)
+[2025-10-05 14:04:30] [NEW] dist/README.html (7176 bytes)
+[2025-10-05 14:04:30] [NEW] dist/adrs/0001-use-go-for-development.html (8487 bytes)
+[2025-10-05 14:04:30] [NEW] dist/assets/search-index.json (18306 bytes)
+[2025-10-05 14:04:30] [NEW] dist/prds/PRD.html (9333 bytes)
+[2025-10-05 14:04:30] [NEW] dist/prds/algorithm_design.html (17188 bytes)
+[2025-10-05 14:04:30] [NEW] dist/security.html (5914 bytes)
+[2025-10-05 14:04:30] [NEW] dist/toc.xml (4312 bytes)
+[2025-10-05 14:04:45] [NEW] toc.xml (4312 bytes)
+[2025-10-05 14:04:45] [DELETED] dist/toc.xml 
+[2025-10-05 14:04:50] [DELETED] dist/CHANGELOG.html 
+[2025-10-05 14:04:50] [DELETED] dist/CODE_OF_CONDUCT.html 
+[2025-10-05 14:04:50] [DELETED] dist/CONTRIBUTING.html 
+[2025-10-05 14:04:50] [DELETED] dist/README.html 
+[2025-10-05 14:04:50] [DELETED] dist/adrs/0001-use-go-for-development.html 
+[2025-10-05 14:04:50] [DELETED] dist/assets/search-index.json 
+[2025-10-05 14:04:50] [DELETED] dist/prds/PRD.html 
+[2025-10-05 14:04:50] [DELETED] dist/prds/algorithm_design.html 
+[2025-10-05 14:04:50] [DELETED] dist/security.html 
+[2025-10-05 14:20:01] [MODIFIED] docs/prds/algorithm_design.md (+139 bytes)
+[2025-10-05 14:20:16] [MODIFIED] docs/prds/algorithm_design.md (+132 bytes)
+[2025-10-05 14:20:26] [MODIFIED] docs/prds/algorithm_design.md (+20 bytes)
+[2025-10-05 14:20:46] [MODIFIED] docs/prds/algorithm_design.md (+741 bytes)
+[2025-10-05 14:20:56] [MODIFIED] docs/prds/algorithm_design.md (+66 bytes)
+[2025-10-05 14:21:06] [MODIFIED] docs/prds/algorithm_design.md (+71 bytes)
+[2025-10-05 14:21:31] [MODIFIED] docs/prds/algorithm_design.md (+272 bytes)
+[2025-10-05 14:22:06] [MODIFIED] docs/prds/algorithm_design.md (-2 bytes)
+[2025-10-05 14:23:16] [MODIFIED] docs/prds/algorithm_design.md (-32 bytes)
+[2025-10-05 14:24:46] [MODIFIED] docs/prds/algorithm_design.md (+737 bytes)
+[2025-10-05 14:24:51] [MODIFIED] docs/prds/algorithm_design.md (+119 bytes)
+[2025-10-05 14:25:01] [MODIFIED] docs/prds/algorithm_design.md (-55 bytes)
+[2025-10-05 14:25:11] [MODIFIED] docs/prds/algorithm_design.md (+49 bytes)
+[2025-10-05 15:15:45] [MODIFIED] docs/prds/PRD.md (+1070 bytes)
+[2025-10-05 15:15:50] [MODIFIED] docs/prds/PRD.md (+175 bytes)
+[2025-10-05 15:15:55] [MODIFIED] docs/prds/PRD.md (+63 bytes)
+[2025-10-05 15:16:10] [MODIFIED] docs/adrs/0001-use-go-for-development.md (+2 bytes)
+[2025-10-05 15:18:26] [MODIFIED] docs/prds/algorithm_design.md (+27 bytes)
+[2025-10-05 15:18:36] [MODIFIED] docs/prds/algorithm_design.md (+71 bytes)
+[2025-10-05 16:01:48] [NEW] PROJECT_TREE.md (1583 bytes)
+[2025-10-05 16:05:23] [MODIFIED] PROJECT_TREE.md (+390 bytes)
+[2025-10-05 16:07:49] [MODIFIED] PROJECT_TREE.md (+231 bytes)
+[2025-10-05 16:07:54] [MODIFIED] PROJECT_TREE.md (+138 bytes)
+[2025-10-05 16:07:59] [MODIFIED] PROJECT_TREE.md (+90 bytes)
+[2025-10-05 16:11:54] [NEW] STRUCTURE_OVERVIEW.md (6226 bytes)
+[2025-10-05 16:12:19] [MODIFIED] STRUCTURE_OVERVIEW.md (+54 bytes)
+[2025-10-05 16:12:34] [MODIFIED] STRUCTURE_OVERVIEW.md (+72 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/clear.go (170 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/log.go (181 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/main.go (260 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/root.go (233 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/start.go (232 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/status.go (232 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/stop.go (227 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/summary.go (166 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/tail.go (153 bytes)
+[2025-10-05 16:15:59] [NEW] cmd/lowkey/watch.go (247 bytes)
+[2025-10-05 16:15:59] [NEW] docs/api/cli_reference.md (186 bytes)
+[2025-10-05 16:15:59] [NEW] docs/guides/daemon.md (198 bytes)
+[2025-10-05 16:15:59] [NEW] go.sum (161 bytes)
+[2025-10-05 16:15:59] [NEW] internal/daemon/manager.go (216 bytes)
+[2025-10-05 16:15:59] [NEW] internal/daemon/supervisor.go (172 bytes)
+[2025-10-05 16:15:59] [NEW] internal/daemon/watch_manifest.go (177 bytes)
+[2025-10-05 16:15:59] [NEW] internal/events/backend.go (165 bytes)
+[2025-10-05 16:15:59] [NEW] internal/events/fsnotify_unix.go (158 bytes)
+[2025-10-05 16:15:59] [NEW] internal/events/fsnotify_windows.go (167 bytes)
+[2025-10-05 16:15:59] [NEW] internal/filters/bloom_filter.go (182 bytes)
+[2025-10-05 16:15:59] [NEW] internal/filters/ignore_tokens.go (170 bytes)
+[2025-10-05 16:15:59] [NEW] internal/logging/rotator.go (147 bytes)
+[2025-10-05 16:15:59] [NEW] internal/logging/writer.go (170 bytes)
+[2025-10-05 16:15:59] [NEW] internal/reporting/aggregator.go (147 bytes)
+[2025-10-05 16:15:59] [NEW] internal/reporting/summaries.go (154 bytes)
+[2025-10-05 16:15:59] [NEW] internal/state/cache.go (157 bytes)
+[2025-10-05 16:15:59] [NEW] internal/state/manifest_store.go (155 bytes)
+[2025-10-05 16:15:59] [NEW] internal/state/persistence.go (157 bytes)
+[2025-10-05 16:15:59] [NEW] internal/watcher/controller.go (161 bytes)
+[2025-10-05 16:15:59] [NEW] internal/watcher/hybrid_monitor.go (185 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/config/loader.go (161 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/config/schema.go (169 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/output/formatter.go (171 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/output/table.go (130 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/telemetry/metrics.go (172 bytes)
+[2025-10-05 16:15:59] [NEW] pkg/telemetry/tracing.go (148 bytes)
+[2025-10-05 16:15:59] [NEW] scripts/install.sh (177 bytes)
+[2025-10-05 16:15:59] [NEW] scripts/package.ps1 (173 bytes)
+[2025-10-05 16:15:59] [NEW] scripts/services/lowkey.plist (407 bytes)
+[2025-10-05 16:15:59] [NEW] scripts/services/lowkey.service (307 bytes)
+[2025-10-05 16:15:59] [NEW] setup_project_tree.sh (13556 bytes)
+[2025-10-05 16:15:59] [NEW] testdata/manifests/sample_daemon.json (168 bytes)
+[2025-10-05 16:19:49] [NEW] docs/architecture/PROJECT_TREE.md (2432 bytes)
+[2025-10-05 16:19:49] [NEW] docs/guides/AGENTS.md (2467 bytes)
+[2025-10-05 16:19:49] [DELETED] AGENTS.md 
+[2025-10-05 16:19:49] [DELETED] PROJECT_TREE.md 
+[2025-10-05 16:19:54] [NEW] docs/architecture/STRUCTURE_OVERVIEW.md (6352 bytes)
+[2025-10-05 16:19:54] [DELETED] STRUCTURE_OVERVIEW.md 
+[2025-10-05 16:20:15] [NEW] AGENTS.md (2467 bytes)
+[2025-10-05 16:20:15] [DELETED] docs/guides/AGENTS.md 
+[2025-10-05 16:21:40] [MODIFIED] go.mod (-2 bytes)
+[2025-10-05 16:22:50] [NEW] vendor/github.com/spf13/cobra/cobra.go (2771 bytes)
+[2025-10-05 16:23:05] [NEW] vendor/github.com/spf13/viper/viper.go (4832 bytes)
+[2025-10-05 16:23:10] [MODIFIED] vendor/github.com/spf13/cobra/cobra.go (-255 bytes)
+[2025-10-05 16:23:10] [MODIFIED] vendor/github.com/spf13/viper/viper.go (-458 bytes)
+[2025-10-05 16:23:15] [MODIFIED] go.mod (+216 bytes)
+[2025-10-05 16:23:20] [MODIFIED] go.mod (-82 bytes)
+[2025-10-05 16:23:25] [MODIFIED] cmd/lowkey/main.go (-73 bytes)
+[2025-10-05 16:23:35] [MODIFIED] cmd/lowkey/root.go (+1813 bytes)
+[2025-10-05 16:23:40] [MODIFIED] cmd/lowkey/watch.go (+440 bytes)
+[2025-10-05 16:23:45] [MODIFIED] cmd/lowkey/start.go (+495 bytes)
+[2025-10-05 16:23:55] [MODIFIED] cmd/lowkey/status.go (+110 bytes)
+[2025-10-05 16:23:55] [MODIFIED] cmd/lowkey/stop.go (+112 bytes)
+[2025-10-05 16:24:00] [MODIFIED] cmd/lowkey/log.go (+143 bytes)
+[2025-10-05 16:24:05] [MODIFIED] cmd/lowkey/tail.go (+192 bytes)
+[2025-10-05 16:24:10] [MODIFIED] cmd/lowkey/summary.go (+190 bytes)
+[2025-10-05 16:24:15] [MODIFIED] cmd/lowkey/clear.go (+189 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/clear.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/log.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/main.go (-24 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/root.go (-330 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/start.go (-138 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/status.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/stop.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/summary.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/tail.go (-48 bytes)
+[2025-10-05 16:24:20] [MODIFIED] cmd/lowkey/watch.go (-120 bytes)
+[2025-10-05 16:24:35] [MODIFIED] go.mod (+82 bytes)
+[2025-10-05 16:24:45] [NEW] vendor/github.com/spf13/cobra/go.mod (39 bytes)
+[2025-10-05 16:24:45] [NEW] vendor/github.com/spf13/viper/go.mod (39 bytes)
+[2025-10-05 16:24:50] [MODIFIED] go.mod (-6 bytes)
+[2025-10-05 16:25:10] [MODIFIED] cmd/lowkey/root.go (+2 bytes)
+[2025-10-05 16:25:15] [MODIFIED] cmd/lowkey/root.go (-9 bytes)
+[2025-10-05 16:25:15] [NEW] lowkey (2641490 bytes)
+[2025-10-05 16:42:32] [DELETED] lowkey 
+[2025-10-05 16:45:17] [DELETED] vendor/github.com/spf13/cobra/cobra.go 
+[2025-10-05 16:45:17] [DELETED] vendor/github.com/spf13/cobra/go.mod 
+[2025-10-05 16:45:17] [DELETED] vendor/github.com/spf13/viper/go.mod 
+[2025-10-05 16:45:17] [DELETED] vendor/github.com/spf13/viper/viper.go 
+[2025-10-05 16:45:27] [DELETED] go.sum 
+[2025-10-05 16:45:37] [MODIFIED] go.mod (-134 bytes)
+[2025-10-05 16:47:17] [NEW] vendor/github.com/spf13/cobra/cobra.go (1782 bytes)
+[2025-10-05 16:47:27] [NEW] vendor/github.com/spf13/cobra/go.mod (39 bytes)
+[2025-10-05 16:48:12] [NEW] vendor/github.com/spf13/viper/viper.go (3654 bytes)
+[2025-10-05 16:48:22] [NEW] vendor/github.com/spf13/viper/go.mod (39 bytes)
+[2025-10-05 16:48:32] [MODIFIED] vendor/github.com/spf13/cobra/cobra.go (-252 bytes)
+[2025-10-05 16:48:32] [MODIFIED] vendor/github.com/spf13/viper/viper.go (-462 bytes)
+[2025-10-05 16:48:48] [MODIFIED] go.mod (+134 bytes)
+[2025-10-05 16:49:03] [NEW] go.sum (161 bytes)
+[2025-10-05 16:49:18] [NEW] lowkey (2641490 bytes)
+[2025-10-05 16:49:33] [DELETED] lowkey 
+
+
+
+
+
+
+
+
+
+[2025-10-05 18:50:14] [DELETED] vendor/github.com/spf13/cobra/cobra.go 
+[2025-10-05 18:50:14] [DELETED] vendor/github.com/spf13/cobra/go.mod 
+[2025-10-05 18:50:14] [DELETED] vendor/github.com/spf13/viper/go.mod 
+[2025-10-05 18:50:14] [DELETED] vendor/github.com/spf13/viper/viper.go 
+[2025-10-05 18:51:49] [NEW] third_party/github.com/spf13/cobra/cobra.go (1782 bytes)
+[2025-10-05 18:52:00] [NEW] third_party/github.com/spf13/cobra/go.mod (39 bytes)
+[2025-10-05 18:52:20] [NEW] third_party/github.com/spf13/viper/viper.go (3654 bytes)
+[2025-10-05 18:52:30] [NEW] third_party/github.com/spf13/viper/go.mod (39 bytes)
+[2025-10-05 18:52:45] [MODIFIED] third_party/github.com/spf13/cobra/cobra.go (-252 bytes)
+[2025-10-05 18:52:45] [MODIFIED] third_party/github.com/spf13/viper/viper.go (-462 bytes)
+[2025-10-05 18:53:00] [MODIFIED] go.mod (+10 bytes)
+[2025-10-05 18:53:15] [NEW] lowkey (2641490 bytes)
+[2025-10-05 18:53:55] [MODIFIED] lowkey (-611904 bytes)
+[2025-10-05 19:28:03] [MODIFIED] lowkey (+358256 bytes)
+[2025-10-05 19:30:23] [MODIFIED] pkg/config/schema.go (+1433 bytes)
+[2025-10-05 19:30:38] [MODIFIED] pkg/config/loader.go (+2248 bytes)
+[2025-10-05 19:31:08] [MODIFIED] internal/state/manifest_store.go (+3111 bytes)
+[2025-10-05 19:31:33] [MODIFIED] cmd/lowkey/root.go (+692 bytes)
+[2025-10-05 19:31:43] [MODIFIED] cmd/lowkey/watch.go (+323 bytes)
+[2025-10-05 19:31:53] [MODIFIED] cmd/lowkey/start.go (+1127 bytes)
+[2025-10-05 19:31:58] [MODIFIED] cmd/lowkey/start.go (+104 bytes)
+[2025-10-05 19:32:13] [MODIFIED] cmd/lowkey/stop.go (+467 bytes)
+[2025-10-05 19:32:23] [MODIFIED] cmd/lowkey/root.go (-19 bytes)
+[2025-10-05 19:32:23] [MODIFIED] cmd/lowkey/start.go (-273 bytes)
+[2025-10-05 19:32:23] [MODIFIED] cmd/lowkey/stop.go (-165 bytes)
+[2025-10-05 19:32:23] [MODIFIED] cmd/lowkey/watch.go (-156 bytes)
+[2025-10-05 19:32:48] [MODIFIED] cmd/lowkey/start.go (+1006 bytes)
+[2025-10-05 19:32:53] [MODIFIED] cmd/lowkey/start.go (+11 bytes)
+[2025-10-05 19:33:03] [MODIFIED] cmd/lowkey/start.go (-363 bytes)
+[2025-10-05 19:33:18] [MODIFIED] lowkey (+323888 bytes)
+[2025-10-05 19:36:33] [DELETED] lowkey 
+[2025-10-05 19:37:08] [NEW] lowkey (2029586 bytes)
+[2025-10-05 19:37:19] [DELETED] lowkey 
+[2025-10-05 19:39:24] [MODIFIED] internal/watcher/controller.go (+1210 bytes)
+[2025-10-05 19:40:24] [DELETED] internal/daemon/manager.go 
+[2025-10-05 19:40:39] [NEW] internal/daemon/manager.go (2209 bytes)
+[2025-10-05 19:40:54] [MODIFIED] internal/daemon/manager.go (-213 bytes)
+[2025-10-05 19:41:09] [MODIFIED] cmd/lowkey/start.go (+348 bytes)
+[2025-10-05 19:41:24] [MODIFIED] cmd/lowkey/status.go (+1007 bytes)
+[2025-10-05 19:41:34] [MODIFIED] cmd/lowkey/start.go (-123 bytes)
+[2025-10-05 19:41:34] [MODIFIED] cmd/lowkey/status.go (-237 bytes)
+[2025-10-05 19:41:59] [NEW] lowkey (2783026 bytes)
+[2025-10-05 19:42:39] [DELETED] lowkey 
+[2025-10-05 20:01:51] [DELETED] internal/reporting/aggregator.go 
+[2025-10-05 20:02:11] [NEW] internal/reporting/aggregator.go (1531 bytes)
+[2025-10-05 20:02:26] [MODIFIED] internal/reporting/summaries.go (+295 bytes)
+[2025-10-05 20:02:31] [NEW] dist/CHANGELOG.html (7250 bytes)
+[2025-10-05 20:02:31] [NEW] dist/CODE_OF_CONDUCT.html (12289 bytes)
+[2025-10-05 20:02:31] [NEW] dist/CONTRIBUTING.html (9333 bytes)
+[2025-10-05 20:02:31] [NEW] dist/README.html (7921 bytes)
+[2025-10-05 20:02:31] [NEW] dist/adrs/0001-use-go-for-development.html (9246 bytes)
+[2025-10-05 20:02:31] [NEW] dist/api/cli_reference.html (7174 bytes)
+[2025-10-05 20:02:31] [NEW] dist/architecture/PROJECT_TREE.html (9450 bytes)
+[2025-10-05 20:02:31] [NEW] dist/architecture/STRUCTURE_OVERVIEW.html (15496 bytes)
+[2025-10-05 20:02:31] [NEW] dist/assets/search-index.json (26829 bytes)
+[2025-10-05 20:02:31] [NEW] dist/guides/daemon.html (7157 bytes)
+[2025-10-05 20:02:31] [NEW] dist/prds/PRD.html (11565 bytes)
+[2025-10-05 20:02:31] [NEW] dist/prds/algorithm_design.html (20297 bytes)
+[2025-10-05 20:02:31] [NEW] dist/security.html (6659 bytes)
+[2025-10-05 20:02:31] [NEW] dist/toc.xml (6518 bytes)
+[2025-10-05 20:02:31] [MODIFIED] internal/reporting/aggregator.go (-126 bytes)
+[2025-10-05 20:02:31] [MODIFIED] internal/reporting/summaries.go (-33 bytes)
+[2025-10-05 20:02:41] [DELETED] toc.xml 
+[2025-10-05 20:02:46] [NEW] toc.xml (6518 bytes)
+[2025-10-05 20:02:46] [DELETED] dist/toc.xml 
+[2025-10-05 20:02:51] [DELETED] dist/CHANGELOG.html 
+[2025-10-05 20:02:51] [DELETED] dist/CODE_OF_CONDUCT.html 
+[2025-10-05 20:02:51] [DELETED] dist/CONTRIBUTING.html 
+[2025-10-05 20:02:51] [DELETED] dist/README.html 
+[2025-10-05 20:02:51] [DELETED] dist/adrs/0001-use-go-for-development.html 
+[2025-10-05 20:02:51] [DELETED] dist/api/cli_reference.html 
+[2025-10-05 20:02:51] [DELETED] dist/architecture/PROJECT_TREE.html 
+[2025-10-05 20:02:51] [DELETED] dist/architecture/STRUCTURE_OVERVIEW.html 
+[2025-10-05 20:02:51] [DELETED] dist/assets/search-index.json 
+[2025-10-05 20:02:51] [DELETED] dist/guides/daemon.html 
+[2025-10-05 20:02:51] [DELETED] dist/prds/PRD.html 
+[2025-10-05 20:02:51] [DELETED] dist/prds/algorithm_design.html 
+[2025-10-05 20:02:51] [DELETED] dist/security.html 
+[2025-10-05 20:02:56] [MODIFIED] internal/daemon/supervisor.go (+597 bytes)
+[2025-10-05 20:03:06] [MODIFIED] internal/daemon/supervisor.go (-27 bytes)
+[2025-10-05 20:03:26] [MODIFIED] internal/daemon/manager.go (+462 bytes)
+[2025-10-05 20:03:46] [MODIFIED] internal/daemon/manager.go (-135 bytes)
+[2025-10-05 20:04:01] [NEW] lowkey (2783394 bytes)
+[2025-10-05 20:04:41] [MODIFIED] toc.xml (-2205 bytes)
+[2025-10-05 20:05:01] [DELETED] lowkey 
+[2025-10-05 20:05:26] [MODIFIED] cmd/lowkey/status.go (+480 bytes)
+[2025-10-05 20:05:56] [MODIFIED] cmd/lowkey/start.go (+141 bytes)
+[2025-10-05 20:06:06] [MODIFIED] cmd/lowkey/start.go (-63 bytes)
+[2025-10-05 20:06:06] [MODIFIED] cmd/lowkey/status.go (-192 bytes)
+[2025-10-05 20:06:21] [NEW] lowkey (2783330 bytes)
+[2025-10-05 20:06:36] [DELETED] lowkey 
+[2025-10-05 20:48:25] [DELETED] pkg/output/formatter.go 
+[2025-10-05 20:48:45] [NEW] pkg/output/formatter.go (2345 bytes)
+[2025-10-05 20:48:55] [DELETED] pkg/output/table.go 
+[2025-10-05 20:50:00] [MODIFIED] cmd/lowkey/root.go (+58 bytes)
+[2025-10-05 20:50:15] [MODIFIED] cmd/lowkey/root.go (+66 bytes)
+[2025-10-05 20:50:30] [MODIFIED] cmd/lowkey/root.go (+213 bytes)
+[2025-10-05 20:50:45] [MODIFIED] cmd/lowkey/root.go (-43 bytes)
+[2025-10-05 20:51:20] [MODIFIED] cmd/lowkey/root.go (+1120 bytes)
+[2025-10-05 20:51:55] [MODIFIED] cmd/lowkey/start.go (-940 bytes)
+[2025-10-05 20:52:35] [MODIFIED] cmd/lowkey/status.go (-497 bytes)
+[2025-10-05 20:52:45] [MODIFIED] pkg/output/formatter.go (-174 bytes)
+[2025-10-05 20:53:20] [MODIFIED] pkg/output/formatter.go (+37 bytes)
+[2025-10-05 20:53:35] [MODIFIED] pkg/output/formatter.go (-45 bytes)
+[2025-10-05 20:53:50] [NEW] lowkey (2800818 bytes)
+[2025-10-05 20:54:00] [DELETED] lowkey 

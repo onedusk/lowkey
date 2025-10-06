@@ -1,28 +1,36 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-The Go module lives at the repo root (`go.mod`) with `main.go` supplying the current CLI entry point. Supporting product and governance files sit under `docs/`, with architectural decisions in `docs/adrs/` and product requirements in `docs/prds/`; mirror that layout when adding new records. Build artifacts default to `./lowkey`, and ignore patterns belong in a `.lowkey` file alongside the watched directories you configure.
+- `go.mod` anchors the module at the root, and `main.go` is the CLI entry point.
+- CLI subcommands and wiring live in `cmd/`, while reusable logic stays under `internal/` and `pkg/`.
+- Product docs sit in `docs/` (`docs/adrs/` for architecture choices, `docs/prds/` for requirements); mirror that layout when adding records.
+- Generated binaries land in `./lowkey`; keep temporary fixtures in `testdata/` and reference shared assets from `third_party/` as needed.
 
 ## Build, Test, and Development Commands
-Use the Makefile shortcuts while iterating:
-
-```sh
-make build   # compile lowkey into ./lowkey
-make run     # run the CLI in development mode
-make test    # execute go test -v ./...
-make clean   # remove the compiled binary
-```
-
-Direct `go build ./...` and `go run main.go` work when scripting, but keep Makefile targets as the documented interface.
+- `make build` compiles the CLI into `./lowkey` and should precede packaging work.
+- `make run` executes the CLI with dev-friendly defaults for quick smoke checks.
+- `make test` runs `go test -v ./...`; prefer it over ad‑hoc commands so CI mirrors local runs.
+- `make clean` clears the compiled binary; rerun before benchmarking to avoid stale artifacts.
 
 ## Coding Style & Naming Conventions
-Target Go 1.24.0 and format every change with `gofmt` (tabs for indentation, Unix newlines). Import ordering should follow `gofmt`/`goimports`, with standard library, third-party, and internal packages separated by blank lines. Expose packages and functions with concise PascalCase names and keep files named after the package or feature (e.g., `watcher.go`, `watcher_test.go`).
+- Target Go 1.24.0, format every change with `gofmt`, and rely on tabs plus Unix newlines.
+- Keep imports grouped standard/third-party/internal; `goimports` is recommended during save hooks.
+- Exported symbols use concise PascalCase, unexported helpers use camelCase, and file names follow the feature (`watcher.go`, `watcher_test.go`).
+- Add brief comments only for behavior that is not obvious from the code.
 
 ## Testing Guidelines
-Place tests beside their sources using the `*_test.go` suffix and Go’s `testing` package. Prefer table-driven tests with descriptive `TestFeature_Scenario` names, and add integration tests whenever filesystem watchers span multiple platforms. Run `make test` before opening a pull request and ensure new behavior ships with meaningful coverage notes in the PR body.
+- Place unit tests beside their sources using the `*_test.go` suffix and Go’s `testing` package.
+- Favor table-driven tests named `TestFeature_Scenario` for clarity and coverage tracking.
+- Use `make test` before commits; annotate coverage deltas in PRs when behavior changes.
+- Capture multi-platform watcher quirks with integration tests and document caveats in `docs/adrs/`.
 
 ## Commit & Pull Request Guidelines
-Follow the existing imperative commit voice (`added .github`, `first commit`) and keep subjects under 72 characters; add focused bodies when context is non-obvious. Each pull request should summarize the problem, list user-visible changes, and mention related ADRs/PRDs that were touched. Include CLI output or logs when they help reviewers reproduce results, and request review from maintainers responsible for the impacted directory.
+- Follow the imperative commit voice seen in history (`added .github`, `first commit`) and stay under 72 characters.
+- Provide context in bodies when choices are non-obvious; link ADRs/PRDs updated in the change.
+- Open PRs with problem, user-visible impact, and reproduction notes; attach CLI output or logs when valuable.
+- Request reviews from maintainers responsible for touched directories and highlight any new configuration knobs.
 
 ## Configuration & Operational Tips
-Document new ignore patterns or watch targets inside `.lowkey` and explain them in the PR when they impact default behavior. When introducing cross-platform logic, capture any platform-specific caveats in `docs/adrs/` so future agents understand the trade-offs.
+- Record new ignore patterns or watch targets in `.lowkey` and justify them in your PR.
+- Document cross-platform assumptions immediately in `docs/adrs/` so downstream agents inherit the rationale.
+- When adding tooling, prefer Go-native deps; vendored assets belong under `third_party/` with licensing notes.
