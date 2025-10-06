@@ -4,15 +4,24 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"lowkey/internal/daemon"
+	"lowkey/internal/state"
+	"lowkey/pkg/config"
+	"lowkey/pkg/output"
 )
 
 var (
-	rootCmd   = &cobra.Command{Use: "lowkey", Short: "Filesystem monitor toolkit"}
-	cfgFile   string
-	appConfig = viper.New()
+	rootCmd            = &cobra.Command{Use: "lowkey", Short: "Filesystem monitor toolkit"}
+	cfgFile            string
+	appConfig          = viper.New()
+	manifestFromConfig *config.Manifest
+	outputFormat       = "plain"
+	outputRenderer     output.Renderer
 )
 
 func init() {
@@ -38,8 +47,16 @@ func execute(args []string) error {
 		return err
 	}
 
+	format, remaining := extractOption(remaining, "--output", "-o")
+	if format != "" {
+		outputFormat = format
+	}
+
 	rootCmd.SetArgs(remaining)
 	cobra.ExecuteInitializers()
+	if err := ensureRenderer(); err != nil {
+		return err
+	}
 	return rootCmd.Execute()
 }
 
@@ -47,16 +64,42 @@ func initConfig() {
 	if cfgFile == "" {
 		home, err := os.UserHomeDir()
 		if err == nil {
-			cfgFile = filepath.Join(home, ".lowkey.yaml")
+			candidate := filepath.Join(home, ".lowkey.json")
+			if _, err := os.Stat(candidate); err == nil {
+				cfgFile = candidate
+			}
 		}
 	}
 
-	if cfgFile == "" {
-		return
+	tryPaths := []string{}
+	if cfgFile != "" {
+		tryPaths = append(tryPaths, cfgFile)
+	} else {
+		if stateDir, err := state.DefaultStateDir(); err == nil {
+			tryPaths = append(tryPaths, filepath.Join(stateDir, "daemon.json"))
+		}
 	}
 
-	appConfig.SetConfigFile(cfgFile)
-	_ = appConfig.ReadInConfig() // Optional; ignore errors when bootstrapping.
+	for _, candidate := range tryPaths {
+		if candidate == "" {
+			continue
+		}
+		if _, err := os.Stat(candidate); err != nil {
+			continue
+		}
+		manifest, err := config.LoadManifest(candidate)
+		if err != nil {
+			continue
+		}
+		manifestFromConfig = manifest
+		cfgFile = candidate
+		break
+	}
+
+	if cfgFile != "" {
+		appConfig.SetConfigFile(cfgFile)
+		_ = appConfig.ReadInConfig()
+	}
 	appConfig.AutomaticEnv()
 }
 
@@ -89,9 +132,74 @@ func parseConfigFlag(args []string) (string, []string, error) {
 }
 
 func loadWatchTargetsFromConfig() []string {
-	dirs := appConfig.GetString("directories")
-	if dirs == "" {
+	if manifestFromConfig != nil {
+		return append([]string(nil), manifestFromConfig.Directories...)
+	}
+	return nil
+}
+
+func ensureRenderer() error {
+	if outputRenderer != nil {
 		return nil
 	}
-	return []string{dirs}
+	renderer, err := output.NewRenderer(outputFormat)
+	if err != nil {
+		return err
+	}
+	outputRenderer = renderer
+	return nil
+}
+
+func renderStatus(status daemon.ManagerStatus) error {
+	if err := ensureRenderer(); err != nil {
+		return err
+	}
+	return outputRenderer.Status(status)
+}
+
+func extractOption(args []string, keys ...string) (string, []string) {
+	if len(keys) == 0 {
+		return "", args
+	}
+
+	remaining := make([]string, 0, len(args))
+	var value string
+	skip := false
+	for i, arg := range args {
+		if skip {
+			skip = false
+			continue
+		}
+
+		matched := ""
+		for _, key := range keys {
+			if arg == key {
+				matched = key
+				break
+			}
+			if strings.HasPrefix(arg, key+"=") {
+				value = arg[len(key)+1:]
+				matched = key
+				break
+			}
+		}
+
+		if matched != "" {
+			if value == "" {
+				if i+1 >= len(args) {
+					value = ""
+				} else if strings.HasPrefix(args[i+1], "-") {
+					value = ""
+				} else {
+					value = args[i+1]
+					skip = true
+				}
+			}
+			continue
+		}
+
+		remaining = append(remaining, arg)
+	}
+
+	return value, remaining
 }

@@ -3,9 +3,12 @@ package main
 import (
 	"errors"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/spf13/cobra"
+
+	"lowkey/pkg/config"
 )
 
 func newWatchCmd() *cobra.Command {
@@ -19,7 +22,12 @@ func newWatchCmd() *cobra.Command {
 			if len(args) == 0 {
 				return errors.New("provide at least one directory to watch")
 			}
-			fmt.Printf("watch: would start monitoring %s (foreground)\n", strings.Join(args, ", "))
+			cwd, _ := os.Getwd()
+			manifest, err := config.BuildManifestFromArgs(cwd, args)
+			if err != nil {
+				return err
+			}
+			fmt.Printf("watch: would start monitoring %s (foreground)\n", strings.Join(manifest.Directories, ", "))
 			return nil
 		},
 	}

@@ -1,13 +1,38 @@
 package main
 
-import "github.com/spf13/cobra"
+import (
+	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+
+	"github.com/spf13/cobra"
+
+	"lowkey/internal/state"
+)
 
 func newLogCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "log",
 		Short: "Print daemon logs",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			println("log: would display log history")
+			stateDir, err := state.DefaultStateDir()
+			if err != nil {
+				return err
+			}
+			logPath := filepath.Join(stateDir, "lowkey.log")
+			file, err := os.Open(logPath)
+			if err != nil {
+				if os.IsNotExist(err) {
+					fmt.Printf("log: no log file found at %s\n", logPath)
+					return nil
+				}
+				return err
+			}
+			defer file.Close()
+			if _, err := io.Copy(os.Stdout, file); err != nil {
+				return err
+			}
 			return nil
 		},
 	}

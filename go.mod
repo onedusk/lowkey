@@ -7,6 +7,6 @@ require (
 	github.com/spf13/viper v1.17.0
 )
 
-replace github.com/spf13/cobra => ./vendor/github.com/spf13/cobra
+replace github.com/spf13/cobra => ./third_party/github.com/spf13/cobra
 
-replace github.com/spf13/viper => ./vendor/github.com/spf13/viper
+replace github.com/spf13/viper => ./third_party/github.com/spf13/viper
