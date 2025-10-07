@@ -1,5 +1,0 @@
-./cache.go
-./manifest_store.go
-./persistence.go
-./cache_test.go
-./persistence_test.go

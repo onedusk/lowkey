@@ -1,4 +1,0 @@
-./bloom_filter.go
-./ignore_tokens.go
-./bloom_filter_test.go
-./ignore_tokens_test.go
