@@ -31,11 +31,16 @@ func newStatusCmd() *cobra.Command {
 				return nil
 			}
 
-			manager, err := daemon.NewManager(store, manifest)
-			if err != nil {
-				return err
+			running := false
+			if pid, ok := readPID(stateDir); ok && processAlive(pid) {
+				running = true
 			}
-			status := manager.Status()
+
+			status := daemon.ManagerStatus{
+				Running:      running,
+				Directories:  append([]string(nil), manifest.Directories...),
+				ManifestPath: store.Path(),
+			}
 			if err := renderStatus(status); err != nil {
 				return err
 			}

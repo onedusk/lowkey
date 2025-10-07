@@ -1,6 +1,7 @@
 package daemon
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"path/filepath"
@@ -12,6 +13,7 @@ import (
 	"lowkey/internal/state"
 	"lowkey/internal/watcher"
 	"lowkey/pkg/config"
+	"lowkey/pkg/telemetry"
 )
 
 // Manager coordinates watcher lifecycle and manifest persistence.
@@ -23,6 +25,8 @@ type Manager struct {
 	logger     *logging.Logger
 	mux        sync.Mutex
 	running    bool
+	metrics    *telemetry.Collector
+	tracer     *telemetry.Tracer
 }
 
 // NewManager creates a Manager for the provided manifest/store pair.
@@ -35,30 +39,46 @@ func NewManager(store *state.ManifestStore, manifest *config.Manifest) (*Manager
 	}
 
 	logDir := filepath.Dir(store.Path())
-	rotator, err := logging.NewRotator(logDir, "lowkey.log", 10*1024*1024, 5)
+	logName := "lowkey.log"
+	if manifest.LogPath != "" {
+		logDir = filepath.Dir(manifest.LogPath)
+		logName = filepath.Base(manifest.LogPath)
+	}
+	rotator, err := logging.NewRotator(logDir, logName, 10*1024*1024, 5)
 	if err != nil {
 		return nil, err
 	}
 	logger := logging.New(rotator)
 	aggregator := reporting.NewAggregator()
+	var ignorePatterns []string
+	if manifest.IgnoreFile != "" {
+		patterns, err := config.LoadIgnorePatterns(manifest.IgnoreFile)
+		if err != nil {
+			return nil, fmt.Errorf("daemon: load ignore patterns: %w", err)
+		}
+		ignorePatterns = patterns
+	}
+
+	m := &Manager{
+		store:      store,
+		manifest:   manifest,
+		aggregator: aggregator,
+		logger:     logger,
+	}
 
 	ctrl, err := watcher.NewController(watcher.ControllerConfig{
-		Directories: manifest.Directories,
-		IgnoreGlobs: nil,
-		Aggregator:  aggregator,
-		Logger:      logger,
+		Directories:  manifest.Directories,
+		IgnoreGlobs:  ignorePatterns,
+		Aggregator:   aggregator,
+		Logger:       logger,
+		PollInterval: 30 * time.Second,
+		OnChange:     m.handleChange,
 	})
 	if err != nil {
 		return nil, err
 	}
-
-	return &Manager{
-		store:      store,
-		manifest:   manifest,
-		controller: ctrl,
-		aggregator: aggregator,
-		logger:     logger,
-	}, nil
+	m.controller = ctrl
+	return m, nil
 }
 
 // Start persists the manifest and launches the watcher controller.
@@ -72,8 +92,6 @@ func (m *Manager) Start() error {
 	if err := m.store.Save(m.manifest); err != nil {
 		return fmt.Errorf("daemon: save manifest: %w", err)
 	}
-	// TODO: The controller.Start() call is currently a stub. This needs to be
-	// replaced with the actual implementation that starts the monitoring loops.
 	if err := m.controller.Start(); err != nil {
 		return err
 	}
@@ -101,6 +119,12 @@ func (m *Manager) Stop() {
 	}
 }
 
+// SetTelemetry attaches metrics and tracer instances to the manager.
+func (m *Manager) SetTelemetry(metrics *telemetry.Collector, tracer *telemetry.Tracer) {
+	m.metrics = metrics
+	m.tracer = tracer
+}
+
 // Status reports the current run state and tracked directories.
 func (m *Manager) Status() ManagerStatus {
 	m.mux.Lock()
@@ -119,6 +143,18 @@ func (m *Manager) Status() ManagerStatus {
 		Directories:  dirs,
 		ManifestPath: m.store.Path(),
 		Summary:      reporting.BuildSummary(snapshot, 5*time.Minute),
+	}
+}
+
+func (m *Manager) handleChange(change reporting.Change) {
+	if m.metrics != nil {
+		m.metrics.IncEvent()
+	}
+	if m.tracer != nil && m.tracer.Enabled() {
+		span, _ := m.tracer.StartSpan(context.Background(), "watcher.change")
+		span.SetAttribute("path", change.Path)
+		span.SetAttribute("type", change.Type)
+		span.End(nil)
 	}
 }
 

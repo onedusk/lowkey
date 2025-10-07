@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Durable file-signature cache with atomic persistence helpers plus unit coverage.
+- Ignore Bloom-filter/tokenization utilities backing the hybrid watcher pipeline.
+- Cross-platform polling event backend, hybrid monitor, and controller wiring.
+- Foreground watch streaming, daemon re-exec with `--metrics`/`--trace`, log tailing, and PID-aware stop/status flows.
+- Telemetry stubs for Prometheus metrics and lightweight tracing toggled by CLI flags.
+
+### Changed
+
+- Daemon manager now loads ignore patterns from manifests and routes watcher events into telemetry hooks.
+
 ## [0.1.0] - 2025-10-03
 
 ### Added

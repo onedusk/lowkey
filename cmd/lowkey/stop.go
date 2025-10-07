@@ -1,7 +1,12 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"os"
+	"runtime"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 
@@ -21,17 +26,53 @@ func newStopCmd() *cobra.Command {
 			if err != nil {
 				return err
 			}
+			pid, ok := readPID(stateDir)
+			if !ok {
+				fmt.Println("stop: daemon is not running")
+				_ = store.Clear()
+				return nil
+			}
+
+			if err := signalDaemon(pid); err != nil && !errors.Is(err, os.ErrProcessDone) {
+				return err
+			}
+
+			deadline := time.Now().Add(time.Duration(daemonShutdownGrace) * time.Second)
+			for processAlive(pid) && time.Now().Before(deadline) {
+				time.Sleep(200 * time.Millisecond)
+			}
+			if processAlive(pid) {
+				_ = forceKill(pid)
+			}
+
+			if err := os.Remove(pidFilePath(stateDir)); err != nil && !errors.Is(err, os.ErrNotExist) {
+				return err
+			}
 			if err := store.Clear(); err != nil {
 				return err
 			}
-			// TODO: Implement the logic to find and signal the running daemon process to stop.
-			// This should not just clear the manifest but actively stop the process.
-			// - Find the PID of the running daemon (e.g., from a PID file).
-			// - Send a SIGTERM or SIGINT signal to the process.
-			// - Wait for the process to exit gracefully.
-			// - Clearing the manifest should happen after the daemon confirms shutdown.
-			fmt.Println("stop: cleared persisted manifest; daemon shutdown logic pending")
+			manifestFromConfig = nil
+			fmt.Println("daemon stopped")
 			return nil
 		},
 	}
+}
+
+func signalDaemon(pid int) error {
+	process, err := os.FindProcess(pid)
+	if err != nil {
+		return err
+	}
+	if runtime.GOOS == "windows" {
+		return process.Kill()
+	}
+	return process.Signal(syscall.SIGTERM)
+}
+
+func forceKill(pid int) error {
+	process, err := os.FindProcess(pid)
+	if err != nil {
+		return err
+	}
+	return process.Kill()
 }

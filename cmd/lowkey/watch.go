@@ -1,13 +1,21 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"os"
+	"os/signal"
+	"path/filepath"
 	"strings"
+	"sync"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 
+	"lowkey/internal/reporting"
+	"lowkey/internal/watcher"
 	"lowkey/pkg/config"
 )
 
@@ -27,16 +35,87 @@ func newWatchCmd() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			// TODO: Implement the foreground watching logic.
-			// This should create and start a watcher.Controller, running it directly
-			// and waiting for an interrupt signal (e.g., Ctrl+C) to stop.
-			// - Create a new watcher.Controller with the manifest.
-			// - Start the controller.
-			// - Set up a signal handler to catch SIGINT and SIGTERM.
-			// - Call controller.Stop() when a signal is received.
-			// - Wait for the controller to stop gracefully.
-			fmt.Printf("watch: would start monitoring %s (foreground)\n", strings.Join(manifest.Directories, ", "))
+
+			signalCtx, stopSignals := signal.NotifyContext(context.Background(), syscall.SIGTERM, os.Interrupt)
+			defer stopSignals()
+
+			changes := make(chan reporting.Change, 256)
+			aggregator := reporting.NewAggregator()
+
+			onChange := func(change reporting.Change) {
+				select {
+				case <-signalCtx.Done():
+					return
+				default:
+				}
+				select {
+				case changes <- change:
+				default:
+				}
+			}
+
+			ignorePatterns := discoverIgnoreFiles(manifest.Directories)
+
+			controller, err := watcher.NewController(watcher.ControllerConfig{
+				Directories:  manifest.Directories,
+				IgnoreGlobs:  ignorePatterns,
+				Aggregator:   aggregator,
+				PollInterval: 20 * time.Second,
+				OnChange:     onChange,
+			})
+			if err != nil {
+				return err
+			}
+
+			if err := controller.Start(); err != nil {
+				return err
+			}
+			defer controller.Stop()
+
+			fmt.Printf("watching %s\n", strings.Join(manifest.Directories, ", "))
+			fmt.Println("press Ctrl+C to stop")
+
+			var wg sync.WaitGroup
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				for {
+					select {
+					case <-signalCtx.Done():
+						return
+					case change := <-changes:
+						fmt.Printf("[%s] %s\n", change.Type, change.Path)
+					}
+				}
+			}()
+
+			<-signalCtx.Done()
+			fmt.Println("stopping watcher...")
+			wg.Wait()
 			return nil
 		},
 	}
+}
+
+func discoverIgnoreFiles(dirs []string) []string {
+	patterns := make([]string, 0)
+	seen := make(map[string]struct{})
+	for _, dir := range dirs {
+		candidate := filepath.Join(dir, ".lowkey")
+		if _, err := os.Stat(candidate); err != nil {
+			continue
+		}
+		loaded, err := config.LoadIgnorePatterns(candidate)
+		if err != nil {
+			continue
+		}
+		for _, pattern := range loaded {
+			if _, ok := seen[pattern]; ok {
+				continue
+			}
+			seen[pattern] = struct{}{}
+			patterns = append(patterns, pattern)
+		}
+	}
+	return patterns
 }
