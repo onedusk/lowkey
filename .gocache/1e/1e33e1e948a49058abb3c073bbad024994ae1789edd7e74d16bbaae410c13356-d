@@ -1,0 +1,11 @@
+# test log
+getenv TMPDIR
+stat /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001
+stat /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001
+open /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001
+open /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001/sample.txt
+stat /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001
+open /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001
+stat /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001/sample.txt
+open /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T/TestPollingBackendDetectsNewFile3830840766/001/sample.txt
+open /var/folders/bx/xp8_zypj3h1d023vwpc24jm80000gn/T

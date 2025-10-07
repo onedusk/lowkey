@@ -27,6 +27,7 @@ type Manager struct {
 	running    bool
 	metrics    *telemetry.Collector
 	tracer     *telemetry.Tracer
+	supervisor *Supervisor
 }
 
 // NewManager creates a Manager for the provided manifest/store pair.
@@ -50,13 +51,9 @@ func NewManager(store *state.ManifestStore, manifest *config.Manifest) (*Manager
 	}
 	logger := logging.New(rotator)
 	aggregator := reporting.NewAggregator()
-	var ignorePatterns []string
-	if manifest.IgnoreFile != "" {
-		patterns, err := config.LoadIgnorePatterns(manifest.IgnoreFile)
-		if err != nil {
-			return nil, fmt.Errorf("daemon: load ignore patterns: %w", err)
-		}
-		ignorePatterns = patterns
+	ignorePatterns, err := resolveIgnorePatterns(manifest)
+	if err != nil {
+		return nil, err
 	}
 
 	m := &Manager{
@@ -78,7 +75,19 @@ func NewManager(store *state.ManifestStore, manifest *config.Manifest) (*Manager
 		return nil, err
 	}
 	m.controller = ctrl
+	m.supervisor = NewSupervisor(m, 5*time.Second)
 	return m, nil
+}
+
+func resolveIgnorePatterns(manifest *config.Manifest) ([]string, error) {
+	if manifest == nil || manifest.IgnoreFile == "" {
+		return nil, nil
+	}
+	patterns, err := config.LoadIgnorePatterns(manifest.IgnoreFile)
+	if err != nil {
+		return nil, fmt.Errorf("daemon: load ignore patterns: %w", err)
+	}
+	return patterns, nil
 }
 
 // Start persists the manifest and launches the watcher controller.
@@ -98,6 +107,9 @@ func (m *Manager) Start() error {
 	if m.logger != nil {
 		m.logger.Infof("daemon started with %d directories", len(m.manifest.Directories))
 	}
+	if m.supervisor != nil {
+		m.supervisor.Start()
+	}
 
 	m.running = true
 	return nil
@@ -114,6 +126,9 @@ func (m *Manager) Stop() {
 	m.mux.Unlock()
 
 	m.controller.Stop()
+	if m.supervisor != nil {
+		m.supervisor.Stop()
+	}
 	if m.logger != nil {
 		m.logger.Info("daemon stopped")
 	}
@@ -138,11 +153,17 @@ func (m *Manager) Status() ManagerStatus {
 		snapshot = m.aggregator.Snapshot()
 	}
 
+	heartbeat := Heartbeat{}
+	if m.supervisor != nil {
+		heartbeat = m.supervisor.Snapshot()
+	}
+
 	return ManagerStatus{
 		Running:      m.running,
 		Directories:  dirs,
 		ManifestPath: m.store.Path(),
 		Summary:      reporting.BuildSummary(snapshot, 5*time.Minute),
+		Heartbeat:    heartbeat,
 	}
 }
 
@@ -164,4 +185,5 @@ type ManagerStatus struct {
 	Directories  []string
 	ManifestPath string
 	Summary      reporting.Summary
+	Heartbeat    Heartbeat
 }

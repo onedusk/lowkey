@@ -49,10 +49,17 @@ write_file() {
       cat <<'EOF' >"${full_path}"
 package main
 
-// main boots the Cobra CLI so you can run `go run ./cmd/lowkey`. Once commands
-// are wired, replace the TODO below with a call to rootCmd.Execute().
+import (
+    "fmt"
+    "os"
+)
+
+// main boots the Cobra CLI so you can run `go run ./cmd/lowkey`.
 func main() {
-    // TODO: invoke rootCmd.Execute() after defining commands in this package.
+    if err := rootCmd.Execute(); err != nil {
+        fmt.Fprintf(os.Stderr, "lowkey: %v\n", err)
+        os.Exit(1)
+    }
 }
 EOF
       ;;
@@ -60,9 +67,12 @@ EOF
       cat <<'EOF' >"${full_path}"
 package main
 
-// root.go hosts the root Cobra command shared by every sub-command. Run
-// `go build ./cmd/lowkey` while you iterate to ensure flags and wiring compile.
-// Define persistent flags and configuration bootstrapping here.
+import "github.com/spf13/cobra"
+
+// root.go hosts the root Cobra command shared by every sub-command. Extend this
+// file with persistent flags and configuration bootstrapping as the project grows.
+
+var rootCmd = &cobra.Command{Use: "lowkey", Short: "Filesystem monitor toolkit"}
 EOF
       ;;
     cmd/lowkey/watch.go)
@@ -336,12 +346,43 @@ EOF
     scripts/services/lowkey.plist)
       cat <<'EOF' >"${full_path}"
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- launchd plist placeholder for running lowkey as a user agent. Populate
-     ProgramArguments and KeepAlive once the daemon is ready. -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- TODO: define ProgramArguments, RunAtLoad, and WorkingDirectory. -->
+    <key>Label</key>
+    <string>dev.lowkey.daemon</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/lowkey</string>
+        <string>start</string>
+        <string>--metrics</string>
+        <string>127.0.0.1:9600</string>
+        <string>--trace</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>~/Library/Application Support/lowkey</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>LOWKEY_DAEMON</key>
+        <string>1</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>~/Library/Logs/lowkey-daemon.out</string>
+    <key>StandardErrorPath</key>
+    <string>~/Library/Logs/lowkey-daemon.err</string>
 </dict>
 </plist>
 EOF

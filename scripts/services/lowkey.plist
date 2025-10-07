@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- launchd plist placeholder for running lowkey as a user agent. Populate
-     ProgramArguments and KeepAlive once the daemon is ready. -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- TODO: define ProgramArguments, RunAtLoad, and WorkingDirectory. -->
+    <key>Label</key>
+    <string>dev.lowkey.daemon</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/lowkey</string>
+        <string>start</string>
+        <string>--metrics</string>
+        <string>127.0.0.1:9600</string>
+        <string>--trace</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>~/Library/Application Support/lowkey</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>LOWKEY_DAEMON</key>
+        <string>1</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>~/Library/Logs/lowkey-daemon.out</string>
+    <key>StandardErrorPath</key>
+    <string>~/Library/Logs/lowkey-daemon.err</string>
 </dict>
 </plist>

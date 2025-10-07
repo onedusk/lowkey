@@ -1,0 +1,3 @@
+./manager.go
+./supervisor.go
+./watch_manifest.go

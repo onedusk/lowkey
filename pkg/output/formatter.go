@@ -61,6 +61,20 @@ func (t *tableRenderer) Status(status daemon.ManagerStatus) error {
 	if status.Summary.LastEvent != nil {
 		fmt.Fprintf(t.writer, "last change: %s (%s) at %s\n", status.Summary.LastEvent.Path, status.Summary.LastEvent.Type, status.Summary.LastEvent.Timestamp.Format("2006-01-02 15:04:05"))
 	}
+	if !status.Heartbeat.LastCheck.IsZero() {
+		lastChange := "-"
+		if !status.Heartbeat.LastChange.IsZero() {
+			lastChange = status.Heartbeat.LastChange.Format("2006-01-02 15:04:05")
+		}
+		fmt.Fprintf(t.writer, "heartbeat: running=%t restarts=%d last_change=%s last_error=%s\n",
+			status.Heartbeat.Running,
+			status.Heartbeat.Restarts,
+			lastChange,
+			status.Heartbeat.LastError)
+		if !status.Heartbeat.BackoffUntil.IsZero() {
+			fmt.Fprintf(t.writer, "heartbeat backoff until: %s\n", status.Heartbeat.BackoffUntil.Format("2006-01-02 15:04:05"))
+		}
+	}
 	return nil
 }
 
