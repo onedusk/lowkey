@@ -1,3 +1,11 @@
+// Package filters provides probabilistic data structures and heuristics for
+// efficiently ignoring file paths that match user-defined glob patterns. It is
+// designed to reduce the overhead of path matching by quickly filtering out
+// paths that are unlikely to match any ignore patterns.
+//
+// The core component is a Bloom filter, which is populated with tokens
+// extracted from the ignore patterns. Paths are then checked against this
+// filter before performing more expensive glob matching.
 package filters
 
 import (
@@ -5,11 +13,9 @@ import (
 	"strings"
 )
 
-// ignore_tokens.go extracts tokens from glob patterns and paths. Keep it in sync
-// with the Bloom filter heuristics; add table-driven tests alongside.
-
-// ExtractPatternTokens normalises a glob pattern into a set of tokens suitable
-// for Bloom filter seeding.
+// ExtractPatternTokens normalizes a glob pattern and extracts a set of
+// representative tokens from it. These tokens are used to populate the Bloom
+// filter, allowing for fast, probabilistic checks against file paths.
 func ExtractPatternTokens(pattern string) []string {
 	pattern = strings.TrimSpace(pattern)
 	if pattern == "" {
@@ -30,8 +36,10 @@ func ExtractPatternTokens(pattern string) []string {
 	return tokens
 }
 
-// ExtractPathTokens derives representative tokens from a concrete filesystem
-// path. The tokens are lower-cased to make matching case-insensitive.
+// ExtractPathTokens derives a set of representative tokens from a file system
+// path. These tokens can then be checked against the Bloom filter to quickly
+// determine if the path is unlikely to match any ignore patterns. The tokens
+// are lowercased to ensure case-insensitive matching.
 func ExtractPathTokens(path string) []string {
 	path = strings.TrimSpace(path)
 	if path == "" {

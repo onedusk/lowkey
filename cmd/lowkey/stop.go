@@ -13,6 +13,9 @@ import (
 	"lowkey/internal/state"
 )
 
+// newStopCmd creates the `stop` command, which is used to terminate the running
+// daemon process. It handles finding the daemon's PID, sending it a termination
+// signal, and cleaning up the PID and manifest files.
 func newStopCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "stop",
@@ -58,6 +61,8 @@ func newStopCmd() *cobra.Command {
 	}
 }
 
+// signalDaemon sends a termination signal to the daemon process. It uses a
+// graceful SIGTERM on Unix-like systems and a process kill on Windows.
 func signalDaemon(pid int) error {
 	process, err := os.FindProcess(pid)
 	if err != nil {
@@ -69,6 +74,8 @@ func signalDaemon(pid int) error {
 	return process.Signal(syscall.SIGTERM)
 }
 
+// forceKill forcefully terminates the daemon process. This is used as a
+// fallback if a graceful shutdown fails.
 func forceKill(pid int) error {
 	process, err := os.FindProcess(pid)
 	if err != nil {

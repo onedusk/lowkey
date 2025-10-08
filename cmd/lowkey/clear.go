@@ -14,6 +14,9 @@ import (
 	"lowkey/pkg/config"
 )
 
+// newClearCmd creates the `clear` command, which is responsible for pruning
+// logs and cached state. This helps in resetting the daemon's state or freeing
+// up disk space.
 func newClearCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "clear",
@@ -100,6 +103,8 @@ func newClearCmd() *cobra.Command {
 	}
 }
 
+// collectLogTargets identifies all log files that should be considered for
+// clearing. It checks for rotated log files based on the base log path.
 func collectLogTargets(stateDir string, manifest *config.Manifest) []string {
 	base := filepath.Join(stateDir, "lowkey.log")
 	if manifest != nil && manifest.LogPath != "" {
@@ -115,6 +120,8 @@ func collectLogTargets(stateDir string, manifest *config.Manifest) []string {
 	return matches
 }
 
+// collectStateTargets gathers the paths of all state files, such as the cache
+// and PID file, that should be removed during a state clear operation.
 func collectStateTargets(stateDir string) []string {
 	return []string{
 		filepath.Join(stateDir, "cache.json"),
@@ -122,6 +129,8 @@ func collectStateTargets(stateDir string) []string {
 	}
 }
 
+// removePaths deletes a list of files. It continues even if some deletions
+// fail and returns a consolidated error.
 func removePaths(paths []string) error {
 	if len(paths) == 0 {
 		return nil
@@ -144,6 +153,9 @@ func removePaths(paths []string) error {
 	return nil
 }
 
+// parseClearArgs processes the command-line arguments for the `clear` command,
+// identifying which components to clear (logs, state) and whether to bypass
+// the confirmation prompt.
 func parseClearArgs(args []string) (logs, state, yes bool, remaining []string) {
 	remaining = make([]string, 0, len(args))
 	for _, arg := range args {

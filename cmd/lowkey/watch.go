@@ -19,6 +19,9 @@ import (
 	"lowkey/pkg/config"
 )
 
+// newWatchCmd creates the `watch` command, which runs the file system watcher
+// in the foreground. This provides a direct way to monitor directories without
+// starting a background daemon.
 func newWatchCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "watch [dir ...]",
@@ -97,6 +100,9 @@ func newWatchCmd() *cobra.Command {
 	}
 }
 
+// discoverIgnoreFiles searches for `.lowkey` ignore files in the specified
+// directories and aggregates their patterns. This allows for per-directory
+// ignore rules in addition to a global ignore file.
 func discoverIgnoreFiles(dirs []string) []string {
 	patterns := make([]string, 0)
 	seen := make(map[string]struct{})

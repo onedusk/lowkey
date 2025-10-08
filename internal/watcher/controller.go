@@ -1,3 +1,10 @@
+// Package watcher provides the core file system monitoring capabilities for
+// lowkey. It is responsible for detecting file changes, handling ignore
+// patterns, and reporting events to the rest of the application.
+//
+// The central component is the Controller, which manages the lifecycle of the
+// monitoring process. It uses a HybridMonitor to combine real-time file system
+// events with periodic safety scans, ensuring reliable change detection.
 package watcher
 
 import (
@@ -13,8 +20,9 @@ import (
 	"lowkey/internal/state"
 )
 
-// Controller drives the hybrid monitoring loop, coordinating events,
-// incremental scans, and batching.
+// Controller drives the hybrid monitoring loop, coordinating the event backend,
+// incremental scans, and event batching. It provides a high-level interface
+// for starting and stopping the file system watcher.
 type Controller struct {
 	config  ControllerConfig
 	wg      sync.WaitGroup
@@ -24,7 +32,8 @@ type Controller struct {
 	monitor *HybridMonitor
 }
 
-// ControllerConfig contains dependencies required to run a watcher instance.
+// ControllerConfig contains the dependencies and configuration required to run
+// a watcher controller.
 type ControllerConfig struct {
 	Directories  []string
 	IgnoreGlobs  []string
@@ -34,7 +43,8 @@ type ControllerConfig struct {
 	OnChange     func(reporting.Change)
 }
 
-// NewController validates configuration and returns a ready-to-start controller.
+// NewController validates the provided configuration and returns a new,
+// ready-to-start controller.
 func NewController(config ControllerConfig) (*Controller, error) {
 	if len(config.Directories) == 0 {
 		return nil, errors.New("watcher: controller requires at least one directory")
@@ -43,8 +53,9 @@ func NewController(config ControllerConfig) (*Controller, error) {
 	return &Controller{config: config, ctx: ctx, cancel: cancel}, nil
 }
 
-// Start boots goroutines required to watch directories using the configured
-// hybrid monitor.
+// Start launches the goroutines required to watch directories using the
+// configured hybrid monitor. It initializes the event backend and the monitor,
+// and starts the monitoring process.
 func (c *Controller) Start() error {
 	if c.ctx.Err() != nil {
 		return fmt.Errorf("watcher: controller closed")
@@ -91,7 +102,8 @@ func (c *Controller) Start() error {
 	return nil
 }
 
-// Stop cancels active goroutines and waits for them to finish.
+// Stop gracefully cancels the active monitoring goroutines and waits for them
+// to shut down. This ensures a clean and orderly termination of the watcher.
 func (c *Controller) Stop() {
 	c.cancel()
 	if c.backend != nil {

@@ -9,6 +9,9 @@ import (
 	"lowkey/internal/state"
 )
 
+// newSummaryCmd creates the `summary` command, which displays recent change
+// statistics from the daemon. This provides a quick overview of file system
+// activity without needing to parse the full log.
 func newSummaryCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "summary",

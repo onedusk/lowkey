@@ -9,6 +9,9 @@ import (
 	"lowkey/internal/state"
 )
 
+// newStatusCmd creates the `status` command, which displays the current state
+// of the daemon, including whether it is running, which directories are being
+// watched, and the path to the manifest file.
 func newStatusCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "status",

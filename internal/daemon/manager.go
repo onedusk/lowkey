@@ -1,3 +1,11 @@
+// Package daemon implements the core logic for the lowkey background process.
+// It manages the lifecycle of the file system watcher, handles manifest
+// persistence and reconciliation, and coordinates with other components like
+// logging and telemetry.
+//
+// The central component is the Manager, which orchestrates the daemon's
+// operations. It is supervised by a Supervisor that ensures the daemon
+// remains running and automatically restarts it on failure.
 package daemon
 
 import (
@@ -16,7 +24,9 @@ import (
 	"lowkey/pkg/telemetry"
 )
 
-// Manager coordinates watcher lifecycle and manifest persistence.
+// Manager coordinates the watcher lifecycle, manifest persistence, and logging.
+// It acts as the central orchestrator for the daemon, handling the startup and
+// shutdown of the file system monitoring process. It is safe for concurrent use.
 type Manager struct {
 	store      *state.ManifestStore
 	manifest   *config.Manifest
@@ -30,7 +40,9 @@ type Manager struct {
 	supervisor *Supervisor
 }
 
-// NewManager creates a Manager for the provided manifest/store pair.
+// NewManager creates a new Manager for the provided manifest and store.
+// It initializes all necessary components, including the logger, aggregator,
+// and watcher controller, preparing the manager to start monitoring.
 func NewManager(store *state.ManifestStore, manifest *config.Manifest) (*Manager, error) {
 	if store == nil {
 		return nil, errors.New("daemon: manifest store is required")
@@ -90,7 +102,10 @@ func resolveIgnorePatterns(manifest *config.Manifest) ([]string, error) {
 	return patterns, nil
 }
 
-// Start persists the manifest and launches the watcher controller.
+// Start persists the manifest and launches the watcher controller and supervisor.
+// This method is idempotent and will not restart the manager if it is already
+// running. It is the primary entry point for activating the daemon's monitoring
+// functionality.
 func (m *Manager) Start() error {
 	m.mux.Lock()
 	defer m.mux.Unlock()
@@ -115,7 +130,8 @@ func (m *Manager) Start() error {
 	return nil
 }
 
-// Stop halts the watcher and marks the manager as idle.
+// Stop halts the watcher and supervisor, marking the manager as idle.
+// This method provides a graceful shutdown of the daemon's monitoring activities.
 func (m *Manager) Stop() {
 	m.mux.Lock()
 	if !m.running {
@@ -134,13 +150,17 @@ func (m *Manager) Stop() {
 	}
 }
 
-// SetTelemetry attaches metrics and tracer instances to the manager.
+// SetTelemetry attaches metrics and tracer instances to the manager, enabling
+// observability features. This allows the manager to report performance
+// metrics and trace information.
 func (m *Manager) SetTelemetry(metrics *telemetry.Collector, tracer *telemetry.Tracer) {
 	m.metrics = metrics
 	m.tracer = tracer
 }
 
-// Status reports the current run state and tracked directories.
+// Status reports the current run state, tracked directories, and other
+// diagnostic information. It provides a snapshot of the manager's current
+// operational status, which is useful for CLI commands and health checks.
 func (m *Manager) Status() ManagerStatus {
 	m.mux.Lock()
 	defer m.mux.Unlock()
@@ -179,7 +199,9 @@ func (m *Manager) handleChange(change reporting.Change) {
 	}
 }
 
-// ManagerStatus summarises daemon state for CLI commands.
+// ManagerStatus summarises the daemon's state for CLI commands. It provides a
+// snapshot of the daemon's operational status, including its running state,
+// watched directories, and performance metrics.
 type ManagerStatus struct {
 	Running      bool
 	Directories  []string

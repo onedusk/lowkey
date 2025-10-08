@@ -17,6 +17,9 @@ import (
 	"lowkey/pkg/config"
 )
 
+// newTailCmd creates the `tail` command, which allows for real-time following
+// of the daemon's log file. This is useful for monitoring the daemon's
+// activity as it happens.
 func newTailCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "tail",
@@ -46,6 +49,9 @@ func newTailCmd() *cobra.Command {
 	}
 }
 
+// tailFile follows a file, printing new content as it is written. It handles
+// file creation, truncation, and rotation, making it robust for tailing log
+// files. The function continues until the provided context is canceled.
 func tailFile(ctx context.Context, path string) error {
 	var file *os.File
 	var err error
@@ -115,6 +121,9 @@ func tailFile(ctx context.Context, path string) error {
 	}
 }
 
+// loadStoredManifest loads the daemon's manifest from the default state
+// directory. This is used by the `tail` command to find the correct log file
+// path.
 func loadStoredManifest(stateDir string) (*config.Manifest, error) {
 	store, err := state.NewManifestStore(stateDir)
 	if err != nil {

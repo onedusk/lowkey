@@ -14,6 +14,9 @@ import (
 	"lowkey/pkg/config"
 )
 
+// newStartCmd creates the `start` command, which is used to launch the
+// background daemon. It handles parsing command-line arguments, resolving the
+// daemon manifest, and starting the daemon process.
 func newStartCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "start [dir ...]",
@@ -72,6 +75,9 @@ func newStartCmd() *cobra.Command {
 	return cmd
 }
 
+// parseStartFlags processes the command-line arguments for the `start` command,
+// extracting flags related to telemetry, such as the metrics address and trace
+// enablement.
 func parseStartFlags(args []string) (metricsAddr string, traceEnabled bool, remaining []string) {
 	remaining = make([]string, 0, len(args))
 	for i := 0; i < len(args); i++ {
@@ -96,6 +102,9 @@ func parseStartFlags(args []string) (metricsAddr string, traceEnabled bool, rema
 	return metricsAddr, traceEnabled, remaining
 }
 
+// resolveManifest determines the daemon manifest to use, prioritizing an
+// explicitly provided manifest file, then a manifest from the global config,
+// and finally building one from command-line arguments.
 func resolveManifest(manifestPath string, args []string) (*config.Manifest, error) {
 	if manifestPath != "" {
 		return config.LoadManifest(manifestPath)

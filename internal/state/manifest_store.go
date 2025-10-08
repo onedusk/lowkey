@@ -1,3 +1,10 @@
+// Package state provides data structures and utilities for managing persistent
+// and in-memory state for the lowkey daemon. This includes caching file
+// signatures for incremental scanning and persisting daemon manifests.
+//
+// The components in this package are designed to be thread-safe and provide
+// atomic operations for file-based persistence, ensuring data consistency even
+// in the case of unexpected termination.
 package state
 
 import (
@@ -11,18 +18,16 @@ import (
 	"lowkey/pkg/config"
 )
 
-// manifest_store.go persists daemon manifests in `$XDG_STATE_HOME/lowkey`. It is
-// invoked by start/stop commands and the daemon manager.
-
-const manifestFilename = "daemon.json"
-
-// ManifestStore wraps disk persistence for the daemon manifest.
+// ManifestStore provides a thread-safe way to read and write the daemon's
+// manifest file. It handles the persistence of the daemon's configuration,
+// ensuring that it can be reliably loaded across restarts.
 type ManifestStore struct {
 	dir  string
 	path string
 }
 
-// NewManifestStore returns a store whose manifest file lives at `dir/daemon.json`.
+// NewManifestStore creates a new ManifestStore for the given directory. The
+// manifest file will be stored as `daemon.json` within this directory.
 func NewManifestStore(dir string) (*ManifestStore, error) {
 	if dir == "" {
 		return nil, errors.New("state: empty state directory")
@@ -32,7 +37,8 @@ func NewManifestStore(dir string) (*ManifestStore, error) {
 	return &ManifestStore{dir: cleanDir, path: path}, nil
 }
 
-// DefaultStateDir resolves the platform-specific directory for daemon metadata.
+// DefaultStateDir determines the appropriate platform-specific directory for
+// storing the daemon's state, following the XDG Base Directory Specification.
 func DefaultStateDir() (string, error) {
 	if custom := os.Getenv("XDG_STATE_HOME"); custom != "" {
 		return filepath.Join(custom, "lowkey"), nil
@@ -56,12 +62,13 @@ func DefaultStateDir() (string, error) {
 	}
 }
 
-// Path returns the manifest file location.
+// Path returns the full path to the manifest file.
 func (s *ManifestStore) Path() string {
 	return s.path
 }
 
-// Save marshals the manifest to disk atomically, creating parent directories as needed.
+// Save atomically writes the given manifest to disk. It uses a temporary file
+// and an atomic rename to prevent data corruption.
 func (s *ManifestStore) Save(man *config.Manifest) error {
 	if man == nil {
 		return errors.New("state: manifest is nil")
@@ -95,7 +102,9 @@ func (s *ManifestStore) Save(man *config.Manifest) error {
 	return nil
 }
 
-// Load reads the persisted manifest if one exists.
+// Load reads and decodes the manifest from disk. If the file does not exist,
+// it returns a nil manifest without an error, indicating that no manifest has
+// been saved yet.
 func (s *ManifestStore) Load() (*config.Manifest, error) {
 	data, err := os.ReadFile(s.path)
 	if err != nil {
@@ -112,7 +121,7 @@ func (s *ManifestStore) Load() (*config.Manifest, error) {
 	return &manifest, nil
 }
 
-// Clear removes the stored manifest.
+// Clear removes the manifest file from disk.
 func (s *ManifestStore) Clear() error {
 	if err := os.Remove(s.path); err != nil && !errors.Is(err, os.ErrNotExist) {
 		return fmt.Errorf("state: remove manifest %q: %w", s.path, err)

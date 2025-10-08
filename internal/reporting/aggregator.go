@@ -1,3 +1,11 @@
+// Package reporting provides data structures and utilities for aggregating and
+// summarizing file system change events. It is used to collect metrics about
+// watcher activity, which can then be exposed through the CLI or other
+// reporting mechanisms.
+//
+// The core components are the Aggregator, which collects events, and the
+// Snapshot and Summary types, which provide different levels of detail about
+// the collected data.
 package reporting
 
 import (
@@ -6,32 +14,40 @@ import (
 	"time"
 )
 
-// Change describes a single filesystem change event.
+// Change describes a single file system change event, including the path, type
+// of change, and when it occurred.
 type Change struct {
 	Path      string
 	Type      string
 	Timestamp time.Time
 }
 
-// Snapshot summarises recent activity.
+// Snapshot provides a detailed summary of recent watcher activity. It includes
+// the total number of changes, details of the last change, and a breakdown of
+// changes per directory.
 type Snapshot struct {
 	Count        int
 	LastChange   *Change
 	PerDirectory map[string]int
 }
 
-// Aggregator collects change events for later reporting.
+// Aggregator collects and summarizes file system change events. It maintains a
+// running snapshot of activity, which can be retrieved for reporting. It is
+// safe for concurrent use.
 type Aggregator struct {
 	mu       sync.Mutex
 	snapshot Snapshot
 }
 
-// NewAggregator constructs a new aggregator instance.
+// NewAggregator constructs a new, empty Aggregator instance, ready to start
+// collecting change events.
 func NewAggregator() *Aggregator {
 	return &Aggregator{snapshot: Snapshot{PerDirectory: make(map[string]int)}}
 }
 
-// Record adds a change to the rolling snapshot.
+// Record adds a new change event to the aggregator's snapshot. It updates the
+// total count, tracks the last change, and increments the count for the
+// relevant directory.
 func (a *Aggregator) Record(change Change) {
 	a.mu.Lock()
 	defer a.mu.Unlock()
@@ -43,7 +59,9 @@ func (a *Aggregator) Record(change Change) {
 	a.snapshot.PerDirectory[dir]++
 }
 
-// Snapshot returns a copy of the aggregate state for safe consumption.
+// Snapshot returns a thread-safe copy of the current aggregate state. This
+// allows other parts of the application to access the summary data without
+// needing to worry about race conditions.
 func (a *Aggregator) Snapshot() Snapshot {
 	a.mu.Lock()
 	defer a.mu.Unlock()

@@ -1,3 +1,11 @@
+// Package daemon implements the core logic for the lowkey background process.
+// It manages the lifecycle of the file system watcher, handles manifest
+// persistence and reconciliation, and coordinates with other components like
+// logging and telemetry.
+//
+// The central component is the Manager, which orchestrates the daemon's
+// operations. It is supervised by a Supervisor that ensures the daemon
+// remains running and automatically restarts it on failure.
 package daemon
 
 import (
@@ -6,10 +14,9 @@ import (
 	"time"
 )
 
-// supervisor.go supervises goroutines for watchers and logging. Implement
-// restart logic and health checks here, exercising them with integration tests.
-
-// Heartbeat captures daemon liveness metadata exposed to CLI consumers.
+// Heartbeat captures daemon liveness metadata for CLI consumers. It includes
+// information about the daemon's running state, health checks, and any errors
+// or restarts, providing a quick overview of the daemon's stability.
 type Heartbeat struct {
 	Running      bool      `json:"running"`
 	LastCheck    time.Time `json:"last_check"`
@@ -19,7 +26,9 @@ type Heartbeat struct {
 	BackoffUntil time.Time `json:"backoff_until,omitempty"`
 }
 
-// Supervisor monitors the daemon manager and restarts it when required.
+// Supervisor monitors the daemon manager and restarts it if it becomes
+// unresponsive or stops unexpectedly. It provides a layer of resilience,
+// ensuring that the file monitoring service remains available.
 type Supervisor struct {
 	manager  *Manager
 	interval time.Duration
@@ -34,7 +43,7 @@ type Supervisor struct {
 }
 
 // NewSupervisor constructs a supervisor that probes the provided manager at the
-// supplied interval. Pass nil manager to create a no-op supervisor.
+// specified interval. If the manager is nil, a no-op supervisor is created.
 func NewSupervisor(manager *Manager, interval time.Duration) *Supervisor {
 	if interval <= 0 {
 		interval = 5 * time.Second
@@ -46,7 +55,8 @@ func NewSupervisor(manager *Manager, interval time.Duration) *Supervisor {
 	}
 }
 
-// Start launches the supervision loop. The call is idempotent.
+// Start launches the supervision loop in a new goroutine. The call is
+// idempotent; if the supervisor is already running, this method has no effect.
 func (s *Supervisor) Start() {
 	if s == nil || s.manager == nil {
 		return
@@ -69,7 +79,8 @@ func (s *Supervisor) Start() {
 	go s.loop(ctx)
 }
 
-// Stop halts the supervision loop and waits for shutdown.
+// Stop halts the supervision loop and waits for it to shut down gracefully.
+// This ensures that the supervisor's goroutine is properly terminated.
 func (s *Supervisor) Stop() {
 	if s == nil {
 		return
@@ -160,7 +171,8 @@ func (s *Supervisor) probe() error {
 	return nil
 }
 
-// Snapshot returns a copy of the latest heartbeat.
+// Snapshot returns a copy of the latest heartbeat, providing a thread-safe way
+// to access the supervisor's status information.
 func (s *Supervisor) Snapshot() Heartbeat {
 	s.mux.RLock()
 	defer s.mux.RUnlock()

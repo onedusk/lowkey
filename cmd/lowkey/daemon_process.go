@@ -18,6 +18,10 @@ import (
 	"lowkey/pkg/telemetry"
 )
 
+// runDaemonProcess is the entry point for the background daemon process.
+// It initializes the daemon manager, starts the file system watcher, and listens
+// for termination signals to ensure a graceful shutdown. This function contains
+// the core logic of the long-running monitoring service.
 func runDaemonProcess() error {
 	manifestPath := os.Getenv(daemonManifestEnv)
 	if manifestPath == "" {
@@ -90,6 +94,9 @@ func runDaemonProcess() error {
 	return nil
 }
 
+// writePIDFile creates a file containing the current process ID. This PID file
+// is used by other commands to check the status of the daemon and to send it
+// signals. It returns a cleanup function to remove the PID file on exit.
 func writePIDFile(stateDir string) (func(), error) {
 	if err := os.MkdirAll(stateDir, 0o755); err != nil {
 		return nil, err
@@ -104,10 +111,14 @@ func writePIDFile(stateDir string) (func(), error) {
 	}, nil
 }
 
+// pidFilePath returns the path to the daemon's PID file within the state
+// directory.
 func pidFilePath(stateDir string) string {
 	return filepath.Join(stateDir, daemonPIDFilename)
 }
 
+// readPID reads the process ID from the daemon's PID file. It returns the PID
+// and a boolean indicating whether the file was successfully read.
 func readPID(stateDir string) (int, bool) {
 	data, err := os.ReadFile(pidFilePath(stateDir))
 	if err != nil {
@@ -120,6 +131,9 @@ func readPID(stateDir string) (int, bool) {
 	return pid, true
 }
 
+// processAlive checks if a process with the given PID is currently running.
+// It uses a signal-based approach on Unix-like systems and a process handle
+// check on Windows.
 func processAlive(pid int) bool {
 	if pid <= 0 {
 		return false

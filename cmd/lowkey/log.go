@@ -11,6 +11,9 @@ import (
 	"lowkey/internal/state"
 )
 
+// newLogCmd creates the `log` command, which is used to print the contents of
+// the daemon's log file. This provides a simple way to inspect the daemon's
+// past activity and diagnose issues.
 func newLogCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "log",

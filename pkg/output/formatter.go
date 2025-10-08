@@ -1,3 +1,12 @@
+// Package output provides formatted output capabilities for the lowkey command-line
+// interface. It defines a flexible rendering system that supports multiple
+// output formats, such as plain text and JSON, allowing command results to be
+// displayed in either a human-readable or machine-parsable way.
+//
+// The package is designed around a Renderer interface, which abstracts the
+// specific formatting logic. This allows for easy extension with new output
+// formats in the future. Concrete implementations for table-based (plain text)
+// and JSON rendering are provided.
 package output
 
 import (
@@ -10,12 +19,16 @@ import (
 	"lowkey/internal/daemon"
 )
 
-// Renderer emits formatted output for CLI commands.
+// Renderer defines the interface for emitting formatted output for CLI commands.
+// It abstracts the underlying output format (e.g., plain text, JSON) and
+// provides methods for rendering specific data structures, such as daemon status.
 type Renderer interface {
 	Status(status daemon.ManagerStatus) error
 }
 
-// NewRenderer returns an implementation based on the format keyword ("plain" or "json").
+// NewRenderer returns a Renderer implementation based on the specified format
+// keyword. It supports "plain" (or "text") for human-readable output and "json"
+// for machine-readable output. An error is returned if the format is unsupported.
 func NewRenderer(format string) (Renderer, error) {
 	switch format {
 	case "", "plain", "text":
@@ -27,7 +40,9 @@ func NewRenderer(format string) (Renderer, error) {
 	}
 }
 
-// WithWriter allows tests to inject a custom writer.
+// WithWriter allows tests to inject a custom io.Writer into a Renderer.
+// This is useful for capturing output during testing without writing to stdout.
+// It returns a new Renderer configured with the provided writer.
 func WithWriter(r Renderer, w io.Writer) Renderer {
 	switch r.(type) {
 	case *tableRenderer:
@@ -41,11 +56,14 @@ func WithWriter(r Renderer, w io.Writer) Renderer {
 	}
 }
 
-// tableRenderer renders human readable text.
+// tableRenderer renders daemon status and other command outputs as human-readable
+// text. It writes to the configured io.Writer, which is typically os.Stdout.
 type tableRenderer struct {
 	writer io.Writer
 }
 
+// Status formats and prints the daemon's status to the configured writer in a
+// table-like, human-readable format.
 func (t *tableRenderer) Status(status daemon.ManagerStatus) error {
 	if t.writer == nil {
 		return errors.New("output: table renderer missing writer")
@@ -78,11 +96,14 @@ func (t *tableRenderer) Status(status daemon.ManagerStatus) error {
 	return nil
 }
 
-// jsonRenderer emits JSON payloads.
+// jsonRenderer emits command outputs as JSON payloads. This is suitable for
+// scripting or integration with other tools that can parse JSON.
 type jsonRenderer struct {
 	encoder *json.Encoder
 }
 
+// Status encodes the daemon's status as a JSON object and writes it to the
+// configured writer.
 func (j *jsonRenderer) Status(status daemon.ManagerStatus) error {
 	if j.encoder == nil {
 		return errors.New("output: json encoder missing")

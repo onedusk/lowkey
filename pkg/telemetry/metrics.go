@@ -1,3 +1,10 @@
+// Package telemetry provides observability features for the lowkey daemon,
+// including Prometheus-style metrics and lightweight tracing. It is designed to
+// help monitor the performance and behavior of the file system watcher, offering
+// insights into event throughput, latency, and errors.
+//
+// The components in this package are optional and can be enabled through
+// configuration to minimize overhead when not in use.
 package telemetry
 
 import (
@@ -10,10 +17,10 @@ import (
 	"time"
 )
 
-// metrics.go exports Prometheus-style collectors tracking filesystem events,
-// latency, and errors. Wire into daemon startup when metrics are enabled.
-
-// Collector publishes counters and summaries for watcher activity.
+// Collector publishes counters and summaries for watcher activity. It exposes
+// Prometheus-style metrics over an HTTP endpoint, tracking the number of file
+// system events, errors, and event processing latency. The collector is safe
+// for concurrent use.
 type Collector struct {
 	events uint64
 	errors uint64
@@ -27,13 +34,15 @@ type Collector struct {
 	startMu  sync.Mutex
 }
 
-// NewCollector constructs an idle metrics collector.
+// NewCollector constructs an idle metrics collector. The collector does not
+// start serving metrics until the Start method is called.
 func NewCollector() *Collector {
 	return &Collector{}
 }
 
 // Start begins serving Prometheus metrics on the supplied TCP address (e.g.,
-// "127.0.0.1:9600"). The handler is mounted at `/metrics`.
+// "127.0.0.1:9600"). The metrics are exposed at the `/metrics` endpoint. This
+// method is safe to call multiple times, but it will only start the server once.
 func (c *Collector) Start(addr string) error {
 	if addr == "" {
 		return fmt.Errorf("telemetry: empty metrics address")
@@ -63,7 +72,8 @@ func (c *Collector) Start(addr string) error {
 	return nil
 }
 
-// Stop gracefully shuts down the HTTP server.
+// Stop gracefully shuts down the HTTP server that serves the Prometheus
+// metrics. It waits for active connections to finish before returning.
 func (c *Collector) Stop(ctx context.Context) error {
 	c.startMu.Lock()
 	defer c.startMu.Unlock()
@@ -76,17 +86,20 @@ func (c *Collector) Stop(ctx context.Context) error {
 	return err
 }
 
-// IncEvent increments the events counter.
+// IncEvent increments the total number of processed file system events.
+// This method is safe for concurrent use.
 func (c *Collector) IncEvent() {
 	atomic.AddUint64(&c.events, 1)
 }
 
-// IncError increments the error counter.
+// IncError increments the total number of errors encountered during file
+// system monitoring. This method is safe for concurrent use.
 func (c *Collector) IncError() {
 	atomic.AddUint64(&c.errors, 1)
 }
 
-// ObserveLatency records a single event processing duration.
+// ObserveLatency records a single event processing duration. This data is used
+// to calculate the average event latency. This method is safe for concurrent use.
 func (c *Collector) ObserveLatency(d time.Duration) {
 	c.latencyMu.Lock()
 	defer c.latencyMu.Unlock()

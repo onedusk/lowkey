@@ -1,3 +1,10 @@
+// Package watcher provides the core file system monitoring capabilities for
+// lowkey. It is responsible for detecting file changes, handling ignore
+// patterns, and reporting events to the rest of the application.
+//
+// The central component is the Controller, which manages the lifecycle of the
+// monitoring process. It uses a HybridMonitor to combine real-time file system
+// events with periodic safety scans, ensuring reliable change detection.
 package watcher
 
 import (
@@ -17,11 +24,9 @@ import (
 	"lowkey/internal/state"
 )
 
-// hybrid_monitor.go implements the algorithm described in docs/prds/algorithm_design.md,
-// blending fsnotify events with safety scans. Profile for large directories.
-
-// HybridMonitor coordinates real-time events with periodic polling to provide
-// resilient change detection.
+// HybridMonitor coordinates real-time file system events with periodic safety
+// scans to provide resilient and reliable change detection. It is designed to
+// catch events that might be missed by the real-time event backend.
 type HybridMonitor struct {
 	backend        events.Backend
 	cache          *state.Cache
@@ -34,7 +39,8 @@ type HybridMonitor struct {
 	changeHandler  func(reporting.Change)
 }
 
-// HybridMonitorConfig captures the dependencies required to build a monitor.
+// HybridMonitorConfig encapsulates the dependencies and configuration required
+// to create a HybridMonitor.
 type HybridMonitorConfig struct {
 	Backend        events.Backend
 	Cache          *state.Cache
@@ -46,7 +52,9 @@ type HybridMonitorConfig struct {
 	OnChange       func(reporting.Change)
 }
 
-// NewHybridMonitor validates the configuration and prepares a monitor instance.
+// NewHybridMonitor validates the provided configuration and constructs a new
+// HybridMonitor. It sets up the necessary components, including the event
+// backend, cache, and ignore pattern filters.
 func NewHybridMonitor(cfg HybridMonitorConfig) (*HybridMonitor, error) {
 	if len(cfg.Directories) == 0 {
 		return nil, fmt.Errorf("watcher: hybrid monitor requires directories to watch")
@@ -101,7 +109,9 @@ func NewHybridMonitor(cfg HybridMonitorConfig) (*HybridMonitor, error) {
 	}, nil
 }
 
-// Run begins monitoring and blocks until ctx is cancelled.
+// Run starts the hybrid monitoring process and blocks until the provided context
+// is canceled. It launches goroutines for consuming real-time events and
+// performing periodic safety scans.
 func (m *HybridMonitor) Run(ctx context.Context) error {
 	for _, dir := range m.directories {
 		if err := m.backend.Add(dir); err != nil {

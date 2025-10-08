@@ -1,3 +1,10 @@
+// Package state provides data structures and utilities for managing persistent
+// and in-memory state for the lowkey daemon. This includes caching file
+// signatures for incremental scanning and persisting daemon manifests.
+//
+// The components in this package are designed to be thread-safe and provide
+// atomic operations for file-based persistence, ensuring data consistency even
+// in the case of unexpected termination.
 package state
 
 import (
@@ -16,7 +23,9 @@ type persistedCache struct {
 	Files   map[string]FileSignature `json:"files"`
 }
 
-// Save writes the cache contents to path atomically.
+// Save atomically writes the contents of a Cache to a file at the specified
+// path. It uses a temporary file and an atomic rename to ensure that the cache
+// is never left in a partially written state.
 func Save(cache *Cache, path string) error {
 	if cache == nil {
 		return errors.New("state: cache is nil")
@@ -59,7 +68,9 @@ func Save(cache *Cache, path string) error {
 	return nil
 }
 
-// Load reads a cache from path, returning an empty cache when the file is absent.
+// Load reads a cache from the specified path. If the file does not exist, it
+// returns a new, empty cache. This allows the application to gracefully handle
+// the initial run when no cache file is present.
 func Load(path string) (*Cache, error) {
 	if path == "" {
 		return nil, errors.New("state: load path is empty")

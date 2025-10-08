@@ -1,6 +1,11 @@
-// backend.go defines the interface to platform-specific filesystem event APIs.
-// Provide constructors that choose fsnotify variants based on GOOS.
-
+// Package events provides a platform-agnostic interface for file system
+// notifications. It abstracts the underlying mechanism for watching file and
+// directory changes, allowing the application to consume a consistent stream of
+// events regardless of the operating system.
+//
+// The package defines a Backend interface, which can be implemented by different
+// watchers (e.g., inotify, kqueue, polling). A polling-based backend is
+// provided as a universal fallback.
 package events
 
 import (
@@ -14,7 +19,9 @@ import (
 	"lowkey/internal/state"
 )
 
-// Event represents a single file system notification.
+// Event represents a single file system notification. It includes the path of
+// the affected file, the type of event (create, modify, delete), and the
+// timestamp of the event.
 type Event struct {
 	Path      string
 	Type      string
@@ -22,16 +29,17 @@ type Event struct {
 }
 
 const (
-	// EventCreate denotes a newly observed file.
+	// EventCreate denotes the creation of a new file or directory.
 	EventCreate = "CREATE"
-	// EventModify denotes a modification to an existing file.
+	// EventModify denotes a change to an existing file or directory.
 	EventModify = "MODIFY"
-	// EventDelete denotes removal of a previously observed file.
+	// EventDelete denotes the deletion of a file or directory.
 	EventDelete = "DELETE"
 )
 
 // Backend is the interface for a platform-specific file system watcher.
-// It abstracts the underlying event mechanism (e.g., fsnotify, polling, etc.).
+// It abstracts the underlying event mechanism, providing a unified way to
+// monitor file system changes.
 type Backend interface {
 	// Events returns a channel that receives file system events.
 	Events() <-chan Event
@@ -45,19 +53,20 @@ type Backend interface {
 	// Remove stops watching the given path.
 	Remove(path string) error
 
-	// Close cleans up the watcher and closes the channels.
+	// Close cleans up the watcher and closes its event and error channels.
 	Close() error
 }
 
-// NewBackend returns a polling backend that works across all supported
-// platforms. The fsnotify implementations can replace this when available.
+// NewBackend returns a new file system event backend. It currently defaults to
+// a polling-based implementation, which is universally compatible but less
+// efficient than native OS APIs.
 func NewBackend() (Backend, error) {
 	return NewPollingBackend(1500 * time.Millisecond)
 }
 
-// pollingBackend implements Backend using periodic directory scans. While less
-// efficient than native event APIs it delivers consistent behaviour across
-// platforms without additional dependencies.
+// pollingBackend implements the Backend interface using periodic directory
+// scans. While less efficient than native event APIs, it provides consistent
+// behavior across all platforms without additional dependencies.
 type pollingBackend struct {
 	interval time.Duration
 	events   chan Event
@@ -69,7 +78,9 @@ type pollingBackend struct {
 	wg      sync.WaitGroup
 }
 
-// NewPollingBackend constructs a polling backend with the supplied interval.
+// NewPollingBackend constructs a polling-based file system watcher with the
+// specified polling interval. It starts a background goroutine to perform the
+// periodic scans.
 func NewPollingBackend(interval time.Duration) (Backend, error) {
 	if interval <= 0 {
 		interval = 2 * time.Second
@@ -86,14 +97,20 @@ func NewPollingBackend(interval time.Duration) (Backend, error) {
 	return backend, nil
 }
 
+// Events returns a channel that delivers file system events. Consumers of the
+// backend can read from this channel to receive notifications.
 func (p *pollingBackend) Events() <-chan Event {
 	return p.events
 }
 
+// Errors returns a channel that delivers any errors encountered during
+// watching. It is important for consumers to handle these errors.
 func (p *pollingBackend) Errors() <-chan error {
 	return p.errors
 }
 
+// Add starts watching the specified directory path. The path must be a
+// directory. The backend will begin polling this directory for changes.
 func (p *pollingBackend) Add(path string) error {
 	clean, err := state.NormalizePath(path)
 	if err != nil {
@@ -119,6 +136,8 @@ func (p *pollingBackend) Add(path string) error {
 	return nil
 }
 
+// Remove stops watching the specified directory path. The backend will no
+// longer poll this directory for changes.
 func (p *pollingBackend) Remove(path string) error {
 	clean, err := state.NormalizePath(path)
 	if err != nil {
@@ -130,6 +149,8 @@ func (p *pollingBackend) Remove(path string) error {
 	return nil
 }
 
+// Close stops the polling loop and cleans up all resources associated with the
+// backend. It ensures that the background goroutine is terminated.
 func (p *pollingBackend) Close() error {
 	close(p.stop)
 	p.wg.Wait()

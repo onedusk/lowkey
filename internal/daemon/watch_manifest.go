@@ -1,3 +1,11 @@
+// Package daemon implements the core logic for the lowkey background process.
+// It manages the lifecycle of the file system watcher, handles manifest
+// persistence and reconciliation, and coordinates with other components like
+// logging and telemetry.
+//
+// The central component is the Manager, which orchestrates the daemon's
+// operations. It is supervised by a Supervisor that ensures the daemon
+// remains running and automatically restarts it on failure.
 package daemon
 
 import (
@@ -9,22 +17,23 @@ import (
 	"lowkey/pkg/config"
 )
 
-// watch_manifest.go parses and reconciles persisted manifests. Collaborates with
-// pkg/config and internal/state to reconcile desired vs actual watch targets.
-
-// ManifestDiff describes additions and removals discovered during reconciliation.
+// ManifestDiff describes the additions and removals discovered during a manifest
+// reconciliation. It provides a structured way to represent changes between
+// two versions of a daemon manifest.
 type ManifestDiff struct {
 	Added   []string `json:"added"`
 	Removed []string `json:"removed"`
 }
 
-// IsEmpty reports whether the diff contains any changes.
+// IsEmpty reports whether the diff contains any changes. This is a convenient
+// way to check if a reconciliation resulted in any modifications.
 func (d ManifestDiff) IsEmpty() bool {
 	return len(d.Added) == 0 && len(d.Removed) == 0
 }
 
-// DiffManifests computes the delta between the currently running manifest and a
-// freshly loaded manifest from disk.
+// DiffManifests computes the delta between the current and desired manifests.
+// It identifies which directories have been added or removed, returning a
+// ManifestDiff that represents these changes.
 func DiffManifests(current, desired *config.Manifest) ManifestDiff {
 	diff := ManifestDiff{}
 
@@ -58,8 +67,10 @@ func DiffManifests(current, desired *config.Manifest) ManifestDiff {
 	return diff
 }
 
-// ReconcileManifest reloads the persisted manifest and, when it differs from the
-// currently running configuration, reapplies it to the manager.
+// ReconcileManifest reloads the persisted manifest from the store and applies
+// any changes to the running daemon. If the on-disk manifest differs from the
+// in-memory one, this function will reconfigure the watcher to match the new
+// desired state. It returns a diff of the changes and any error encountered.
 func (m *Manager) ReconcileManifest() (ManifestDiff, error) {
 	if m == nil {
 		return ManifestDiff{}, fmt.Errorf("daemon: manager is nil")

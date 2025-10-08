@@ -16,14 +16,23 @@ import (
 )
 
 var (
-	rootCmd            = &cobra.Command{Use: "lowkey", Short: "Filesystem monitor toolkit"}
-	cfgFile            string
-	appConfig          = viper.New()
+	// rootCmd is the root command for the lowkey CLI. All other commands are
+	// added as subcommands to it.
+	rootCmd = &cobra.Command{Use: "lowkey", Short: "Filesystem monitor toolkit"}
+	// cfgFile holds the path to the configuration file.
+	cfgFile string
+	// appConfig is the Viper instance used for managing application configuration.
+	appConfig = viper.New()
+	// manifestFromConfig stores the daemon manifest loaded from the config file.
 	manifestFromConfig *config.Manifest
-	outputFormat       = "plain"
-	outputRenderer     output.Renderer
+	// outputFormat determines the format for command output (e.g., "plain", "json").
+	outputFormat = "plain"
+	// outputRenderer is the renderer instance used for printing command output.
+	outputRenderer output.Renderer
 )
 
+// init initializes the command-line interface, setting up commands and
+// configuration handling.
 func init() {
 	cobra.OnInitialize(initConfig)
 
@@ -39,6 +48,8 @@ func init() {
 	)
 }
 
+// execute is the main entry point for the CLI client. It parses global flags,
+// sets up the output renderer, and executes the appropriate command.
 func execute(args []string) error {
 	var remaining []string
 	var err error
@@ -60,6 +71,9 @@ func execute(args []string) error {
 	return rootCmd.Execute()
 }
 
+// initConfig loads the application configuration from a file and sets up Viper
+// to read from environment variables. It searches for a configuration file in
+// standard locations if one is not specified explicitly.
 func initConfig() {
 	// This function initializes the application configuration. It searches for a
 	// configuration file in standard locations (e.g., user's home directory)
@@ -138,6 +152,8 @@ func parseConfigFlag(args []string) (string, []string, error) {
 	return cfg, remaining, nil
 }
 
+// loadWatchTargetsFromConfig retrieves the list of directories to watch from the
+// manifest that was loaded from the configuration file.
 func loadWatchTargetsFromConfig() []string {
 	if manifestFromConfig != nil {
 		return append([]string(nil), manifestFromConfig.Directories...)
@@ -145,6 +161,8 @@ func loadWatchTargetsFromConfig() []string {
 	return nil
 }
 
+// ensureRenderer initializes the output renderer if it hasn't been already.
+// This ensures that commands can safely use the renderer to print output.
 func ensureRenderer() error {
 	if outputRenderer != nil {
 		return nil
@@ -157,6 +175,7 @@ func ensureRenderer() error {
 	return nil
 }
 
+// renderStatus uses the configured output renderer to display the daemon's status.
 func renderStatus(status daemon.ManagerStatus) error {
 	if err := ensureRenderer(); err != nil {
 		return err

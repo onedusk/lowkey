@@ -1,3 +1,11 @@
+// Package config provides utilities for loading and validating lowkey daemon
+// configurations. It defines the structure of manifest files, handles `.lowkey`
+// ignore patterns, and includes helpers for parsing configurations from both
+// disk and command-line arguments.
+//
+// This package ensures that all configuration data, such as directory paths,
+// is normalized into a consistent, absolute format for reliable use by other
+// parts of the application, such as the watcher and daemon services.
 package config
 
 import (
@@ -7,16 +15,13 @@ import (
 	"sort"
 )
 
-// schema.go defines validation rules for manifests and CLI configuration. Keep
-// this aligned with PRD expectations for watch directories and logging.
-
-// Validation errors returned by manifest helpers.
-var (
-	ErrNoDirectories = errors.New("config: manifest must specify at least one directory")
-)
+// ErrNoDirectories is returned when a manifest or configuration is invalid
+// because it fails to specify any directories to watch.
+var ErrNoDirectories = errors.New("config: manifest must specify at least one directory")
 
 // normalizeDirectories ensures every watch directory is absolute, deduplicated,
-// and sorted for deterministic persistence.
+// and sorted. This guarantees a deterministic and reliable list of directories
+// for the file system watcher.
 func normalizeDirectories(base string, dirs []string) ([]string, error) {
 	if len(dirs) == 0 {
 		return nil, ErrNoDirectories
@@ -52,7 +57,8 @@ func normalizeDirectories(base string, dirs []string) ([]string, error) {
 	return result, nil
 }
 
-// normalizeLogPath cleans and absolutizes the log path when supplied.
+// normalizeLogPath cleans and absolutizes the log path when supplied. If the
+// path is relative, it is resolved against the provided base directory.
 func normalizeLogPath(base, logPath string) (string, error) {
 	if logPath == "" {
 		return "", nil

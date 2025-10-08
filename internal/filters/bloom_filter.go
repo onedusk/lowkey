@@ -1,3 +1,11 @@
+// Package filters provides probabilistic data structures and heuristics for
+// efficiently ignoring file paths that match user-defined glob patterns. It is
+// designed to reduce the overhead of path matching by quickly filtering out
+// paths that are unlikely to match any ignore patterns.
+//
+// The core component is a Bloom filter, which is populated with tokens
+// extracted from the ignore patterns. Paths are then checked against this
+// filter before performing more expensive glob matching.
 package filters
 
 import (
@@ -9,16 +17,20 @@ import (
 // bloom_filter.go builds the ignore Bloom filter discussed in algorithm_design.
 // Implement Add/Contains helpers tuned for CLI patterns. Benchmark with `go test`.
 
-// BloomFilter implements a probabilistic set with configurable size/hash count.
+// BloomFilter implements a probabilistic set that can be used to test for the
+// presence of an element. It offers a space-efficient way to check if a path
+// token is likely to be part of an ignore pattern, with a configurable false
+// positive rate.
 type BloomFilter struct {
 	bits []uint64
 	m    uint64
 	k    uint64
 }
 
-// NewBloomFilter constructs a Bloom filter sized for the expected cardinality and
-// false positive rate. When invalid values are supplied sensible defaults are
-// used.
+// NewBloomFilter constructs a Bloom filter optimized for the expected number of
+// items and the desired false positive rate. It calculates the optimal size and
+// number of hash functions to meet these parameters. Sensible defaults are used
+// if the provided values are invalid.
 func NewBloomFilter(expectedItems int, falsePositiveRate float64) *BloomFilter {
 	if expectedItems <= 0 {
 		expectedItems = 1024
@@ -42,7 +54,8 @@ func NewBloomFilter(expectedItems int, falsePositiveRate float64) *BloomFilter {
 	}
 }
 
-// Add inserts a token into the filter.
+// Add inserts a token into the Bloom filter. It computes multiple hash values
+// for the token and sets the corresponding bits in the filter's bit array.
 func (bf *BloomFilter) Add(token string) {
 	if bf == nil || bf.m == 0 {
 		return
@@ -51,7 +64,9 @@ func (bf *BloomFilter) Add(token string) {
 	bf.lockBits(h1, h2)
 }
 
-// Contains reports whether the token might be present in the filter.
+// Contains reports whether the token may be present in the filter. A return
+// value of false means the token is definitely not present, while a value of
+// true means it is probably present.
 func (bf *BloomFilter) Contains(token string) bool {
 	if bf == nil || bf.m == 0 {
 		return false
