@@ -20,6 +20,8 @@ import (
 	"time"
 )
 
+const smallFileThreshold = 4096 // 4KB threshold for hashing small files
+
 // FileSignature captures the metadata of a file at a specific point in time.
 // It is used to detect changes to files without having to re-hash their
 // contents on every scan.

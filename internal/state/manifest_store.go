@@ -18,6 +18,8 @@ import (
 	"lowkey/pkg/config"
 )
 
+const manifestFilename = "daemon.json"
+
 // ManifestStore provides a thread-safe way to read and write the daemon's
 // manifest file. It handles the persistence of the daemon's configuration,
 // ensuring that it can be reliably loaded across restarts.

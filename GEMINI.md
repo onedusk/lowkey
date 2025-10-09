@@ -1,131 +1,71 @@
-# Project Overview
+# Lowkey
 
-This directory contains "Lokee", a file monitoring tool designed to track changes (creations, modifications, deletions) in specified directories. The tool is implemented in two versions: a Ruby script (`lokee.rb`) and a shell script (`lokee.sh`). Both versions provide functionalities to watch directories in the foreground, run monitoring as a background process, and view logs of file changes.
+## Project Overview
 
-The core of the project is a file monitoring algorithm that periodically scans directories and compares file states (mtime and size) to detect changes. The accompanying markdown documents, `doc.md` and `lokee_algorithm_analysis.md`, provide a deep dive into the algorithm's complexity and propose several optimization strategies, including:
+This project, named "Lowkey," is a cross-platform filesystem monitor written in Go. It is designed to run either in the foreground for ad-hoc monitoring or as a background daemon. The tool utilizes a hybrid event/polling watcher to supervise file system changes. Key features include manifest-based configuration, telemetry (Prometheus metrics and tracing), and a set of maintenance commands for managing the daemon's state.
 
-* A hybrid approach using filesystem events and polling.
-* Incremental state tracking to reduce redundant checks.
-* Smart filtering with Bloom filters.
-* Adaptive polling with exponential backoff.
-* Batch processing of changes.
-* Memory-efficient state storage.
-* A priority queue for processing changes.
+The project is structured as a Cobra-driven command-line interface. The core logic is divided into several packages, each with a specific responsibility:
 
-# Building and Running
+* **`cmd/lowkey`**: Handles command-line argument parsing and wiring to the internal packages.
+* **`internal/daemon`**: Manages the lifecycle of the background daemon, including a supervisor for automatic restarts.
+* **`internal/watcher`**: Implements the hybrid monitoring logic, combining a polling-based event system with periodic safety scans.
+* **`internal/state`**: Manages the persistence of manifests and cache snapshots.
+* **`internal/reporting`**: Aggregates events for status and summary commands.
+* **`pkg/config`**: Handles loading and validation of configuration manifests.
+* **`pkg/output`**: Provides formatting for command output.
+* **`pkg/telemetry`**: Exposes Prometheus metrics and tracing capabilities.
 
-The scripts are self-contained and do not require a separate build process.
+## Building and Running
 
-## Ruby Version (`lokee.rb`)
+### Building
 
-The Ruby version is a more feature-rich implementation using the `thor` gem for command-line interface management.
+To build the `lowkey` executable, run the following command:
 
-**Key Commands:**
+```bash
+make build
+```
 
-* **Watch directories in the foreground:**
+This will create the binary at `./lowkey/lowkey`.
 
-    ```bash
-    ./lokee.rb watch <dir1> <dir2> ...
-    ```
+### Running
 
-* **Start background monitoring:**
+**Foreground Monitoring:**
 
-    ```bash
-    ./lokee.rb start <dir1> <dir2> ...
-    ```
+To run a foreground watch and stream create/modify/delete events, use the `watch` command:
 
-* **Stop background monitoring:**
+```bash
+./lowkey/lowkey watch ./path/to/project
+```
 
-    ```bash
-    ./lokee.rb stop
-    ```
+**Daemon Mode:**
 
-* **View monitor status:**
+To start the daemon with metrics and tracing enabled, use the `start` command:
 
-    ```bash
-    ./lokee.rb status
-    ```
+```bash
+./lowkey/lowkey start --metrics 127.0.0.1:9600 --trace ./path/to/project
+```
 
-* **View logs:**
+**Interacting with the Daemon:**
 
-    ```bash
-    ./lokee.rb log [pattern]
-    ```
+* **Check status:** `./lowkey/lowkey status`
+* **Stop the daemon:** `./lowkey/lowkey stop`
+* **Tail logs:** `./lowkey/lowkey tail`
+* **Clear logs and state:** `./lowkey/lowkey clear --logs --state --yes`
 
-* **Follow logs in real-time:**
+### Testing
 
-    ```bash
-    ./lokee.rb tail
-    ```
+To run the full test suite, use the following command:
 
-* **Show change statistics:**
+```bash
+GOCACHE=$(pwd)/.gocache go test ./...
+```
 
-    ```bash
-    ./lokee.rb summary
-    ```
+This is equivalent to running `make test`.
 
-* **Clear all logs:**
+## Development Conventions
 
-    ```bash
-    ./lokee.rb clear
-    ```
-
-## Shell Version (`lokee.sh`)
-
-The shell version provides similar functionalities to the Ruby version but is implemented as a bash script.
-
-**Key Commands:**
-
-* **Watch directories in the foreground:**
-
-    ```bash
-    ./lokee.sh watch <dir1> <dir2> ...
-    ```
-
-* **Start background monitoring:**
-
-    ```bash
-    ./lokee.sh start <dir1> <dir2> ...
-    ```
-
-* **Stop background monitoring:**
-
-    ```bash
-    ./lokee.sh stop
-    ```
-
-* **View monitor status:**
-
-    ```bash
-    ./lokee.sh status
-    ```
-
-* **View logs:**
-
-    ```bash
-    ./lokee.sh log [pattern]
-    ```
-
-* **Follow logs in real-time:**
-
-    ```bash
-    ./lokee.sh tail
-    ```
-
-* **Show change statistics:**
-
-    ```bash
-    ./lokee.sh summary
-    ```
-
-* **Clear all logs:**
-
-    ```bash
-    ./lokee.sh clear
-    ```
-
-# Development Conventions
-
-* **Ruby:** The Ruby script follows standard Ruby conventions and is well-documented with inline comments. It uses the `thor` gem for building the CLI.
-* **Shell:** The shell script is written in bash and is also well-documented. It uses standard shell commands and features.
-* **Algorithm Analysis:** The markdown files provide a detailed mathematical analysis of the algorithm and its potential optimizations. This suggests a focus on performance and efficiency.
+* **Code Formatting:** Code should be formatted with `gofmt` (targeting Go 1.22+).
+* **Dependencies:** The project uses `cobra` and `viper` for the CLI and configuration, with local copies of these libraries stored in the `third_party` directory.
+* **Architecture:** The project follows a modular architecture with a clear separation of concerns between packages. The `docs/architecture/overview.md` file provides a detailed description of the architecture.
+* **Configuration:** Ignore rules are defined in a `.lowkey` file, which uses glob patterns. The daemon's configuration is managed through a manifest file.
+* **Contributing:** The `AGENTS.md` and `docs/CONTRIBUTING.md` files provide guidance for contributors.
