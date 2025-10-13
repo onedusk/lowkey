@@ -48,6 +48,23 @@ make build
 
 - **Ignore rules** – Place glob patterns in `.lowkey`; they are tokenised and
   loaded into a Bloom filter to avoid costly glob checks at runtime.
+
+  Example `.lowkey` file:
+  ```
+  # Ignore patterns (one per line)
+  node_modules/
+  **/*.tmp
+  **/*.log
+  .git/
+  **/__pycache__/
+  **/dist/
+  ```
+
+  Pattern syntax:
+  - `*` matches any sequence of non-separator characters
+  - `**` matches zero or more directories
+  - `?` matches any single non-separator character
+  - Character classes: `[abc]` or `[a-z]`
 - **Manifests** – The daemon persists manifests to the platform-specific state
   directory via `state.ManifestStore`. Updating the file on disk and running
   reconciliation (future CLI verb) enables hot reconfiguration.
