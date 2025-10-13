@@ -187,14 +187,17 @@ func (m *HybridMonitor) handleEvent(event events.Event) {
 
 	switch event.Type {
 	case events.EventDelete:
+		// For delete events, we can't get the file size anymore
+		prevSig, _ := m.cache.Get(event.Path)
 		m.cache.Delete(event.Path)
-		m.recordChange(event.Path, events.EventDelete, event.Timestamp)
+		m.recordChangeWithSize(event.Path, events.EventDelete, event.Timestamp, 0, prevSig.Size, 0)
 	case events.EventCreate, events.EventModify:
 		info, err := os.Stat(event.Path)
 		if err != nil {
 			if os.IsNotExist(err) {
+				prevSig, _ := m.cache.Get(event.Path)
 				m.cache.Delete(event.Path)
-				m.recordChange(event.Path, events.EventDelete, event.Timestamp)
+				m.recordChangeWithSize(event.Path, events.EventDelete, event.Timestamp, 0, prevSig.Size, 0)
 			}
 			return
 		}
@@ -210,11 +213,14 @@ func (m *HybridMonitor) handleEvent(event events.Event) {
 		prev, ok := m.cache.Get(event.Path)
 		m.cache.Set(event.Path, sig)
 		if !ok {
-			m.recordChange(event.Path, events.EventCreate, event.Timestamp)
+			// New file
+			m.recordChangeWithSize(event.Path, events.EventCreate, event.Timestamp, sig.Size, 0, sig.Size)
 			return
 		}
 		if !prev.Equal(sig) {
-			m.recordChange(event.Path, events.EventModify, event.Timestamp)
+			// Modified file - calculate size delta
+			sizeDelta := sig.Size - prev.Size
+			m.recordChangeWithSize(event.Path, events.EventModify, event.Timestamp, sig.Size, prev.Size, sizeDelta)
 		}
 	default:
 		m.recordChange(event.Path, event.Type, event.Timestamp)
@@ -250,11 +256,14 @@ func (m *HybridMonitor) scanDirectory(dir string) error {
 		cached, ok := reference[path]
 		m.cache.Set(path, sig)
 		if !ok {
-			m.recordChange(path, events.EventCreate, time.Now().UTC())
+			// New file
+			m.recordChangeWithSize(path, events.EventCreate, time.Now().UTC(), sig.Size, 0, sig.Size)
 			return nil
 		}
 		if !cached.Equal(sig) {
-			m.recordChange(path, events.EventModify, time.Now().UTC())
+			// Modified file - calculate size delta
+			sizeDelta := sig.Size - cached.Size
+			m.recordChangeWithSize(path, events.EventModify, time.Now().UTC(), sig.Size, cached.Size, sizeDelta)
 		}
 		return nil
 	})
@@ -262,12 +271,13 @@ func (m *HybridMonitor) scanDirectory(dir string) error {
 		return err
 	}
 
-	for path := range reference {
+	for path, cachedSig := range reference {
 		if _, ok := seen[path]; ok {
 			continue
 		}
 		m.cache.Delete(path)
-		m.recordChange(path, events.EventDelete, time.Now().UTC())
+		// For deleted files, we know the old size from cache
+		m.recordChangeWithSize(path, events.EventDelete, time.Now().UTC(), 0, cachedSig.Size, 0)
 	}
 
 	return nil
@@ -275,6 +285,26 @@ func (m *HybridMonitor) scanDirectory(dir string) error {
 
 func (m *HybridMonitor) recordChange(path, changeType string, timestamp time.Time) {
 	change := reporting.Change{Path: path, Type: changeType, Timestamp: timestamp}
+	if m.aggregator != nil {
+		m.aggregator.Record(change)
+	}
+	if m.logger != nil {
+		m.logger.Infof("%s %s", changeType, path)
+	}
+	if m.changeHandler != nil {
+		m.changeHandler(change)
+	}
+}
+
+func (m *HybridMonitor) recordChangeWithSize(path, changeType string, timestamp time.Time, size, oldSize, sizeDelta int64) {
+	change := reporting.Change{
+		Path:      path,
+		Type:      changeType,
+		Timestamp: timestamp,
+		Size:      size,
+		OldSize:   oldSize,
+		SizeDelta: sizeDelta,
+	}
 	if m.aggregator != nil {
 		m.aggregator.Record(change)
 	}

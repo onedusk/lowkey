@@ -20,6 +20,9 @@ type Change struct {
 	Path      string
 	Type      string
 	Timestamp time.Time
+	Size      int64 // Size for new files, or new size for modified files
+	OldSize   int64 // Previous size for modified files (used to calculate delta)
+	SizeDelta int64 // Size change for modified files (positive for growth, negative for shrink)
 }
 
 // Snapshot provides a detailed summary of recent watcher activity. It includes

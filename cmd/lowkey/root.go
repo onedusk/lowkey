@@ -45,6 +45,7 @@ func init() {
 		newTailCmd(),
 		newSummaryCmd(),
 		newClearCmd(),
+		newAppendCmd(),
 	)
 }
 

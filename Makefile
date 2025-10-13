@@ -3,10 +3,10 @@
 all: build
 
 build:
-	go build -v -o lowkey main.go
+	go build -v -o lowkey ./cmd/lowkey
 
 run:
-	go run main.go
+	go run ./cmd/lowkey
 
 test:
 	go test -v ./...
