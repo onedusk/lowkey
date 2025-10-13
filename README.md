@@ -87,6 +87,24 @@ Lowkey is designed for high-throughput filesystem monitoring with minimal overhe
 
 Benchmarks run on: Apple M1, 16GB RAM, monitoring 50,000 files with 1,000 ignore patterns.
 
+## Architecture
+
+```
+┌───────┐   ┌─────┐   ┌───────────────┐   ┌────────────┐   ┌────────────────┐
+│  User │──▶│ CLI │──▶│ Daemon Manager│──▶│ Supervisor │──▶│ Hybrid Monitor │
+└───────┘   └─────┘   └───────────────┘   └────────────┘   └────────────────┘
+                                                                    │
+                                                                    ├─▶┌──────────────┐
+                                                                    │  │Event Backend │
+                                                                    │  │  (fsnotify)  │
+                                                                    │  └──────────────┘
+                                                                    │
+                                                                    └─▶┌──────────────┐
+                                                                       │Polling Scanner│
+                                                                       │  (Periodic)  │
+                                                                       └──────────────┘
+```
+
 ## Development
 
 - Format code with `gofmt` (Go 1.22+ target).
