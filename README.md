@@ -122,6 +122,27 @@ Benchmarks run on: Apple M1, 16GB RAM, monitoring 50,000 files with 1,000 ignore
 - Architecture and operational docs live under `docs/`; `docs/architecture/overview.md`
   describes the hybrid monitoring pipeline and telemetry wiring.
 
+## FAQ
+
+**What platforms are supported?**
+Lowkey is written in Go and is cross-platform. It is tested on macOS, Linux, and Windows.
+
+**How does daemon mode work?**
+The `lowkey start` command launches the monitor as a background process. A built-in supervisor ensures automatic restarts if crashes occur, providing resilient long-running monitoring.
+
+**Can I use Lowkey with Docker?**
+Yes. Run the `lowkey` binary inside a container and mount the host directory as a volume. For reliable event detection, mount from the host: `docker run -v /host/path:/container/path ...`
+
+**What's the difference between `watch` and `start` commands?**
+- `lowkey watch` runs in the foreground, streaming events to your terminal (best for temporary monitoring)
+- `lowkey start` runs as a background daemon (best for persistent, long-term monitoring)
+
+**How do I debug issues?**
+Use these commands:
+- `lowkey status` - Check daemon status and event summaries
+- `lowkey tail` - Stream daemon log output in real-time
+- `lowkey clear --logs` - Clear historical logs
+
 ## Contributing
 
 Review the [Contributor Guide](AGENTS.md) for repository structure, workflows, and coding standards, then see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for contribution logistics.
