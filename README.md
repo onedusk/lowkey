@@ -44,6 +44,15 @@ make build
 - Additional scaffolding commands (`summary`, `log`, etc.) live under `cmd/`
   and will evolve alongside product requirements.
 
+## Event Types
+
+Lowkey tracks the following types of filesystem events:
+
+- **CREATE** - A new file or directory is created
+- **MODIFY** - An existing file's content or metadata has changed
+- **DELETE** - A file or directory is removed from the filesystem
+- **RENAME** - A file or directory is renamed or moved to a new location
+
 ## Configuration & State
 
 - **Ignore rules** – Place glob patterns in `.lowkey`; they are tokenised and
