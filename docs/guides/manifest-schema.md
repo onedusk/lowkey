@@ -1,372 +1,195 @@
-# Manifest Schema
+# Manifest JSON Schema
 
-This guide documents the structure of the `daemon.json` manifest file used by lowkey's daemon mode.
+The `lowkey` daemon is configured via a JSON manifest file. This document outlines the structure and validation rules for the manifest.
 
 ## Overview
 
-The manifest file stores the daemon's configuration and is persisted to the state directory when you run `lowkey start`. The daemon reads this manifest on startup to determine which directories to watch and how to configure logging and ignore patterns.
+The manifest file is automatically created when you run `lowkey start` and is stored in the platform-specific state directory (see [State Directories](state-directories.md) for locations). The manifest persists the daemon's configuration and can be inspected or manually edited when the daemon is stopped.
 
 ## File Location
 
-The manifest is stored as `daemon.json` in the platform-specific state directory:
+- **Linux**: `~/.local/state/lowkey/daemon.json`
+- **macOS**: `~/Library/Application Support/lowkey/daemon.json`
+- **Windows**: `%LOCALAPPDATA%\lowkey\daemon.json`
 
-| Platform | Default Path |
-|----------|-------------|
-| **Linux** | `~/.local/state/lowkey/daemon.json` |
-| **macOS** | `~/Library/Application Support/lowkey/daemon.json` |
-| **Windows** | `%LOCALAPPDATA%\lowkey\daemon.json` |
-
-You can override the state directory using the `XDG_STATE_HOME` environment variable:
-```bash
-export XDG_STATE_HOME=/custom/path
-lowkey start /path/to/watch
-# Manifest saved to: /custom/path/lowkey/daemon.json
-```
-
-## JSON Schema
-
-### Root Object
+## Schema Structure
 
 ```json
 {
-  "directories": ["string"],
-  "log_path": "string",
-  "ignore_file": "string"
+  "directories": ["/path/to/watch", "/another/path"],
+  "ignore_file": ".lowkey",
+  "log_path": "",
+  "metrics_address": "127.0.0.1:9600"
 }
 ```
 
-### Field Definitions
+## Fields
 
-#### `directories` (required)
-- **Type**: Array of strings
-- **Description**: List of absolute paths to directories that the daemon should monitor
-- **Validation**:
-  - Must contain at least one directory
-  - All paths are normalized to absolute paths
-  - Duplicate paths are removed
-  - Paths are sorted lexicographically for consistency
+### `directories` (required)
 
-#### `log_path` (optional)
-- **Type**: String
-- **Description**: Absolute path to the daemon's log file
-- **Default**: `lowkey.log` in the state directory
-- **Validation**: Normalized to absolute path if relative
+**Type:** Array of strings  
+**Description:** List of absolute paths to directories that the daemon should monitor for filesystem events.
 
-#### `ignore_file` (optional)
-- **Type**: String
-- **Description**: Path to the `.lowkey` file containing ignore patterns
-- **Default**: `.lowkey` file in each watched directory
-- **Validation**: Normalized to absolute path if relative
+**Example:**
+```json
+"directories": [
+  "/home/user/projects/webapp",
+  "/home/user/projects/api"
+]
+```
 
-## Example Manifests
+**Validation Rules:**
+- Must be an array with at least one element
+- Each path must be an absolute path
+- Paths must exist and be accessible
+- Duplicate paths are allowed but inefficient
 
-### Minimal Manifest
+### `ignore_file` (optional)
+
+**Type:** String  
+**Description:** Name of the ignore patterns file (relative to each watched directory). Defaults to `.lowkey`.
+
+**Example:**
+```json
+"ignore_file": ".lowkey"
+```
+
+**Default:** `.lowkey`
+
+**Validation Rules:**
+- Must be a non-empty string
+- File is searched relative to each watched directory
+- If the file doesn't exist, no patterns are ignored
+
+### `log_path` (optional)
+
+**Type:** String  
+**Description:** Custom path for the daemon log file. If empty or omitted, logs are written to `lowkey.log` in the state directory.
+
+**Example:**
+```json
+"log_path": "/var/log/lowkey/lowkey.log"
+```
+
+**Default:** `<state-directory>/lowkey.log`
+
+**Validation Rules:**
+- Must be an absolute path
+- Parent directory must exist and be writable
+- Log rotation applies to custom paths
+
+### `metrics_address` (optional)
+
+**Type:** String  
+**Description:** Network address for the Prometheus metrics HTTP endpoint. Format: `host:port` or empty to disable metrics.
+
+**Example:**
+```json
+"metrics_address": "127.0.0.1:9600"
+```
+
+**Default:** `` (metrics disabled)
+
+**Validation Rules:**
+- Must be a valid `host:port` format
+- Port must be available (not in use)
+- Use `127.0.0.1` to restrict to localhost
+- Use `0.0.0.0` to expose on all interfaces (use with caution)
+
+## Complete Example
 
 ```json
 {
   "directories": [
-    "/home/user/projects"
-  ]
-}
-```
-
-### Multi-Directory Manifest
-
-```json
-{
-  "directories": [
-    "/home/user/projects/backend",
-    "/home/user/projects/frontend",
-    "/var/www/html"
-  ]
-}
-```
-
-### Complete Manifest
-
-```json
-{
-  "directories": [
-    "/home/user/workspace/project-a",
-    "/home/user/workspace/project-b"
+    "/home/alice/workspace/backend",
+    "/home/alice/workspace/frontend",
+    "/home/alice/documents"
   ],
-  "log_path": "/var/log/lowkey/daemon.log",
-  "ignore_file": "/home/user/.config/lowkey/ignore-patterns"
+  "ignore_file": ".lowkey",
+  "log_path": "/var/log/lowkey/custom.log",
+  "metrics_address": "127.0.0.1:9600"
 }
 ```
 
-### Development Manifest
+## Editing the Manifest
 
-```json
-{
-  "directories": [
-    "/Users/developer/code/web-app",
-    "/Users/developer/code/api-service"
-  ],
-  "log_path": "/Users/developer/logs/lowkey.log"
-}
-```
+### Manual Editing
 
-## Path Normalization
-
-Lowkey normalizes all paths in the manifest to ensure consistency:
-
-1. **Absolute Path Conversion**: Relative paths are converted to absolute paths
-2. **Cleaning**: Paths like `/foo/../bar` become `/bar`
-3. **Deduplication**: Identical paths after normalization are removed
-4. **Sorting**: Directories are sorted alphabetically
-
-### Before Normalization
-```json
-{
-  "directories": [
-    ".",
-    "/home/user/project/../project",
-    "/home/user/project"
-  ]
-}
-```
-
-### After Normalization
-```json
-{
-  "directories": [
-    "/home/user/project"
-  ]
-}
-```
-
-## Creating Manifests
-
-### Automatic Creation (Recommended)
-
-The `lowkey start` command automatically creates and saves a manifest:
+You can manually edit the manifest when the daemon is stopped:
 
 ```bash
-# Creates manifest with one directory
-lowkey start /path/to/project
-
-# Creates manifest with multiple directories
-lowkey start /path/to/project-a /path/to/project-b
-```
-
-### Manual Creation
-
-You can create a manifest file manually and load it:
-
-```bash
-# Create custom manifest
-cat > my-manifest.json <<EOF
-{
-  "directories": [
-    "/path/to/project"
-  ],
-  "log_path": "/custom/logs/lowkey.log"
-}
-EOF
-
-# Start daemon with custom manifest
-lowkey start --manifest my-manifest.json
-```
-
-## Viewing the Active Manifest
-
-Use `lowkey status` to view the current manifest:
-
-```bash
-lowkey status
-```
-
-Example output:
-```
-Daemon: running
-PID: 12345
-Watched directories:
-  - /home/user/projects/backend
-  - /home/user/projects/frontend
-Log path: /home/user/.local/state/lowkey/lowkey.log
-```
-
-## Modifying the Manifest
-
-### Method 1: Stop and Restart
-
-The safest way to modify the manifest is to stop the daemon and start it again:
-
-```bash
-# Stop daemon
+# Stop the daemon
 lowkey stop
 
-# Start with new directories
-lowkey start /new/path/to/watch
-```
-
-### Method 2: Manual Edit + Reconciliation (Future)
-
-Manual editing of the manifest file while the daemon is running is not currently supported but is planned for future releases:
-
-```bash
-# Edit manifest file
+# Edit the manifest
 vim ~/.local/state/lowkey/daemon.json
 
-# Trigger reconciliation (planned feature)
-lowkey reconcile
+# Start the daemon with new configuration
+lowkey start
 ```
 
-## Validation Rules
+**Important:** Never edit the manifest while the daemon is running, as your changes may be overwritten.
 
-### Required Fields
+### Programmatic Updates
 
-- `directories` must be present and contain at least one path
-
-### Constraints
-
-- **Empty directories**: Manifest will fail validation
-  ```json
-  {
-    "directories": []  // ❌ Invalid
-  }
-  ```
-
-- **Missing directories**: Manifest will fail validation
-  ```json
-  {
-    "log_path": "/var/log/lowkey.log"  // ❌ Missing directories
-  }
-  ```
-
-- **Null values**: Optional fields can be omitted or empty strings
-  ```json
-  {
-    "directories": ["/path"],
-    "log_path": "",      // ✓ Valid (uses default)
-    "ignore_file": ""    // ✓ Valid (uses default)
-  }
-  ```
-
-## Persistence Guarantees
-
-Lowkey uses atomic writes to ensure manifest integrity:
-
-1. **Atomic Writes**: Manifests are written to a temporary file and renamed atomically
-2. **No Partial Writes**: Either the entire manifest is written or none of it is
-3. **Corruption Protection**: Crashes during write operations don't corrupt the manifest
-
-Implementation:
-```
-1. Create temp file: daemon-1234.json
-2. Write manifest to temp file
-3. Rename temp file to daemon.json (atomic operation)
-```
-
-## Error Handling
-
-### Invalid JSON
-
-If the manifest contains invalid JSON, the daemon will fail to start:
+The manifest is created automatically from command-line flags:
 
 ```bash
-lowkey start /path/to/watch
-# Error: config: decode manifest "/home/user/.local/state/lowkey/daemon.json": invalid character '}' ...
+# This creates a manifest with the specified configuration
+lowkey start --metrics 127.0.0.1:9600 --trace /path/to/monitor
 ```
 
-### Missing Directories
+## Validation Errors
 
-If watched directories don't exist, the daemon will still start but log warnings:
+Common validation errors and how to fix them:
 
-```json
-{
-  "directories": [
-    "/nonexistent/path"
-  ]
-}
-```
+### "directories field is required"
 
-The daemon will monitor the parent path and detect when the directory is created.
+**Cause:** The `directories` array is empty or missing.  
+**Fix:** Ensure at least one directory path is specified.
+
+### "path must be absolute"
+
+**Cause:** A relative path was provided in the `directories` array.  
+**Fix:** Use absolute paths like `/home/user/project` instead of `./project`.
+
+### "directory does not exist"
+
+**Cause:** A path in the `directories` array doesn't exist.  
+**Fix:** Create the directory or remove it from the manifest.
+
+### "invalid metrics address format"
+
+**Cause:** The `metrics_address` is not in valid `host:port` format.  
+**Fix:** Use format like `127.0.0.1:9600` or leave empty to disable.
+
+### "metrics port already in use"
+
+**Cause:** Another process is using the specified metrics port.  
+**Fix:** Choose a different port or stop the conflicting process.
 
 ## Advanced Usage
 
-### Environment Variable Expansion
-
-Lowkey does not perform environment variable expansion in manifests. Use absolute paths:
-
-```json
-{
-  "directories": [
-    "/home/user/project"  // ✓ Use absolute path
-    // "$HOME/project"    // ❌ Not supported
-  ]
-}
-```
-
-To use environment variables, generate the manifest dynamically:
-
-```bash
-# Generate manifest with environment variables
-cat > /tmp/manifest.json <<EOF
-{
-  "directories": [
-    "$HOME/projects"
-  ]
-}
-EOF
-
-# Start with generated manifest
-lowkey start --manifest /tmp/manifest.json
-```
-
 ### Multiple Daemon Instances
 
-Run multiple daemon instances by using different state directories:
+Run multiple daemon instances with separate manifests using environment variables:
 
 ```bash
-# Instance 1: Monitor project A
-XDG_STATE_HOME=/tmp/lowkey-a lowkey start /path/to/project-a
+# Instance 1
+lowkey start /project1
 
-# Instance 2: Monitor project B
-XDG_STATE_HOME=/tmp/lowkey-b lowkey start /path/to/project-b
+# Instance 2 (different state directory)
+XDG_STATE_HOME=/tmp/lowkey-2 lowkey start /project2
 ```
 
-Each instance maintains its own manifest in separate state directories.
+Each instance maintains its own manifest in its state directory.
 
-## Troubleshooting
+### Hot Reconfiguration
 
-### Manifest not found
-
-```bash
-lowkey status
-# Error: manifest not found
-```
-
-**Solution**: The daemon has not been started. Run `lowkey start <dirs>` first.
-
-### Manifest corrupted
-
-```bash
-lowkey status
-# Error: config: decode manifest: unexpected end of JSON input
-```
-
-**Solution**: Remove the corrupted manifest and restart:
-```bash
-rm ~/.local/state/lowkey/daemon.json
-lowkey start /path/to/watch
-```
-
-### Permission denied
-
-```bash
-lowkey start /path/to/watch
-# Error: state: create directory: permission denied
-```
-
-**Solution**: Ensure you have write permissions to the state directory or use a custom location:
-```bash
-XDG_STATE_HOME=/tmp/lowkey lowkey start /path/to/watch
-```
+In future versions, `lowkey` will support hot reconfiguration by detecting manifest changes and reloading without restart. Currently, you must stop and restart the daemon for changes to take effect.
 
 ## Related Documentation
 
-- [State Directory Locations](state-directories.md) - Platform-specific state paths
-- [Configuration & State](../README.md#configuration--state) - Overview of configuration options
-- [Telemetry Guide](telemetry.md) - Metrics and tracing configuration
+- [State Directories](state-directories.md) - Where manifests are stored
+- [CLI Commands](../README.md#cli-commands) - Using `lowkey start` with flags
+- [Troubleshooting](troubleshooting.md) - Common manifest-related issues
