@@ -71,6 +71,22 @@ curl http://127.0.0.1:9600/metrics
 | `latency`        | Histogram | Latency of event processing in seconds, providing buckets for performance analysis. |
 | `restart_count`  | Counter   | The number of times the internal watcher has been automatically restarted by the supervisor. |
 
+### `--trace`
+
+The `--trace` flag enables detailed trace logging for debugging and performance analysis. It provides insight into `lowkey`'s internal operations.
+
+- **Usage:** `lowkey start --trace /path/to/watch`
+
+When this flag is active, `lowkey` generates verbose logs that include:
+- **Internal State Transitions:** See how the monitor reacts to events and manages its internal state.
+- **Function Calls:** Trace the flow of execution through key parts of the application.
+- **Detailed Event Data:** Get enriched information about each filesystem event as it is detected and processed.
+
+**Performance Impact:**
+Enabling trace logging can have a noticeable impact on performance due to the high volume of I/O operations for writing logs. It is recommended **only for debugging purposes** and should not be used in a production environment where performance is critical.
+
+Logs generated in trace mode can be viewed with `lowkey tail` or by inspecting the log files directly.
+
 ## Event Types
 
 Lowkey tracks the following types of filesystem events:
