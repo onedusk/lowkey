@@ -44,6 +44,33 @@ make build
 - Additional scaffolding commands (`summary`, `log`, etc.) live under `cmd/`
   and will evolve alongside product requirements.
 
+## Flags
+
+### `--metrics`
+
+The `--metrics` flag enables the Prometheus metrics endpoint, allowing you to monitor the performance and activity of the `lowkey` daemon.
+
+- **Usage:** `lowkey start --metrics [address:port] /path/to/watch`
+- **Default Address:** `127.0.0.1:9600`
+
+When enabled, `lowkey` exposes an HTTP endpoint serving metrics in the Prometheus exposition format. You can scrape this endpoint with a Prometheus server or query it directly with `curl`.
+
+```bash
+# Start lowkey with metrics on the default address
+lowkey start --metrics /path/to/watch
+
+# Access the metrics
+curl http://127.0.0.1:9600/metrics
+```
+
+#### Available Metrics
+
+| Metric Name      | Type      | Description                                                 |
+|------------------|-----------|-------------------------------------------------------------|
+| `events_total`   | Counter   | Total number of filesystem events processed, labeled by type (e.g., `create`, `modify`, `delete`). |
+| `latency`        | Histogram | Latency of event processing in seconds, providing buckets for performance analysis. |
+| `restart_count`  | Counter   | The number of times the internal watcher has been automatically restarted by the supervisor. |
+
 ## Event Types
 
 Lowkey tracks the following types of filesystem events:
