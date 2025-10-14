@@ -1,0 +1,60 @@
+# Web development .lowkey patterns
+# Optimized for JavaScript/TypeScript projects
+
+# Dependencies
+node_modules/
+bower_components/
+jspm_packages/
+vendor/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.vercel/
+.output/
+
+# Framework-specific
+.svelte-kit/
+.remix/
+.turbo/
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+bun.lockb
+
+# Environment and config
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.nyc_output/
+**/*.test.js.snap
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary
+*.tmp
+*.swp
+*~

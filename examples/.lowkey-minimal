@@ -1,0 +1,16 @@
+# Minimal .lowkey patterns
+# Only the most essential patterns for maximum performance
+
+# Version control (typically the largest directories)
+.git/
+
+# Dependencies (can be huge)
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store

@@ -1,0 +1,28 @@
+# Basic .lowkey ignore patterns
+# Place this file as .lowkey in your project root
+
+# Version control
+.git/
+.svn/
+.hg/
+
+# Build outputs
+dist/
+build/
+out/
+target/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.bak
+*~
+
+# Log files
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
