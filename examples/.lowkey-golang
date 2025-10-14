@@ -1,0 +1,57 @@
+# Go project .lowkey patterns
+
+# Binaries and executables
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Architecture-specific
+**/*-amd64
+**/*-arm64
+**/*-darwin
+**/*-linux
+**/*-windows
+
+# Go workspace
+vendor/
+Godeps/
+
+# Build directories
+bin/
+dist/
+build/
+
+# Test coverage
+coverage.txt
+coverage.html
+*.coverprofile
+.coverage/
+
+# Go build cache
+.gocache/
+go.work.sum
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# Debug files
+debug
+__debug_bin
