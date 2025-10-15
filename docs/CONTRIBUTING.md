@@ -21,7 +21,7 @@ git checkout -b 325-add-a-shiny-new-feature
 ### Get the code
 
 ```bash
-git clone https://github.com/your-username/lowkey.git
+git clone https://github.com/your-username/project.git
 cd lowkey
 ```
 
@@ -40,7 +40,7 @@ At this point, you're ready to make your changes! Feel free to ask for help; eve
 At this point, you should switch back to your master branch and make sure it's up to date with Lowkey's master branch:
 
 ```bash
-git remote add upstream git@github.com:your-username/lowkey.git
+git remote add upstream git@github.com:your-username/project.git
 git checkout master
 git pull upstream master
 ```
@@ -59,8 +59,8 @@ Finally, go to GitHub and [make a Pull Request](https://github.com/your-username
 ## Guideline
 
 *   Please follow the [Code of Conduct](docs/CODE_OF_CONDUCT.md).
-*   Please make sure your code is formatted with `gofmt`.
-*   Please make sure your code is linted with `golint`.
+*   Please make sure your code is formatted.
+*   Please make sure your code is linted.
 *   Please make sure your code is tested.
 
 Thank you for your contribution!
