@@ -12,7 +12,7 @@ import (
 	"lowkey/internal/reporting"
 )
 
-// WatchLogger handles logging of file system changes to .lowlog directories
+// WatchLogger handles logging of file system changes to .lowkey directories
 // within each watched directory. It creates date-based log files and ensures
 // thread-safe writes.
 type WatchLogger struct {
@@ -25,9 +25,9 @@ type WatchLogger struct {
 }
 
 // NewWatchLogger creates a new logger for the specified directory.
-// It initializes the .lowlog directory structure if it doesn't exist.
+// It initializes the .lowkey directory structure if it doesn't exist.
 func NewWatchLogger(dir string) (*WatchLogger, error) {
-	logDir := filepath.Join(dir, ".lowlog")
+	logDir := filepath.Join(dir, ".lowkey")
 	logger := &WatchLogger{
 		baseDir: dir,
 		logDir:  logDir,
@@ -35,6 +35,10 @@ func NewWatchLogger(dir string) (*WatchLogger, error) {
 
 	if err := logger.ensureLogDir(); err != nil {
 		return nil, fmt.Errorf("watch logger: create log dir: %w", err)
+	}
+
+	if err := logger.ensureCurrentLogFile(); err != nil {
+		return nil, fmt.Errorf("watch logger: initialize log file: %w", err)
 	}
 
 	return logger, nil
@@ -97,7 +101,7 @@ func (wl *WatchLogger) Close() error {
 	return nil
 }
 
-// ensureLogDir creates the .lowlog directory if it doesn't exist.
+// ensureLogDir creates the .lowkey directory if it doesn't exist.
 func (wl *WatchLogger) ensureLogDir() error {
 	return os.MkdirAll(wl.logDir, 0o755)
 }

@@ -1,3 +1,9 @@
+---
+claude: docs/CLAUDE.md
+codex: docs/AGENTS.md
+gemini: docs/GEMINI.md
+---
+
 # Lowkey
 
 ## Overview

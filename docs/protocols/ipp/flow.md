@@ -8,6 +8,8 @@
 
 ---
 
+**FOLLOW STANDARDS:** standards [live in here](../../eng-practices/README.md)
+
 ### Detailed Stage Flows
 
 ## 1. Concept Formation

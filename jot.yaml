@@ -1,24 +1,24 @@
 # Jot Configuration File
 version: 1.0
 project:
-  name: 'My Documentation'
-  description: 'Project documentation'
-  author: 'Your Name'
+  name: "My Documentation"
+  description: "Project documentation"
+  author: "Your Name"
 
 input:
   paths:
-    - 'docs'
-    - '.claude'
+    - "docs/guides"
+    - ".claude"
   ignore:
-    - '**/_*.md'
-    - '**/drafts/**'
-    - '**/.git/**'
-    - '**/node_modules/**'
+    - "**/_*.md"
+    - "**/drafts/**"
+    - "**/.git/**"
+    - "**/node_modules/**"
 
 output:
-  path: 'dist'
-  format: 'html'
-  theme: 'default'
+  path: "dist"
+  format: "html"
+  theme: "default"
   clean: true
 
 features:
@@ -42,6 +42,6 @@ llm:
 
 search:
   enable: true
-  index_path: 'dist/search-index.json'
+  index_path: "dist/search-index.json"
   fuzzy: true
   highlight: true

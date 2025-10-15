@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Durable file-signature cache with atomic persistence helpers plus unit coverage.
 - Ignore Bloom-filter/tokenization utilities backing the hybrid watcher pipeline.
 - Cross-platform polling event backend, hybrid monitor, and controller wiring.
+- Watch-mode now initializes `.lowkey/<date>.log` at watch startup so downstream tooling can tail changes immediately.
 - Foreground watch streaming, daemon re-exec with `--metrics`/`--trace`, log tailing, and PID-aware stop/status flows.
 - Telemetry stubs for Prometheus metrics and lightweight tracing toggled by CLI flags.
 - Supervisor with restart/backoff logic and heartbeat telemetry stitched into the daemon manager and status output.
