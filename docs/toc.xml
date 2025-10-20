@@ -1,0 +1,52 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>7</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-docs">
+            <title>Docs</title>
+            <chapter id="shared-packages-lowkey-docs-agents" path="shared/packages/lowkey/docs/AGENTS.md" modified="2025-10-09T15:40:55Z" size="2828" words="390" readTime="1min" hash="sha256:438e98412a22a960">
+              <title>Repository Guidelines</title>
+              <summary>Repository Guidelines ## Project Structure &amp; Module Organization `go.mod` anchors the module at the repo root, and `main.go` wires the CLI entrypoint. Subcommands and Cobra wiring live in `cmd/`, ...</summary>
+              <keywords>ignore, requirements, every, using, under, commands, patterns, configuration, module, daemon</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-changelog" path="shared/packages/lowkey/docs/CHANGELOG.md" modified="2025-10-15T12:46:45Z" size="1643" words="215" readTime="1min" hash="sha256:cd34645bada73062">
+              <title>Changelog</title>
+              <summary>Changelog All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semanti...</summary>
+              <keywords>hybrid, watch, manager, pipeline, manifests, supervisor, helpers, heartbeat, telemetry, added</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-claude" path="shared/packages/lowkey/docs/CLAUDE.md" modified="2025-10-15T14:22:30Z" size="5643" words="767" readTime="3min" hash="sha256:5f28c3ee8b6cea9c">
+              <title>CLAUDE.md</title>
+              <summary>CLAUDE.md This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. ## Essential Commands ### Build &amp; Development ```bash # Build the CLI binary (outp...</summary>
+              <keywords>cobra, implementation, code, daemon, dependencies, tests, lowkey, changes, files, backend</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-code-of-conduct" path="shared/packages/lowkey/docs/CODE_OF_CONDUCT.md" modified="2025-10-09T15:40:55Z" size="4978" words="677" readTime="2min" hash="sha256:37d9c841986439f8">
+              <title>Contributor Covenant Code of Conduct</title>
+              <summary>Contributor Covenant Code of Conduct ## Our Pledge We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of a...</summary>
+              <keywords>unacceptable, they, harassment, sort, time, violation, spaces, individuals, warning, involved</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-contributing" path="shared/packages/lowkey/docs/CONTRIBUTING.md" modified="2025-10-15T14:46:49Z" size="1895" words="275" readTime="1min" hash="sha256:e83ce5f9dc7714aa">
+              <title>Contributing to Lowkey</title>
+              <summary>Contributing to Lowkey First off, thank you for considering contributing to Lowkey! It&apos;s people like you that make Lowkey such a great tool. ## Where do I go from here? If you&apos;ve noticed a bug or...</summary>
+              <keywords>make, create, contributing, feature, code, first, thank, pull, request, you&apos;re</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-gemini" path="shared/packages/lowkey/docs/GEMINI.md" modified="2025-10-09T15:40:55Z" size="3032" words="400" readTime="1min" hash="sha256:c88ccdf829fc5604">
+              <title>Lowkey</title>
+              <summary>Lowkey ## Project Overview This project, named &quot;Lowkey,&quot; is a cross-platform filesystem monitor written in Go. It is designed to run either in the foreground for ad-hoc monitoring or as a backgrou...</summary>
+              <keywords>following, building, hybrid, configuration, daemon&apos;s, background, manages, packages, foreground, logic</keywords>
+            </chapter>
+            <chapter id="shared-packages-lowkey-docs-security" path="shared/packages/lowkey/docs/security.md" modified="2025-10-09T15:40:55Z" readTime="1min" hash="sha256:e3b0c44298fc1c14">
+              <title>Untitled</title>
+            </chapter>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>

@@ -1,0 +1,35 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>2</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-docs">
+            <title>Docs</title>
+            <section id="shared-packages-lowkey-docs-eng-practices">
+              <title>Eng Practices</title>
+              <section id="shared-packages-lowkey-docs-eng-practices-review">
+                <title>Review</title>
+                <chapter id="shared-packages-lowkey-docs-eng-practices-review-emergencies" path="shared/packages/lowkey/docs/eng-practices/review/emergencies.md" modified="2025-10-09T15:40:55Z" size="3157" words="536" readTime="2min" hash="sha256:f6123a06a6a86b93">
+                  <title>Emergencies</title>
+                  <summary>Emergencies Sometimes there are emergency CLs that must pass through the entire code review process as quickly as possible. ## What Is An Emergency? {#what} An emergency CL would be a **small**...</summary>
+                  <keywords>major, build, date, emergencies, hard, week, release, code, hardware, they</keywords>
+                </chapter>
+                <chapter id="shared-packages-lowkey-docs-eng-practices-review-index" path="shared/packages/lowkey/docs/eng-practices/review/index.md" modified="2025-10-09T15:40:55Z" size="2767" words="436" readTime="1min" hash="sha256:c1f1f98dde14d0bb">
+                  <title>Untitled</title>
+                  <summary>## Introduction {#intro} A code review is a process where someone other than the author(s) of a piece of code examines that code. At Google, we use code review to maintain the quality of our code a...</summary>
+                  <keywords>different, in-person, best, piece, reviewers, clear, they, other, whose, find</keywords>
+                </chapter>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>

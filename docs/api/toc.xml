@@ -1,0 +1,26 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>1</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-docs">
+            <title>Docs</title>
+            <section id="shared-packages-lowkey-docs-api">
+              <title>Api</title>
+              <chapter id="shared-packages-lowkey-docs-api-cli-reference" path="shared/packages/lowkey/docs/api/cli_reference.md" modified="2025-10-09T15:40:55Z" size="186" words="27" readTime="1min" hash="sha256:2e2ad6f831e17111">
+                <title>CLI Reference (Placeholder)</title>
+                <summary>CLI Reference (Placeholder) Document each Cobra command (`watch`, `start`, `status`, etc.) here once their flags and behaviors solidify. Link back to the PRD for acceptance criteria.</summary>
+              </chapter>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>

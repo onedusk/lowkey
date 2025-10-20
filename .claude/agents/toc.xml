@@ -1,0 +1,27 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>1</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-claude">
+            <title>.claude</title>
+            <section id="shared-packages-lowkey-claude-agents">
+              <title>Agents</title>
+              <chapter id="shared-packages-lowkey-claude-agents-docs-aware-developer" path="shared/packages/lowkey/.claude/agents/docs-aware-developer.md" modified="2025-10-09T15:40:55Z" size="3517" words="469" readTime="1min" hash="sha256:acc5fa51f5a6f323">
+                <title>Untitled</title>
+                <summary>You are a documentation-aware development specialist who ensures all implementations follow established patterns and best practices from the project documentation. ## Primary Responsibilities 1. *...</summary>
+                <keywords>code, updates, project, identified, comments, matches, documented, similar, review, appropriate</keywords>
+              </chapter>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>

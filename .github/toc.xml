@@ -1,0 +1,24 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>1</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-github">
+            <title>.github</title>
+            <chapter id="shared-packages-lowkey-github-pull-request-template" path="shared/packages/lowkey/.github/pull_request_template.md" modified="2025-10-09T15:40:55Z" size="1383" words="249" readTime="1min" hash="sha256:5aad192f28d54965">
+              <title>Untitled</title>
+              <summary>Description Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. Fixes # ...</summary>
+              <keywords>(non-breaking, changes, please, change, existing, tests, test, include, list, code</keywords>
+            </chapter>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>

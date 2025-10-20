@@ -1,0 +1,30 @@
+<toc version="1.0" llm-optimized="true">
+  <metadata>
+    <totalDocs>1</totalDocs>
+  </metadata>
+  <sections>
+    <section id="shared">
+      <title>Shared</title>
+      <section id="shared-packages">
+        <title>Packages</title>
+        <section id="shared-packages-lowkey">
+          <title>Lowkey</title>
+          <section id="shared-packages-lowkey-docs">
+            <title>Docs</title>
+            <section id="shared-packages-lowkey-docs-arc">
+              <title>.arc</title>
+              <section id="shared-packages-lowkey-docs-arc-adrs">
+                <title>Adrs</title>
+                <chapter id="shared-packages-lowkey-docs-arc-adrs-0001-use-go-for-development" path="shared/packages/lowkey/docs/.arc/adrs/0001-use-go-for-development.md" modified="2025-10-09T15:40:55Z" size="1767" words="255" readTime="1min" hash="sha256:c5ff39289a2dfc8e">
+                  <title>1. Use Go for Development</title>
+                  <summary>1. Use Go for Development * **Status:** Accepted * **Date:** 2025-10-03 ## Context and Problem Statement We have a working prototype of `lowkey` in [Ruby](../.arc/lowkey.rb) and [shell script...</summary>
+                  <keywords>tool, language, excellent, decision, file, events, system, distribute, performance, large</keywords>
+                </chapter>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </sections>
+</toc>
