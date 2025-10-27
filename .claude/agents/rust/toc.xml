@@ -15,35 +15,35 @@
               <title>Agents</title>
               <section id="shared-packages-lowkey-claude-agents-rust">
                 <title>Rust</title>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-benchmark-creator" path="shared/packages/lowkey/.claude/agents/rust/benchmark-creator.md" modified="2025-10-12T19:56:06Z" size="453" words="63" readTime="1min" hash="sha256:9d51eec9233936bf">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-benchmark-creator" path="shared/packages/lowkey/.claude/agents/rust/benchmark-creator.md" modified="2025-10-23T17:18:59Z" size="453" words="63" readTime="1min" hash="sha256:9d51eec9233936bf">
                   <title>Benchmark Creator Agent</title>
                   <summary>Benchmark Creator Agent ## Mission Add performance benchmarks to validate &quot;ultra-fast&quot; claims and establish baseline metrics. ## Success Criteria - Benchmarks run with `cargo bench` - HTML report...</summary>
-                  <keywords>benchmarks, performance</keywords>
+                  <keywords>performance, benchmarks</keywords>
                 </chapter>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-error-handler" path="shared/packages/lowkey/.claude/agents/rust/error-handler.md" modified="2025-10-09T15:40:55Z" size="7444" words="773" readTime="3min" hash="sha256:6e77e3502079a0c3">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-error-handler" path="shared/packages/lowkey/.claude/agents/rust/error-handler.md" modified="2025-10-23T17:18:59Z" size="7444" words="773" readTime="3min" hash="sha256:6e77e3502079a0c3">
                   <title>Error Handler Agent</title>
                   <summary>Error Handler Agent ## Mission Replace lazy `Box&lt;dyn Error&gt;` with proper error types that provide context and help users understand what went wrong. ## Prerequisites - Module Splitter agent must c...</summary>
-                  <keywords>file, create, processing, config, handling, context, users, recovery, error, messages</keywords>
+                  <keywords>found, agent, config, messages, processing, file, line, create, handling, context</keywords>
                 </chapter>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-module-splitter" path="shared/packages/lowkey/.claude/agents/rust/module-splitter.md" modified="2025-10-12T19:55:33Z" size="1061" words="172" readTime="1min" hash="sha256:7aa9187e52b4ebc4">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-module-splitter" path="shared/packages/lowkey/.claude/agents/rust/module-splitter.md" modified="2025-10-23T17:18:59Z" size="1061" words="172" readTime="1min" hash="sha256:7aa9187e52b4ebc4">
                   <title>Module Splitter Agent</title>
                   <summary>Module Splitter Agent ## Mission Break the 847-line main.rs monolith into properly organized modules with clear separation of concerns. ## Current State Analysis - main.rs has everything: CLI pars...</summary>
-                  <keywords>tests, main.rs, type, create, clear, lines, don&apos;t, modules, module, separation</keywords>
+                  <keywords>separation, functions, business, don&apos;t, tests, basic, logic, move, type, modules</keywords>
                 </chapter>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-pattern-optimizer" path="shared/packages/lowkey/.claude/agents/rust/pattern-optimizer.md" modified="2025-10-09T15:40:55Z" size="13031" words="1260" readTime="5min" hash="sha256:ace0482711136d7d">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-pattern-optimizer" path="shared/packages/lowkey/.claude/agents/rust/pattern-optimizer.md" modified="2025-10-23T17:18:59Z" size="13031" words="1260" readTime="5min" hash="sha256:ace0482711136d7d">
                   <title>Pattern Optimizer Agent</title>
                   <summary>Pattern Optimizer Agent ## Mission Optimize regex compilation and caching to eliminate redundant compilation and improve performance. ## Prerequisites - Module Splitter agent must complete first -...</summary>
-                  <keywords>caching, time, fail, invalid, optimization, 10mb, memory, agent, compilation, config</keywords>
+                  <keywords>patterns, every, invalid, show, time, config, fail, load, performance, cache</keywords>
                 </chapter>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-preset-migrator" path="shared/packages/lowkey/.claude/agents/rust/preset-migrator.md" modified="2025-10-09T15:40:55Z" size="13034" words="1336" readTime="5min" hash="sha256:83a62e1ad29208df">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-preset-migrator" path="shared/packages/lowkey/.claude/agents/rust/preset-migrator.md" modified="2025-10-23T17:18:59Z" size="13034" words="1336" readTime="5min" hash="sha256:83a62e1ad29208df">
                   <title>Preset Migrator Agent</title>
                   <summary>Preset Migrator Agent ## Mission Extract 170 lines of hardcoded preset patterns from main.rs into maintainable YAML configurations. ## Prerequisites - Can work independently from other agents - ...</summary>
-                  <keywords>function, lines, users, presets, patterns, directory, files, yaml, create, structure</keywords>
+                  <keywords>preset, presets, create, yaml, patterns, structure, lines, hardcoded, directory, function</keywords>
                 </chapter>
-                <chapter id="shared-packages-lowkey-claude-agents-rust-test-writer" path="shared/packages/lowkey/.claude/agents/rust/test-writer.md" modified="2025-10-09T15:40:55Z" size="10532" words="932" readTime="3min" hash="sha256:1bb628dbee946738">
+                <chapter id="shared-packages-lowkey-claude-agents-rust-test-writer" path="shared/packages/lowkey/.claude/agents/rust/test-writer.md" modified="2025-10-23T17:18:59Z" size="10532" words="932" readTime="3min" hash="sha256:1bb628dbee946738">
                   <title>Test Writer Agent</title>
                   <summary>Test Writer Agent ## Mission Add comprehensive test coverage to a codebase that currently has ZERO tests. Target 80%+ coverage with focus on edge cases. ## Prerequisites - Module Splitter agent mu...</summary>
-                  <keywords>target, 80%+, cases, tests, test, agent, performance, 85%+, coverage, edge</keywords>
+                  <keywords>coverage, cases, test, agent, performance, target, 80%+, 85%+, tests, edge</keywords>
                 </chapter>
               </section>
             </section>

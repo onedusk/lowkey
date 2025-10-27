@@ -13,10 +13,10 @@
             <title>Docs</title>
             <section id="shared-packages-lowkey-docs-eng-practices">
               <title>Eng Practices</title>
-              <chapter id="shared-packages-lowkey-docs-eng-practices-readme" path="shared/packages/lowkey/docs/eng-practices/README.md" modified="2025-10-09T15:40:55Z" size="1568" words="194" readTime="1min" hash="sha256:fc8e999b9e95bc77">
+              <chapter id="shared-packages-lowkey-docs-eng-practices-readme" path="shared/packages/lowkey/docs/eng-practices/README.md" modified="2025-10-23T17:18:59Z" size="1568" words="194" readTime="1min" hash="sha256:fc8e999b9e95bc77">
                 <title>Google Engineering Practices Documentation</title>
                 <summary>Google Engineering Practices Documentation Google has many generalized engineering practices that cover all languages and all projects. These documents represent our collective experience of variou...</summary>
-                <keywords>means, terminology, other, [the, license, projects, change, review, practices, google</keywords>
+                <keywords>google, review, terminology, documents, engineering, projects, change, organizations, license, [the</keywords>
               </chapter>
             </section>
           </section>

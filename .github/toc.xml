@@ -11,10 +11,10 @@
           <title>Lowkey</title>
           <section id="shared-packages-lowkey-github">
             <title>.github</title>
-            <chapter id="shared-packages-lowkey-github-pull-request-template" path="shared/packages/lowkey/.github/pull_request_template.md" modified="2025-10-09T15:40:55Z" size="1383" words="249" readTime="1min" hash="sha256:5aad192f28d54965">
+            <chapter id="shared-packages-lowkey-github-pull-request-template" path="shared/packages/lowkey/.github/pull_request_template.md" modified="2025-10-23T17:18:59Z" size="1383" words="249" readTime="1min" hash="sha256:5aad192f28d54965">
               <title>Untitled</title>
               <summary>Description Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. Fixes # ...</summary>
-              <keywords>(non-breaking, changes, please, change, existing, tests, test, include, list, code</keywords>
+              <keywords>test, code, relevant, list, feature, changes, fixes, change, documentation, (non-breaking</keywords>
             </chapter>
           </section>
         </section>

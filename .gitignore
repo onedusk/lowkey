@@ -21,3 +21,6 @@ docs/internal
 
 .gemini/
 gha-creds-*.json
+/.claude/
+.lowlog/
+.ctxt/
