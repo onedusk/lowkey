@@ -18,187 +18,187 @@
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-hook-modularization-plan" path="shared/packages/lowkey/.claude/context/claude-code/HOOK_MODULARIZATION_PLAN.md" modified="2025-10-23T17:18:59Z" size="6216" words="817" readTime="3min" hash="sha256:66fd4c08aceec9f5">
                   <title>Claude Code Hook Modularization Plan</title>
                   <summary>Claude Code Hook Modularization Plan ## Overview This document outlines the plan to transform project-specific Claude Code hooks into a modular, reusable system that can be shared across all projec...</summary>
-                  <keywords>projects, create, files, faster, transform, management, modern, existing, code, style</keywords>
+                  <keywords>documentation, current, hierarchy, tools, global, hook, python, type, functionality, compatibility</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-amazon-bedrock" path="shared/packages/lowkey/.claude/context/claude-code/amazon-bedrock.md" modified="2025-10-23T17:18:59Z" size="8037" words="904" readTime="3min" hash="sha256:7e9b2e9ed6f79105">
                   <title>Claude Code on Amazon Bedrock</title>
                   <summary>Claude Code on Amazon Bedrock &gt; Learn about configuring Claude Code through Amazon Bedrock, including setup, IAM configuration, and troubleshooting. ## Prerequisites Before configuring Claude Cod...</summary>
-                  <keywords>request, must, recommend, (e.g, does, ensure, credentials, through, [bedrock, &lt;note&gt;</keywords>
+                  <keywords>permissions, following, models, modify, &lt;/note&gt;, output, without, about, ****, tasks</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-analytics" path="shared/packages/lowkey/.claude/context/claude-code/analytics.md" modified="2025-10-23T17:18:59Z" size="2458" words="341" readTime="1min" hash="sha256:fbf212ffbd829173">
                   <title>Analytics</title>
                   <summary>Analytics &gt; View detailed usage insights and productivity metrics for your organization&apos;s Claude Code deployment. Claude Code provides an analytics dashboard that helps organizations understand de...</summary>
-                  <keywords>analytics, claude, right, &lt;/note&gt;, users, &lt;note&gt;, team, roles, tool, track</keywords>
+                  <keywords>**users**, number, team, anthropic, using, y-axis), insights, spend, displayed, lines</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-cli-reference" path="shared/packages/lowkey/.claude/context/claude-code/cli-reference.md" modified="2025-10-23T17:18:59Z" size="7669" words="622" readTime="2min" hash="sha256:f5e2351e2ccd5239">
                   <title>CLI reference</title>
                   <summary>CLI reference &gt; Complete reference for Claude Code command-line interface, including commands and flags. ## CLI commands | Command | Description ...</summary>
-                  <keywords>addition, repl, usage, interactive, recent, current, flag, specify, prompt, list</keywords>
+                  <keywords>commands, list, repl, mode, input, prompt, flags, interactive, programmatic, non-interactive</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-common-workflows" path="shared/packages/lowkey/.claude/context/claude-code/common-workflows.md" modified="2025-10-23T17:18:59Z" size="25142" words="3517" readTime="14min" hash="sha256:4004b1fe2440bbeb">
                   <title>Common workflows</title>
                   <summary>Common workflows &gt; Learn about common workflows with Claude Code. Each task in this document includes clear instructions, example commands, and best practices to help you get the most from Claude ...</summary>
-                  <keywords>format&quot;&gt;, components, mode, resumes, refactor, diagrams, across, output, commands, check</keywords>
+                  <keywords>understand, title=&quot;add, output, setup, diagrams, creates, command&quot;&gt;, tasks, planning, answers</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-context-system-guide" path="shared/packages/lowkey/.claude/context/claude-code/context-system-guide.md" modified="2025-10-23T17:18:59Z" size="5925" words="738" readTime="2min" hash="sha256:c41011c7c02fd562">
                   <title>Context-Aware Documentation System Guide</title>
                   <summary>Context-Aware Documentation System Guide ## Overview This guide documents the comprehensive context-aware documentation system implemented for Claude Code, designed to maintain understanding and c...</summary>
-                  <keywords>reinforced, relevant, loading, based, summary, paths, subagents, ensure, always, **file**</keywords>
+                  <keywords>subagent, project-specific, adjust, during, compaction, file, loads, ensures, long, system</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-costs" path="shared/packages/lowkey/.claude/context/claude-code/costs.md" modified="2025-10-23T17:18:59Z" size="6510" words="901" readTime="3min" hash="sha256:1225bb4cbc94d0cd">
                   <title>Manage costs effectively</title>
                   <summary>Manage costs effectively &gt; Learn how to track and optimize token usage and costs when using Claude Code. Claude Code consumes tokens for each interaction. The average cost is \$6 per developer per...</summary>
-                  <keywords>version, auto-compact, spend, recommendations, requests, user, role), total, uses, claude</keywords>
+                  <keywords>metrics, (such, &lt;note&gt;, (requires, being, current, individual, access, console, costs</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-data-usage" path="shared/packages/lowkey/.claude/context/claude-code/data-usage.md" modified="2025-10-23T17:18:59Z" size="8029" words="906" readTime="3min" hash="sha256:dd1c5e4f5b6bad95">
                   <title>Data usage</title>
                   <summary>Data usage &gt; Learn about Anthropic&apos;s data usage policies for Claude ## Data policies ### Data training policy **Consumer users (Free, Pro, and Max plans)**: Starting August 28, 2025, we&apos;re givin...</summary>
-                  <keywords>flow, using, free, details, on.&lt;br, service, used, materials, sent, model</keywords>
+                  <keywords>used, (team, telemetry, behaviors, sessions, development, encryption, learn, improve, days</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-devcontainer" path="shared/packages/lowkey/.claude/context/claude-code/devcontainer.md" modified="2025-10-23T17:18:59Z" size="4416" words="488" readTime="1min" hash="sha256:f2b226218e186226">
                   <title>Development containers</title>
                   <summary>Development containers &gt; Learn about the Claude Code development container for teams that need consistent, secure environments. The reference [devcontainer setup](https://github.com/anthropics/cla...</summary>
-                  <keywords>extensions, ci/cd, repository, connections, tools, containers, credentials, development, code, firewall</keywords>
+                  <keywords>customize, [claude, repository, claude, features, reopen, development, team, system, access</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-doc-index" path="shared/packages/lowkey/.claude/context/claude-code/doc-index.md" modified="2025-10-23T17:18:59Z" size="3060" words="334" readTime="1min" hash="sha256:fb26ede62faf9a2b">
                   <title>Claude Code Documentation Index</title>
                   <summary>Claude Code Documentation Index ## Core Features Documentation ### Hooks System - **Reference**: [hooks.md](./hooks.md) - Complete hooks reference with all events and configurations - **Guide**: [...</summary>
-                  <keywords>hooks, sessionstart, configurations, management, imports, tools, focused, reference, context, settings</keywords>
+                  <keywords>tool, user, commands, focused, specialized, settings, custom, complete, project, **slash</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-github-actions" path="shared/packages/lowkey/.claude/context/claude-code/github-actions.md" modified="2025-10-23T17:18:59Z" size="26649" words="3038" readTime="12min" hash="sha256:de4f4b56f46236c2">
                   <title>Claude Code GitHub Actions</title>
                   <summary>Claude Code GitHub Actions &gt; Learn about integrating Claude Code into your development workflow with Claude Code GitHub Actions Claude Code GitHub Actions brings AI-powered automation to your GitH...</summary>
-                  <keywords>build, approach, different, provide, account, limit, issues, slash, needed, upgrade</keywords>
+                  <keywords>default, required, format, project-specific, policy, issue, patterns, common, tasks, contains</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-gitlab-ci-cd" path="shared/packages/lowkey/.claude/context/claude-code/gitlab-ci-cd.md" modified="2025-10-23T17:18:59Z" size="17598" words="2341" readTime="9min" hash="sha256:6b2201f7a6b7be42">
                   <title>Claude Code GitLab CI/CD</title>
                   <summary>Claude Code GitLab CI/CD &gt; Learn about integrating Claude Code into your development workflow with GitLab CI/CD &lt;Info&gt; Claude Code for GitLab CI/CD is currently in beta. Features and functionali...</summary>
-                  <keywords>enabled, constrain, &lt;/note&gt;, diff, reduce, google, protection, examples, enterprise, impersonate</keywords>
+                  <keywords>gitlab**, resource, descriptions, role, below, every, experience, listener, **prerequisites:**, during</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-google-vertex-ai" path="shared/packages/lowkey/.claude/context/claude-code/google-vertex-ai.md" modified="2025-10-23T17:18:59Z" size="6048" words="680" readTime="2min" hash="sha256:a9ed91f61818cb0c">
                   <title>Claude Code on Google Vertex AI</title>
                   <summary>Claude Code on Google Vertex AI &gt; Learn about configuring Claude Code through Google Vertex AI, including setup, IAM configuration, and troubleshooting. ## Prerequisites Before configuring Claude...</summary>
-                  <keywords>configuration, quotas, claude, google, troubleshooting, enabled, regional, supported, window, encounter</keywords>
+                  <keywords>setup, troubleshooting, [vertex, specify, permissions, project, configure, sonnet, support, [supported</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-hooks-guide" path="shared/packages/lowkey/.claude/context/claude-code/hooks-guide.md" modified="2025-10-23T17:18:59Z" size="9549" words="1128" readTime="4min" hash="sha256:a8347a1951dfe7a5">
                   <title>Get started with Claude Code hooks</title>
                   <summary>Get started with Claude Code hooks &gt; Learn how to customize and extend Claude Code&apos;s behavior by registering shell commands Claude Code hooks are user-defined shell commands that execute at variou...</summary>
-                  <keywords>practices, more, security, debugging, block, type, shell, commands, input, [security</keywords>
+                  <keywords>codebase, hook, hooks, markdown, content, best, runs, reference](/en/docs/claude-code/hooks), calls, configuration</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-hooks" path="shared/packages/lowkey/.claude/context/claude-code/hooks.md" modified="2025-10-23T17:18:59Z" size="23040" words="2920" readTime="11min" hash="sha256:218596daf32354ca">
                   <title>Hooks reference</title>
                   <summary>Hooks reference &gt; This page provides reference documentation for implementing hooks in Claude Code. &lt;Tip&gt; For a quickstart guide with examples, see [Get started with Claude Code hooks](/en/docs/...</summary>
-                  <keywords>validation, start, provide, (only, current, stoppage, guide, except, reference, started</keywords>
+                  <keywords>already, **exit, project, tools, adds, stderr, servers, search, immediately, advanced</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-iam" path="shared/packages/lowkey/.claude/context/claude-code/iam.md" modified="2025-10-23T17:18:59Z" size="11338" words="1453" readTime="5min" hash="sha256:5d57610d909251d9">
                   <title>Identity and Access Management</title>
                   <summary>Identity and Access Management &gt; Learn how to configure user authentication, authorization, and access controls for Claude Code in your organization. ## Authentication methods Setting up Claude C...</summary>
-                  <keywords>[install, files](/en/docs/claude-code/settings#settings-files), control, apply, built-in, types, custom, provided, rules, specified</keywords>
+                  <keywords>bedrock, pattern, team, policies, deny, **during, variables, credential, session, format</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-ide-integrations" path="shared/packages/lowkey/.claude/context/claude-code/ide-integrations.md" modified="2025-10-23T17:18:59Z" size="6627" words="951" readTime="3min" hash="sha256:5c42f451d1344a51">
                   <title>Add Claude Code to your IDE</title>
                   <summary>Add Claude Code to your IDE &gt; Learn how to add Claude Code to your favorite IDE Claude Code works great with any Integrated Development Environment (IDE) that has a terminal. Just run `claude`, an...</summary>
-                  <keywords>extension, host, command, phpstorm, configuration, check, like, vscodium, need, same</keywords>
+                  <keywords>properly, same, pycharm, directory, diff, install, need, firewall, click, installed</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-interactive-mode" path="shared/packages/lowkey/.claude/context/claude-code/interactive-mode.md" modified="2025-10-23T17:18:59Z" size="4793" words="603" readTime="2min" hash="sha256:64615ef94295923c">
                   <title>Interactive mode</title>
                   <summary>Interactive mode &gt; Complete reference for keyboard shortcuts, input modes, and interactive features in Claude Code sessions. ## Keyboard shortcuts ### General controls | Shortcut | Descr...</summary>
-                  <keywords>interactive, shortcuts, navigate, -------------, action, claude, current, editing, session, terminal</keywords>
+                  <keywords>current, ---------------, end/back, cursor, change, paste, ---------------------------------, normal, commands](/en/docs/claude-code/slash-commands), mode)</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-legal-and-compliance" path="shared/packages/lowkey/.claude/context/claude-code/legal-and-compliance.md" modified="2025-10-23T17:18:59Z" size="1545" words="198" readTime="1min" hash="sha256:0204d2f835282a35">
                   <title>Legal and compliance</title>
                   <summary>Legal and compliance &gt; Legal agreements, compliance certifications, and security information for Claude Code. ## Legal agreements ### License Your use of Claude Code is subject to: * [Commercia...</summary>
-                  <keywords>information, code, security, subject, legal, through, trust, agreement, (baa), compliance</keywords>
+                  <keywords>compliance, legal, information, anthropic, subject, commercial, security, (baa), through, code</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-llm-gateway" path="shared/packages/lowkey/.claude/context/claude-code/llm-gateway.md" modified="2025-10-23T17:18:59Z" size="4199" words="451" readTime="1min" hash="sha256:20b5de414f605c23">
                   <title>LLM gateway configuration</title>
                   <summary>LLM gateway configuration &gt; Learn how to configure Claude Code with LLM gateway solutions, including LiteLLM setup, authentication methods, and enterprise features like usage tracking and budget ma...</summary>
-                  <keywords>through, gateway, code, proxy, management, providers, [litellm, models, tracking, configuration</keywords>
+                  <keywords>management, model, unified, gateway, configure, sent, endpoint, anthropic, pass-through, custom</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-mcp" path="shared/packages/lowkey/.claude/context/claude-code/mcp.md" modified="2025-10-23T17:18:59Z" size="37163" words="4310" readTime="17min" hash="sha256:84a885fe250ec6a0">
                   <title>Connect Claude Code to tools via MCP</title>
                   <summary>Connect Claude Code to tools via MCP &gt; Learn how to connect Claude Code to your tools with the Model Context Protocol. export const MCPServersTable = ({platform = &quot;all&quot;}) =&gt; { const generateClau...</summary>
-                  <keywords>services, generate, mcpurl, about, resource, within, project, user-scoped, oauth, databases</keywords>
+                  <keywords>commands, services, fontsize, across, select, resources, instead, mcpurl, approval, tips</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-memory" path="shared/packages/lowkey/.claude/context/claude-code/memory.md" modified="2025-10-23T17:18:59Z" size="6355" words="756" readTime="3min" hash="sha256:fb91c5ca36a50ad6">
                   <title>Manage Claude&apos;s memory</title>
                   <summary>Manage Claude&apos;s memory &gt; Learn how to manage Claude Code&apos;s memory across sessions with different memory locations and best practices. Claude Code can remember your preferences across sessions, lik...</summary>
-                  <keywords>members, conventions, macos, type, claude, organization-level, coding, recursively, deploy, location</keywords>
+                  <keywords>structure, code&apos;s, shared, more, macos, preferences, working, project, convenient, command</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-model-config" path="shared/packages/lowkey/.claude/context/claude-code/model-config.md" modified="2025-10-23T17:18:59Z" size="4879" words="534" readTime="2min" hash="sha256:c00bb65754f4dcd9">
                   <title>Model configuration</title>
                   <summary>Model configuration &gt; Learn about the Claude Code model configuration, including model aliases like `opusplan` ## Available models For the `model` setting in Claude Code, you can either configure...</summary>
-                  <keywords>****, example, model, settings, opus, window](/en/docs/build-with-claude/context-windows#1m-token-context-window), execution, several, mode**, aliases</keywords>
+                  <keywords>models, code, context, users, active, uses, mode, plan, **in, million</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-monitoring-usage" path="shared/packages/lowkey/.claude/context/claude-code/monitoring-usage.md" modified="2025-10-23T17:18:59Z" size="22235" words="2317" readTime="9min" hash="sha256:3f506e5b43b17d67">
                   <title>Monitoring</title>
                   <summary>Monitoring &gt; Learn how to enable and configure OpenTelemetry for Claude Code. Claude Code supports OpenTelemetry (OTel) metrics and events for monitoring and observability. All metrics are time s...</summary>
-                  <keywords>notebookedit, windows, productivity, settings, type(s), key=value, pull, collector, headers, duration</keywords>
+                  <keywords>file, headers, spaces, during, (when, monitoring, content, queries, (overrides, 8601</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-network-config" path="shared/packages/lowkey/.claude/context/claude-code/network-config.md" modified="2025-10-23T17:18:59Z" size="3106" words="344" readTime="1min" hash="sha256:30b0ceb28df56f1d">
                   <title>Enterprise network configuration</title>
                   <summary>Enterprise network configuration &gt; Configure Claude Code for enterprise environments with proxy servers, custom Certificate Authorities (CA), and mutual Transport Layer Security (mTLS) authenticati...</summary>
-                  <keywords>mutual, transport, requires, requiring, claude, &lt;note&gt;, &lt;/note&gt;, supports, environment, enterprise</keywords>
+                  <keywords>proxies, authentication, environment, certificates, (ca), basic, access, transport, &lt;/note&gt;, claude</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-output-styles" path="shared/packages/lowkey/.claude/context/claude-code/output-styles.md" modified="2025-10-23T17:18:59Z" size="3648" words="520" readTime="2min" hash="sha256:12d774955a3e3596">
                   <title>Output styles</title>
                   <summary>Output styles &gt; Adapt Claude Code for uses beyond software engineering Output styles allow you to use Claude Code as any type of agent while keeping its core capabilities, such as running local sc...</summary>
-                  <keywords>code’s, files, code&apos;s, claude.md, code, system, engineering, create, level, affect</keywords>
+                  <keywords>complete, insights, built-in, while, default, agent, user, output, prompt, custom</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-overview" path="shared/packages/lowkey/.claude/context/claude-code/overview.md" modified="2025-10-23T17:18:59Z" size="4332" words="525" readTime="2min" hash="sha256:292193171a314151">
                   <title>Claude Code overview</title>
                   <summary>Claude Code overview &gt; Learn about Claude Code, Anthropic&apos;s agentic coding tool that lives in your terminal and helps you turn ideas into code faster than ever before. ## Get started in 30 seconds...</summary>
-                  <keywords>&lt;/card&gt;, implementation, learn, developer, usage, claude, anthropic&apos;s, write, [mcp](/en/docs/claude-code/mcp), workflows</keywords>
+                  <keywords>usage, data, coding, issues, another, &lt;card, love, common, about, drive</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-quickstart" path="shared/packages/lowkey/.claude/context/claude-code/quickstart.md" modified="2025-10-23T17:18:59Z" size="8223" words="1203" readTime="4min" hash="sha256:bd2798770a64b026">
                   <title>Quickstart</title>
                   <summary>Quickstart &gt; Welcome to Claude Code! This quickstart guide will have you using AI-powered coding assistance in just a few minutes. By the end, you&apos;ll understand how to use Claude Code for common d...</summary>
-                  <keywords>session, mode, &lt;/accordion&gt;, commands, tips, install, make, [claude.ai](https://claude.ai), code**, code</keywords>
+                  <keywords>code, &lt;tip&gt;, &lt;/accordion&gt;, &lt;card, [claude.ai](https://claude.ai), more, questions, common, make, command</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-security" path="shared/packages/lowkey/.claude/context/claude-code/security.md" modified="2025-10-23T17:18:59Z" size="7068" words="880" readTime="3min" hash="sha256:6719407b518e91df">
                   <title>Security</title>
                   <summary>Security &gt; Learn about Claude Code&apos;s security safeguards and best practices for safe usage. ## How we approach security ### Security foundation Your code&apos;s security is paramount. Claude Code is ...</summary>
-                  <keywords>code, management](/en/docs/claude-code/iam), suggested, through, center](https://trust.anthropic.com), bash, verification, commands, running, tool</keywords>
+                  <keywords>configure, control, [identity, suspicious, users), protect, sensitive, claude, request, safeguards</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-settings" path="shared/packages/lowkey/.claude/context/claude-code/settings.md" modified="2025-10-23T17:18:59Z" size="28032" words="2207" readTime="8min" hash="sha256:7ee29ac76a8e574f">
                   <title>Claude Code settings</title>
                   <summary>Claude Code settings &gt; Configure Claude Code with global and project-level settings, and environment variables. Claude Code offers a variety of settings to configure its behavior to meet your need...</summary>
-                  <keywords>custom, **note:**, projects, include, configuration](/en/docs/claude-code/model-config#environment-variables), using, files, available, claude.ai, prefix</keywords>
+                  <keywords>automatic, example, statsig, configuration](/en/docs/claude-code/amazon-bedrock#advanced-credential-configuration)), list, prevent, projects, [permission, shared, user</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-setup" path="shared/packages/lowkey/.claude/context/claude-code/setup.md" modified="2025-10-23T17:18:59Z" size="6252" words="777" readTime="3min" hash="sha256:98c6b8570665d0d4">
                   <title>Set up Claude Code</title>
                   <summary>Set up Claude Code &gt; Install, authenticate, and start using Claude Code on your development machine. ## System requirements * **Operating Systems**: macOS 10.15+, Ubuntu 20.04+/Debian 10+, or Win...</summary>
-                  <keywords>details, native, command, permission, **update, offers, **windows, existing, local, automatically</keywords>
+                  <keywords>authentication, supported, claude, following, &lt;tip&gt;, linux, code, &lt;/note&gt;, methods, running</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-slash-commands" path="shared/packages/lowkey/.claude/context/claude-code/slash-commands.md" modified="2025-10-23T17:18:59Z" size="12889" words="1256" readTime="5min" hash="sha256:a92657563011b0d9">
                   <title>Slash commands</title>
                   <summary>Slash commands &gt; Control Claude&apos;s behavior during an interactive session with slash commands. ## Built-in slash commands | Command | Purpose ...</summary>
-                  <keywords>using, conversation, **correct**, inherits, (approves, prompt, code, request, clear, allow</keywords>
+                  <keywords>(user), tool, anthropic, command, connected, (approves, configuration, optional, parameter, showing</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-statusline" path="shared/packages/lowkey/.claude/context/claude-code/statusline.md" modified="2025-10-23T17:18:59Z" size="5698" words="740" readTime="2min" hash="sha256:7e9ba7d4046c8f50">
                   <title>Status line configuration</title>
                   <summary>Status line configuration &gt; Create a custom status line for Claude Code to display contextual information Make Claude Code your own with a custom status line that displays at the bottom of the Cla...</summary>
-                  <keywords>scripts, helper, example, custom, code, bash, stdout, information, json, make</keywords>
+                  <keywords>about, scripts, claude, stdout, stdin, terminal, status, code, make, information</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-sub-agents" path="shared/packages/lowkey/.claude/context/claude-code/sub-agents.md" modified="2025-10-23T17:18:59Z" size="11804" words="1666" readTime="6min" hash="sha256:4897316c00d2bbb9">
                   <title>Subagents</title>
                   <summary>Subagents &gt; Create and use specialized AI subagents in Claude Code for task-specific workflows and improved context management. Custom subagents in Claude Code are specialized AI assistants that c...</summary>
-                  <keywords>window, start, specific, different, effectively, &lt;/step&gt;, project-level, markdown, workflows, context</keywords>
+                  <keywords>interactive, custom, including, task, &lt;card, configured, include, workflows, thread, code</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-terminal-config" path="shared/packages/lowkey/.claude/context/claude-code/terminal-config.md" modified="2025-10-23T17:18:59Z" size="2943" words="426" readTime="1min" hash="sha256:f43b3d3ff68b017f">
                   <title>Optimize your terminal setup</title>
                   <summary>Optimize your terminal setup &gt; Claude Code works best when your terminal is properly configured. Follow these guidelines to optimize your experience. ### Themes and appearance Claude cannot contr...</summary>
-                  <keywords>tasks, mode, claude, option, long, newline, code, configure, open, enable</keywords>
+                  <keywords>configured, working, ////, notifications, **for, subset, settings, claude, alerts, notification</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-third-party-integrations" path="shared/packages/lowkey/.claude/context/claude-code/third-party-integrations.md" modified="2025-10-23T17:18:59Z" size="7880" words="883" readTime="3min" hash="sha256:b3a72f412bb13005">
                   <title>Enterprise deployment overview</title>
                   <summary>Enterprise deployment overview &gt; Learn how Claude Code can integrate with various third-party services and infrastructure to meet enterprise deployment requirements. This page provides an overview...</summary>
-                  <keywords>options, proxy, &lt;cardgroup, corporate, &lt;/card&gt;, provides, &lt;/tr&gt;, organization, development, management</keywords>
+                  <keywords>audit, combine, files, [learn, policies, configure, corporate, tracking, documentation, users</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-context-claude-code-troubleshooting" path="shared/packages/lowkey/.claude/context/claude-code/troubleshooting.md" modified="2025-10-23T17:18:59Z" size="12072" words="1665" readTime="6min" hash="sha256:81f3ba7936c8e03b">
                   <title>Troubleshooting</title>
                   <summary>Troubleshooting &gt; Discover solutions to common issues with Claude Code installation and usage. ## Common installation issues ### Windows installation issues: errors in WSL You might encounter th...</summary>
-                  <keywords>formatting, issues, current, focus, blocks, **use, authentication, **solutions:**, detected, hooks**</keywords>
+                  <keywords>rather, find, issues, permission, spacing, documentation, path, authentication, detected, specific</keywords>
                 </chapter>
               </section>
             </section>

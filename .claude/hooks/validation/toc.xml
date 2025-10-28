@@ -18,7 +18,7 @@
                 <chapter id="shared-packages-lowkey-claude-hooks-validation-readme" path="shared/packages/lowkey/.claude/hooks/validation/README.md" modified="2025-10-23T17:18:59Z" size="7116" words="841" readTime="3min" hash="sha256:605fef3d048ca16e">
                   <title>Validation Hook System</title>
                   <summary>Validation Hook System A comprehensive validation framework for Claude Code that ensures safety, security, and code quality through modular validators. ## Overview The validation system provides ...</summary>
-                  <keywords>detects, content, system, conventions, code, quality, secrets, validations, blocking, custom</keywords>
+                  <keywords>custom, warning, code, validators, path, secret, validation, conventions, integration, shell</keywords>
                 </chapter>
               </section>
             </section>
