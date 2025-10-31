@@ -16,12 +16,12 @@
               <chapter id="shared-packages-lowkey-claude-hooks-readme" path="shared/packages/lowkey/.claude/hooks/README.md" modified="2025-10-23T17:18:59Z" size="3723" words="475" readTime="1min" hash="sha256:f66895205d2a72be">
                 <title>Claude Code Hooks Organization</title>
                 <summary>Claude Code Hooks Organization This directory contains hooks organized by functionality to keep the codebase maintainable as we add more automation. ## Directory Structure ``` .claude/hooks/ â”œâ...</summary>
-                <keywords>adding, active, code, planned, oober, pretooluse, security, hooks, posttooluse, functionality</keywords>
+                <keywords>code, **events**, hooks, scripts, adding, planned, **status**, active, operations, validate</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-claude-hooks-protodoc" path="shared/packages/lowkey/.claude/hooks/protodoc.md" modified="2025-10-23T17:18:59Z" size="20569" words="2612" readTime="10min" hash="sha256:c0575866cf120db1">
                 <title>Complete Acronym Protocol Reference</title>
                 <summary>Complete Acronym Protocol Reference ## Eliminating Ambiguity in AI &amp; Agent Communication --- ## Original AI Communication Framework ### Core Operations - **VET** = &quot;Validate input, Error handli...</summary>
-                <keywords>order, enabled, acronym, stated, routing, locked, kill, orchestration, items, points</keywords>
+                <keywords>handle, syntax, tracked, items, rate, required, specified, events, structured, combined</keywords>
               </chapter>
             </section>
           </section>

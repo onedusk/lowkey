@@ -18,7 +18,7 @@
                 <chapter id="shared-packages-lowkey-docs-arc-adrs-0001-use-go-for-development" path="shared/packages/lowkey/docs/.arc/adrs/0001-use-go-for-development.md" modified="2025-10-23T17:18:59Z" size="1767" words="255" readTime="1min" hash="sha256:c5ff39289a2dfc8e">
                   <title>1. Use Go for Development</title>
                   <summary>1. Use Go for Development * **Status:** Accepted * **Date:** 2025-10-03 ## Context and Problem Statement We have a working prototype of `lowkey` in [Ruby](../.arc/lowkey.rb) and [shell script...</summary>
-                  <keywords>distribute, events, excellent, tool, needs, consequences, easy, file, performance, cross-platform</keywords>
+                  <keywords>distribute, rust, tool, community, system, consequences, easy, large, fast, decision</keywords>
                 </chapter>
               </section>
             </section>

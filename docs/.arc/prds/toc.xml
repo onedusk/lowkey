@@ -18,12 +18,12 @@
                 <chapter id="shared-packages-lowkey-docs-arc-prds-prd" path="shared/packages/lowkey/docs/.arc/prds/PRD.md" modified="2025-10-23T17:18:59Z" size="3709" words="539" readTime="2min" hash="sha256:6b1e564868a286b0">
                   <title>Product Requirements Document: Lowkey</title>
                   <summary>Product Requirements Document: Lowkey ## 1. Introduction Lowkey is a high-performance, cross-platform file monitoring tool for developers and power users. It provides a simple and efficient way to...</summary>
-                  <keywords>monitoring, power, work, user, json, files, file, them, daemon, system</keywords>
+                  <keywords>linux, features, file, logs, monitoring, user, directories, them, should, daemon</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-arc-prds-algorithm-design" path="shared/packages/lowkey/docs/.arc/prds/algorithm_design.md" modified="2025-10-23T17:18:59Z" size="12564" words="1407" readTime="5min" hash="sha256:362c3ac08af1a0c0">
                   <title>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements</title>
                   <summary>Mathematical Analysis &amp; Pseudocode for `lowkey` Improvements ## Current Algorithm Complexity ``` CURRENT_ALGORITHM(dirs[], interval): WHILE true: FOR each dir IN dirs: files[] = GLOB(d...</summary>
-                  <keywords>polling, processing, mathematical, algorithm, state</keywords>
+                  <keywords>state, mathematical, algorithm, polling, processing</keywords>
                 </chapter>
               </section>
             </section>
