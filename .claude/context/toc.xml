@@ -16,12 +16,12 @@
               <chapter id="shared-packages-lowkey-claude-context-current-focus" path="shared/packages/lowkey/.claude/context/current-focus.md" modified="2025-10-23T17:18:59Z" size="2009" words="253" readTime="1min" hash="sha256:4838aa6d6a0964b3">
                 <title>Current Development Focus</title>
                 <summary>Current Development Focus ## Active Context Management System ### Current Implementation Building a comprehensive context-aware documentation system for Claude Code that maintains understanding du...</summary>
-                <keywords>reference, focus, documentation-aware, understanding, structure, based, created, current, development, context</keywords>
+                <keywords>implementation, dynamic, context, created, during, loading, structure, based, pattern, current</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-claude-context-implementation-patterns" path="shared/packages/lowkey/.claude/context/implementation-patterns.md" modified="2025-10-23T17:18:59Z" size="2550" words="348" readTime="1min" hash="sha256:1b29c3254a574d14">
                 <title>Implementation Patterns Reference</title>
                 <summary>Implementation Patterns Reference ## Claude Code Development Patterns ### Hook Implementation Patterns #### Pattern 1: Validation Hooks - Use PreToolUse with exit code 2 to block operations - Pro...</summary>
-                <keywords>development, system, operations, clear, implementation, structured, hooks, context, layer), files</keywords>
+                <keywords>layer), prompts, loading, structured, system, claude, operations, files, hook, pattern</keywords>
               </chapter>
             </section>
           </section>

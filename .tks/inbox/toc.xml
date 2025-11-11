@@ -16,7 +16,7 @@
               <chapter id="shared-packages-lowkey-tks-inbox-todo" path="shared/packages/lowkey/.tks/inbox/TODO.md" modified="2025-10-23T17:18:59Z" size="300" words="52" readTime="1min" hash="sha256:a27d103fe0063c27">
                 <title>Project TODOs</title>
                 <summary>Project TODOs This file lists all the `TODO` items found in the project, generated from the source code comments. At this time there are no outstanding TODO comments in the source tree. Keep this ...</summary>
-                <keywords>source, todos, comments, project</keywords>
+                <keywords>comments, todos, project, source</keywords>
               </chapter>
             </section>
           </section>
