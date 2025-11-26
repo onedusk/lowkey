@@ -20,37 +20,37 @@
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-comments" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/comments.md" modified="2025-10-23T17:18:59Z" size="4432" words="704" readTime="2min" hash="sha256:35118ebf2eec64df">
                     <title>How to write code review comments</title>
                     <summary>How to write code review comments ## Summary - Be kind. - Explain your reasoning. - Balance giving explicit directions with just pointing out problems and letting the developer decide....</summary>
-                    <keywords>authors, comments, write, more, it&apos;s, explaining, direct, pointing, helpful, less</keywords>
+                    <keywords>learn, goal, severity, performance, intent, makes, result, authors, concurrency, future</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-index" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/index.md" modified="2025-10-23T17:18:59Z" size="786" words="120" readTime="1min" hash="sha256:06299c5d45d89545">
                     <title>How to do a code review</title>
                     <summary>How to do a code review The pages in this section contain recommendations on the best way to do code reviews, based on long experience. All together they represent one complete document, broken up ...</summary>
-                    <keywords>review, code, read, many</keywords>
+                    <keywords>many, read, review, code</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-looking-for" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/looking-for.md" modified="2025-10-23T17:18:59Z" size="11330" words="1909" readTime="7min" hash="sha256:0a6643fc4ce2bc73">
                     <title>What to look for in a code review</title>
                     <summary>What to look for in a code review Note: Always make sure to take into account [The Standard of Code Review](standard.md) when considering each of these points. ## Design The most important thin...</summary>
-                    <keywords>part, long, major, sense, bugs, you&apos;re, explain, example, things, great</keywords>
+                    <keywords>other, recommendations, judgment, cases, even, style, user, reviewers, general, names</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-navigate" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/navigate.md" modified="2025-10-23T17:18:59Z" size="4157" words="723" readTime="2min" hash="sha256:6742ba45208ef35a">
                     <title>Navigating a CL in review</title>
                     <summary>Navigating a CL in review ## Summary Now that you know [what to look for](looking-for.md), what&apos;s the most efficient way to manage a review that&apos;s spread across multiple files? 1. Does the cha...</summary>
-                    <keywords>logical, deadlines, review, other, process, doing, files, don&apos;t, design, parts</keywords>
+                    <keywords>developer, doing, order, look, review, more, parts, logical, it&apos;s, comments</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-pushback" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/pushback.md" modified="2025-10-23T17:18:59Z" size="4369" words="711" readTime="2min" hash="sha256:a6eeefeee0f786c5">
                     <title>Handling pushback in code reviews</title>
                     <summary>Handling pushback in code reviews Sometimes a developer will push back on a code review. Either they will disagree with your suggestion or they will complain that you are being too strict in gene...</summary>
-                    <keywords>being, about, complaints, fade, usually, sometimes, reviewer&apos;s, causes, review, them</keywords>
+                    <keywords>take, change, upset, common, write, reviews, away, developer, conflict, they</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-speed" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/speed.md" modified="2025-10-23T17:18:59Z" size="7154" words="1184" readTime="4min" hash="sha256:06d02508ad748ed9">
                     <title>Speed of Code Reviews</title>
                     <summary>Speed of Code Reviews ## Why Should Code Reviews Be Fast? {#why} **At Google, we optimize for the speed at which a team of developers can produce a product together**, as opposed to optimizing f...</summary>
-                    <keywords>developer, back, ideally, developers, respond, point, team, means, less, quickly</keywords>
+                    <keywords>instead, quick, several, process, lgtm, should, response, slow, improvements, means</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-reviewer-standard" path="shared/packages/lowkey/docs/eng-practices/review/reviewer/standard.md" modified="2025-10-23T17:18:59Z" size="5745" words="948" readTime="3min" hash="sha256:c37144f9f8880092">
                     <title>The Standard of Code Review</title>
                     <summary>The Standard of Code Review The primary purpose of code review is to make sure that the overall code health of Google&apos;s code base is improving over time. All of the tools and processes of code re...</summary>
-                    <keywords>team, perfect, important, even, come, they, asking, standard, system, resolve</keywords>
+                    <keywords>document, author, otherwise, asking, definitely, principles, accept, order, through, developer</keywords>
                   </chapter>
                 </section>
               </section>

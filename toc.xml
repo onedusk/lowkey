@@ -12,7 +12,7 @@
           <chapter id="shared-packages-lowkey-readme" path="shared/packages/lowkey/README.md" modified="2025-10-23T17:18:59Z" size="9432" words="1142" readTime="4min" hash="sha256:972647b8e7c2185c">
             <title>Lowkey</title>
             <summary># Lowkey ## Overview Lowkey is a cross-platform filesystem monitor written in Go. It can run in the foreground for quick ad-hoc monitoring or as a daemon that supervises a hybrid event/polling wat...</summary>
-            <keywords>host, license, product, active, count, logs, mode, character, heartbeat, usage**</keywords>
+            <keywords>metrics, logs, rotated, type, number, non-separator, enables, pattern, trace, matches</keywords>
           </chapter>
         </section>
       </section>
