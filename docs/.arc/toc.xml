@@ -16,7 +16,7 @@
               <chapter id="shared-packages-lowkey-docs-arc-proposal" path="shared/packages/lowkey/docs/.arc/proposal.md" modified="2025-10-23T17:18:59Z" size="2778" words="363" readTime="1min" hash="sha256:08a4c0836b65b0fa">
                 <title>Agent-Managed Code Review System</title>
                 <summary>Agent-Managed Code Review System This proposal defines how repository-aware agents own the entire review loop by wiring into existing Claude hook infrastructure. ## For Agents: Operating Playbook ...</summary>
-                <keywords>time, review, hook, human, patches, system, escalation, tied, rubric, maintainers</keywords>
+                <keywords>system, review, maintainers, rubric, context, hook, existing, time, escalation, mode</keywords>
               </chapter>
             </section>
           </section>
