@@ -20,22 +20,22 @@
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-developer-cl-descriptions" path="shared/packages/lowkey/docs/eng-practices/review/developer/cl-descriptions.md" modified="2025-10-23T17:18:59Z" size="8007" words="1324" readTime="5min" hash="sha256:f1231472e6769e01">
                     <title>Writing good CL descriptions</title>
                     <summary>Writing good CL descriptions A CL description is a public record of change, and it is important that it communicates: 1. **What** change is being made? This should summarize the major changes s...</summary>
-                    <keywords>tags, information, methods, system, description, first, review, version, python3, **what**</keywords>
+                    <keywords>complete, description, informative, enough, talks, refactoring, task, small, line, rest</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-developer-handling-comments" path="shared/packages/lowkey/docs/eng-practices/review/developer/handling-comments.md" modified="2025-10-23T17:18:59Z" size="4367" words="717" readTime="2min" hash="sha256:db3cab260f177821">
                     <title>How to handle reviewer comments</title>
                     <summary>How to handle reviewer comments When you&apos;ve sent a CL out for review, it&apos;s likely that your reviewer will respond with several comments on your CL. Here are some useful things to know about handl...</summary>
-                    <keywords>it&apos;s, likely, they, about, explain, appropriate, collaboratively, google, isn&apos;t, person</keywords>
+                    <keywords>can&apos;t, asking, sometimes, consensus, person, doesn&apos;t, disagree, yourself, readers, step</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-developer-index" path="shared/packages/lowkey/docs/eng-practices/review/developer/index.md" modified="2025-10-23T17:18:59Z" size="647" words="95" readTime="1min" hash="sha256:10421c370a34c711">
                     <title>The CL author&apos;s guide to getting through code review</title>
                     <summary>The CL author&apos;s guide to getting through code review The pages in this section contain best practices for developers going through code review. These guidelines should help you get through reviews ...</summary>
-                    <keywords>code, through, review, read, [how</keywords>
+                    <keywords>through, code, read, [how, review</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-docs-eng-practices-review-developer-small-cls" path="shared/packages/lowkey/docs/eng-practices/review/developer/small-cls.md" modified="2025-10-23T17:18:59Z" size="12289" words="2010" readTime="8min" hash="sha256:6bc55ce9a752bbb2">
                     <title>Small CLs</title>
                     <summary>Small CLs ## Why Write Small CLs? {#why} Small, simple CLs are: - **Reviewed more quickly.** It&apos;s easier for a reviewer to find five minutes several times to review small CLs than to set ...</summary>
-                    <keywords>(e.g, usually, splitting, continue, keep, understand, included, **easier, function, judgment</keywords>
+                    <keywords>important, smaller, introducing, roll, refactoring, being, here, them, change, same</keywords>
                   </chapter>
                 </section>
               </section>
