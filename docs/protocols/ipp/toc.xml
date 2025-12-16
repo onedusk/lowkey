@@ -18,27 +18,27 @@
                 <chapter id="shared-packages-lowkey-docs-protocols-ipp-def" path="shared/packages/lowkey/docs/protocols/ipp/def.md" modified="2025-10-23T17:18:59Z" size="2970" words="411" readTime="1min" hash="sha256:824a371d7a0a7831">
                   <title>Theory to Practice Framework</title>
                   <summary>Theory to Practice Framework Outline for systematic process in transforming theoretical software concepts into proven implementations. This approach emphasizes rigor, validation, and documentation ...</summary>
-                  <keywords>theoretical, design, document, criteria, integration, formal, proof, environment, phase, define</keywords>
+                  <keywords>properties, review, analysis, edge, specifications, case, applicable, theory, formal, identify</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-protocols-ipp-dev" path="shared/packages/lowkey/docs/protocols/ipp/dev.md" modified="2025-10-23T17:18:59Z" size="4127" words="600" readTime="2min" hash="sha256:a91a412437f3530e">
                   <title>Parallel Development Tracks</title>
                   <summary>Parallel Development Tracks ## Parallel Track Approach Since everything needs exploration, you can work on multiple tracks simultaneously while maintaining dependencies: ### Track 1: Core Proof (...</summary>
-                  <keywords>proven, exploration, proof, theory, (track, build, agents, integration, evidence, you&apos;re</keywords>
+                  <keywords>thread, parallel, (not, reduction, code, failures, tracks, track, test, exploration</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-protocols-ipp-flow" path="shared/packages/lowkey/docs/protocols/ipp/flow.md" modified="2025-10-23T17:18:59Z" size="2934" words="423" readTime="1min" hash="sha256:b223c1b0897be944">
                   <title>Implementation Flow</title>
                   <summary>Implementation Flow ## Software Development Theory-to-Proof Flow ### Main Flow **Concept** → **Research** → **Design** → **Prototype** → **Build** → **Test** → **Validate** → **Proo...</summary>
-                  <keywords>stage, concept, complete, proof, theory, flow, does, development, phase, track:**</keywords>
+                  <keywords>stage, phase, does, complete, proof, concept, development, theory, implementation, track:**</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-protocols-ipp-glossary" path="shared/packages/lowkey/docs/protocols/ipp/glossary.md" modified="2025-10-23T17:18:59Z" size="4471" words="603" readTime="2min" hash="sha256:65033b883c1a31f4">
                   <title>IPP Glossary</title>
                   <summary>IPP Glossary ## Software Development Theory-to-Proof Glossary ### A **Algorithm Complexity** - Mathematical expression of resource usage (time/space) relative to input size, typically expressed i...</summary>
-                  <keywords>case**, implementations, testing, system, true, conditions, same, against, components, existing</keywords>
+                  <keywords>using, functionality, systematic, software, implementation, must, project, against, results, test</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-protocols-ipp-prior-art" path="shared/packages/lowkey/docs/protocols/ipp/prior_art.md" modified="2025-10-23T17:18:59Z" size="1843" words="260" readTime="1min" hash="sha256:4a7bf8083d1747f5">
                   <title>Prior Art and Lessons Learned</title>
                   <summary>Prior Art and Lessons Learned **Prior art** refers to any existing work, implementations, or documented knowledge that relates to your concept and existed before you started working on it. This inc...</summary>
-                  <keywords>work, implementations, code, similar, performance, previous, helps, approaches, you&apos;re, academic</keywords>
+                  <keywords>prior, you&apos;re, existing, papers, systems, previous, field, work, implementations, approaches</keywords>
                 </chapter>
               </section>
             </section>

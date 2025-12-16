@@ -16,12 +16,12 @@
               <chapter id="shared-packages-lowkey-claude-hooks-readme" path="shared/packages/lowkey/.claude/hooks/README.md" modified="2025-10-23T17:18:59Z" size="3723" words="475" readTime="1min" hash="sha256:f66895205d2a72be">
                 <title>Claude Code Hooks Organization</title>
                 <summary>Claude Code Hooks Organization This directory contains hooks organized by functionality to keep the codebase maintainable as we add more automation. ## Directory Structure ``` .claude/hooks/ ├�...</summary>
-                <keywords>adding, posttooluse, **purpose**, hooks, formatting, 🔜, **events**, pretooluse, oober, **status**</keywords>
+                <keywords>pretooluse, **purpose**, functionality, purpose, scripts, **status**, code, planned, operations, directory</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-claude-hooks-protodoc" path="shared/packages/lowkey/.claude/hooks/protodoc.md" modified="2025-10-23T17:18:59Z" size="20569" words="2612" readTime="10min" hash="sha256:c0575866cf120db1">
                 <title>Complete Acronym Protocol Reference</title>
                 <summary>Complete Acronym Protocol Reference ## Eliminating Ambiguity in AI &amp; Agent Communication --- ## Original AI Communication Framework ### Core Operations - **VET** = &quot;Validate input, Error handli...</summary>
-                <keywords>schema, start, management, interface, yield, size, switch, pipeline, delete, caught</keywords>
+                <keywords>defined, identified, start, matched, syntax, limit, results, task, json, blocking</keywords>
               </chapter>
             </section>
           </section>

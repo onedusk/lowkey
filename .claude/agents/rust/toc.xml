@@ -23,27 +23,27 @@
                 <chapter id="shared-packages-lowkey-claude-agents-rust-error-handler" path="shared/packages/lowkey/.claude/agents/rust/error-handler.md" modified="2025-10-23T17:18:59Z" size="7444" words="773" readTime="3min" hash="sha256:6e77e3502079a0c3">
                   <title>Error Handler Agent</title>
                   <summary>Error Handler Agent ## Mission Replace lazy `Box&lt;dyn Error&gt;` with proper error types that provide context and help users understand what went wrong. ## Prerequisites - Module Splitter agent must c...</summary>
-                  <keywords>agent, context, create, handling, pattern, processing, config, recovery, line, errors</keywords>
+                  <keywords>line, file, config, pattern, users, found, parallel, context, errors, processing</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-agents-rust-module-splitter" path="shared/packages/lowkey/.claude/agents/rust/module-splitter.md" modified="2025-10-23T17:18:59Z" size="1061" words="172" readTime="1min" hash="sha256:7aa9187e52b4ebc4">
                   <title>Module Splitter Agent</title>
                   <summary>Module Splitter Agent ## Mission Break the 847-line main.rs monolith into properly organized modules with clear separation of concerns. ## Current State Analysis - main.rs has everything: CLI pars...</summary>
-                  <keywords>concerns, basic, separation, lines, modules, module, clear, business, tests, logic</keywords>
+                  <keywords>move, modules, concerns, main.rs, functions, business, tests, don&apos;t, type, clear</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-agents-rust-pattern-optimizer" path="shared/packages/lowkey/.claude/agents/rust/pattern-optimizer.md" modified="2025-10-23T17:18:59Z" size="13031" words="1260" readTime="5min" hash="sha256:ace0482711136d7d">
                   <title>Pattern Optimizer Agent</title>
                   <summary>Pattern Optimizer Agent ## Mission Optimize regex compilation and caching to eliminate redundant compilation and improve performance. ## Prerequisites - Module Splitter agent must complete first -...</summary>
-                  <keywords>every, invalid, cache, 2-5x, pattern, patterns, load, caching, fail, regex</keywords>
+                  <keywords>usage, compilation, config, rate, show, patterns, invalid, fail, every, performance</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-agents-rust-preset-migrator" path="shared/packages/lowkey/.claude/agents/rust/preset-migrator.md" modified="2025-10-23T17:18:59Z" size="13034" words="1336" readTime="5min" hash="sha256:83a62e1ad29208df">
                   <title>Preset Migrator Agent</title>
                   <summary>Preset Migrator Agent ## Mission Extract 170 lines of hardcoded preset patterns from main.rs into maintainable YAML configurations. ## Prerequisites - Can work independently from other agents - ...</summary>
-                  <keywords>patterns, yaml, function, files, hardcoded, lines, preset, create, structure, users</keywords>
+                  <keywords>hardcoded, patterns, lines, create, users, presets, directory, yaml, structure, files</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-claude-agents-rust-test-writer" path="shared/packages/lowkey/.claude/agents/rust/test-writer.md" modified="2025-10-23T17:18:59Z" size="10532" words="932" readTime="3min" hash="sha256:1bb628dbee946738">
                   <title>Test Writer Agent</title>
                   <summary>Test Writer Agent ## Mission Add comprehensive test coverage to a codebase that currently has ZERO tests. Target 80%+ coverage with focus on edge cases. ## Prerequisites - Module Splitter agent mu...</summary>
-                  <keywords>target, 80%+, test, agent, 85%+, coverage, edge, performance, tests, cases</keywords>
+                  <keywords>coverage, 80%+, test, tests, edge, performance, 85%+, cases, agent, target</keywords>
                 </chapter>
               </section>
             </section>

@@ -14,32 +14,32 @@
             <chapter id="shared-packages-lowkey-docs-agents" path="shared/packages/lowkey/docs/AGENTS.md" modified="2025-10-23T17:18:59Z" size="2828" words="390" readTime="1min" hash="sha256:438e98412a22a960">
               <title>Repository Guidelines</title>
               <summary>Repository Guidelines ## Project Structure &amp; Module Organization `go.mod` anchors the module at the repo root, and `main.go` wires the CLI entrypoint. Subcommands and Cobra wiring live in `cmd/`, ...</summary>
-              <keywords>tests, rationale, configuration, exported, keep, guidelines, test, using, commit, ignore</keywords>
+              <keywords>keep, tests, document, configuration, using, notes, ignore, commands, patterns, exported</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-changelog" path="shared/packages/lowkey/docs/CHANGELOG.md" modified="2025-10-23T17:18:59Z" size="1643" words="215" readTime="1min" hash="sha256:cd34645bada73062">
               <title>Changelog</title>
               <summary>Changelog All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semanti...</summary>
-              <keywords>watcher, ignore, pipeline, daemon, heartbeat, project, hybrid, stubs, telemetry, helpers</keywords>
+              <keywords>pipeline, added, stubs, watcher, daemon, manifests, manager, ignore, supervisor, project</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-claude" path="shared/packages/lowkey/docs/CLAUDE.md" modified="2025-10-23T17:18:59Z" size="5643" words="767" readTime="3min" hash="sha256:5f28c3ee8b6cea9c">
               <title>CLAUDE.md</title>
               <summary>CLAUDE.md This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. ## Essential Commands ### Build &amp; Development ```bash # Build the CLI binary (outp...</summary>
-              <keywords>fsnotify, interface, implementation, command, tests, event-driven, patterns, through, monitoring, platform-specific</keywords>
+              <keywords>even, change, context, development, event, monitors, interface, watcher, monitoring, implementation</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-code-of-conduct" path="shared/packages/lowkey/docs/CODE_OF_CONDUCT.md" modified="2025-10-23T17:18:59Z" size="4978" words="677" readTime="2min" hash="sha256:37d9c841986439f8">
               <title>Contributor Covenant Code of Conduct</title>
               <summary>Contributor Covenant Code of Conduct ## Our Pledge We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of a...</summary>
-              <keywords>private, unacceptable, guidelines, code, demonstrating, media, consequences, permanent, include, **consequence**</keywords>
+              <keywords>address, including, sexual, private, violation, behavior, spaces, warning, lead, code</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-contributing" path="shared/packages/lowkey/docs/CONTRIBUTING.md" modified="2025-10-23T17:18:59Z" size="1895" words="275" readTime="1min" hash="sha256:e83ce5f9dc7714aa">
               <title>Contributing to Lowkey</title>
               <summary>Contributing to Lowkey First off, thank you for considering contributing to Lowkey! It&apos;s people like you that make Lowkey such a great tool. ## Where do I go from here? If you&apos;ve noticed a bug or...</summary>
-              <keywords>contributing, lowkey, make, create, feature, [make, pull, it&apos;s, master, name</keywords>
+              <keywords>it&apos;s, branch, [make, create, please, name, sure, code, contributing, make</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-gemini" path="shared/packages/lowkey/docs/GEMINI.md" modified="2025-10-23T17:18:59Z" size="3032" words="400" readTime="1min" hash="sha256:c88ccdf829fc5604">
               <title>Lowkey</title>
               <summary>Lowkey ## Project Overview This project, named &quot;Lowkey,&quot; is a cross-platform filesystem monitor written in Go. It is designed to run either in the foreground for ad-hoc monitoring or as a backgrou...</summary>
-              <keywords>file, events, daemon:**, handles, command-line, following, metrics, manages, provides, configuration</keywords>
+              <keywords>command-line, tracing, metrics, hybrid, logic, command, building, architecture, background, handles</keywords>
             </chapter>
             <chapter id="shared-packages-lowkey-docs-security" path="shared/packages/lowkey/docs/security.md" modified="2025-10-23T17:18:59Z" readTime="1min" hash="sha256:e3b0c44298fc1c14">
               <title>Untitled</title>
