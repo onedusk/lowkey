@@ -20,12 +20,12 @@
               <chapter id="shared-packages-lowkey-docs-architecture-structure-overview" path="shared/packages/lowkey/docs/architecture/STRUCTURE_OVERVIEW.md" modified="2025-10-23T17:18:59Z" size="6352" words="756" readTime="3min" hash="sha256:29b7c2b0e564552a">
                 <title>Code Structure &amp; Dependency Map</title>
                 <summary>Code Structure &amp; Dependency Map ## Top-Level Modules - `cmd/` – Entry points compiled into binaries. `cmd/lowkey` wires CLI commands to runtime services. - `internal/` – Core implementation det...</summary>
-                <keywords>watchers, fixtures, expose, management, integration, release, external, hybrid, structures, consumed</keywords>
+                <keywords>daemon, event, dependencies, status, manifests, helpers, patterns, output, (e.g, files</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-architecture-overview" path="shared/packages/lowkey/docs/architecture/overview.md" modified="2025-10-23T17:18:59Z" size="4316" words="545" readTime="2min" hash="sha256:ae46a22524d8c78d">
                 <title>Lowkey Architecture Overview</title>
                 <summary>Lowkey Architecture Overview Lowkey is a Cobra-driven CLI that can run in foreground or as a background daemon. The runtime is split into clearly scoped packages so that commands, monitoring logic,...</summary>
-                <keywords>manager, without, helpers, fsnotify, portable, packages, utilities, cache, architecture, foreground</keywords>
+                <keywords>lowkey, persistence, portable, directory, aggregator, utilities, controller, integrations, watcher, foreground</keywords>
               </chapter>
             </section>
           </section>
