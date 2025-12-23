@@ -18,12 +18,12 @@
                 <chapter id="shared-packages-lowkey-docs-eng-practices-review-emergencies" path="shared/packages/lowkey/docs/eng-practices/review/emergencies.md" modified="2025-10-23T17:18:59Z" size="3157" words="536" readTime="2min" hash="sha256:f6123a06a6a86b93">
                   <title>Emergencies</title>
                   <summary>Emergencies Sometimes there are emergency CLs that must pass through the entire code review process as quickly as possible. ## What Is An Emergency? {#what} An emergency CL would be a **small**...</summary>
-                  <keywords>deadline](#deadlines), deadlines, code, must, review, should, entire, launch, miss, care</keywords>
+                  <keywords>emergency, rolling, speed, developer, hard, disastrous, emergencies, launch, submitting, must</keywords>
                 </chapter>
                 <chapter id="shared-packages-lowkey-docs-eng-practices-review-index" path="shared/packages/lowkey/docs/eng-practices/review/index.md" modified="2025-10-23T17:18:59Z" size="2767" words="436" readTime="1min" hash="sha256:c1f1f98dde14d0bb">
                   <title>Untitled</title>
                   <summary>## Introduction {#intro} A code review is a process where someone other than the author(s) of a piece of code examines that code. At Google, we use code review to maintain the quality of our code a...</summary>
-                  <keywords>**[how, process, does, reviewers, through, they, look, whose, other, clear</keywords>
+                  <keywords>through, look, does, reviewers, in-person, should, they, guide, other, process</keywords>
                 </chapter>
               </section>
             </section>
