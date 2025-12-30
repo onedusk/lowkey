@@ -14,7 +14,7 @@
             <chapter id="shared-packages-lowkey-examples-readme" path="shared/packages/lowkey/examples/README.md" modified="2025-10-23T17:18:59Z" size="4037" words="535" readTime="2min" hash="sha256:f725853af26ddc68">
               <title>Lowkey Examples</title>
               <summary>Lowkey Examples This directory contains example `.lowkey` ignore pattern files for various project types. ## Available Examples ### Basic Patterns (`.lowkey-basic`) General-purpose patterns suita...</summary>
-              <keywords>patterns, development, directory, project, more, example, combine, build, ignore, **use</keywords>
+              <keywords>example, project, control, lowkey, test, examples, directory, dependencies, applications, pattern</keywords>
             </chapter>
           </section>
         </section>

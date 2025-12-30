@@ -21,42 +21,42 @@
               <chapter id="shared-packages-lowkey-docs-guides-linux-setup" path="shared/packages/lowkey/docs/guides/linux-setup.md" modified="2025-10-23T17:18:59Z" size="2473" words="324" readTime="1min" hash="sha256:fb1173b843875568">
                 <title>Linux Setup Guide</title>
                 <summary>Linux Setup Guide This guide covers installation and daemon setup for `lowkey` on Linux systems, focusing on distributions that use `systemd`. ## Installation You can install `lowkey` by building...</summary>
-                <keywords>create, file, daemon, guide, source, check, installation, linux, setup, service</keywords>
+                <keywords>setup, logs, check, guide, installation, view, source, file, create, status</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-log-rotation" path="shared/packages/lowkey/docs/guides/log-rotation.md" modified="2025-10-23T17:18:59Z" size="9168" words="1243" readTime="4min" hash="sha256:32c762fa4357b7dc">
                 <title>Log Rotation Guide</title>
                 <summary>Log Rotation Guide This guide explains how lowkey manages log files through automatic rotation. ## Overview Lowkey implements automatic log rotation to prevent log files from growing indefinitely...</summary>
-                <keywords>create, path, stored, rotation, active, maximum, atomic, timestamp, locks, trigger</keywords>
+                <keywords>atomic, exceed, (rotated, issues, behavior, file**, current, manual, trigger, exist</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-macos-setup" path="shared/packages/lowkey/docs/guides/macos-setup.md" modified="2025-10-23T17:18:59Z" size="1715" words="158" readTime="1min" hash="sha256:7d5440bce16d5ecd">
                 <title>macOS Setup Guide</title>
                 <summary>macOS Setup Guide This guide covers installation and daemon setup for lowkey on macOS. ## Installation Build and install the lowkey binary: ```bash # Build the binary make build # Copy to PATH ...</summary>
-                <keywords>guide, start, macos, setup, installation, create, lowkey, launchd, service</keywords>
+                <keywords>installation, lowkey, macos, service, launchd, create, start, setup, guide</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-manifest-schema" path="shared/packages/lowkey/docs/guides/manifest-schema.md" modified="2025-10-23T17:18:59Z" size="5209" words="676" readTime="2min" hash="sha256:e7a3d31b8c5f8f48">
                 <title>Manifest JSON Schema</title>
                 <summary>Manifest JSON Schema The `lowkey` daemon is configured via a JSON manifest file. This document outlines the structure and validation rules for the manifest. ## Overview The manifest file is autom...</summary>
-                <keywords>must, directory, manifest, structure, **description:**, patterns, file, rules:**, custom, empty</keywords>
+                <keywords>exist, directory, array, must, patterns, **example:**, **validation, schema, metrics, manifest</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-state-directories" path="shared/packages/lowkey/docs/guides/state-directories.md" modified="2025-10-23T17:18:59Z" size="8213" words="1034" readTime="4min" hash="sha256:9a5d6cf1993de154">
                 <title>State Directory Locations</title>
                 <summary>State Directory Locations This guide documents where lowkey stores its state files, including daemon manifests, logs, and cache data. ## Overview Lowkey follows platform conventions for state fil...</summary>
-                <keywords>files, running, variable, daemon, json, denied, lowkey, linux, configuration, cache</keywords>
+                <keywords>base, process, remove, locations, state, directory, daemon.json, stops, linux, path</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-telemetry" path="shared/packages/lowkey/docs/guides/telemetry.md" modified="2025-10-23T17:18:59Z" size="7284" words="928" readTime="3min" hash="sha256:963a11648b4e03b1">
                 <title>Telemetry Guide</title>
                 <summary>Telemetry Guide This guide covers lowkey&apos;s telemetry features for monitoring and observability. ## Overview Lowkey provides optional telemetry features to help monitor the performance and behavio...</summary>
-                <keywords>exposed, error, filesystem, daemon, planning, **event, overhead, usage, **description**, grafana</keywords>
+                <keywords>usage, total, endpoint, planning, telemetry, monitor, prometheus, detailed, spikes, features</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-troubleshooting" path="shared/packages/lowkey/docs/guides/troubleshooting.md" modified="2025-10-23T17:18:59Z" size="11392" words="1523" readTime="6min" hash="sha256:c47d005b68c580d6">
                 <title>Troubleshooting Guide</title>
                 <summary>Troubleshooting Guide This guide helps diagnose and resolve common issues with lowkey daemon operation. ## Quick Diagnostics Run these commands first to gather information: ```bash # Check daemo...</summary>
-                <keywords>broken, memory**, path, high, full, ignore, click, **common, many, running</keywords>
+                <keywords>state, binary, patterns, more, clear, **diagnosis**, **polling, first, file, full**</keywords>
               </chapter>
               <chapter id="shared-packages-lowkey-docs-guides-windows-setup" path="shared/packages/lowkey/docs/guides/windows-setup.md" modified="2025-10-23T17:18:59Z" size="2987" words="394" readTime="1min" hash="sha256:4267798fb0d8469f">
                 <title>Windows Setup Guide</title>
                 <summary>Windows Setup Guide This guide explains how to install `lowkey` on Windows and configure it to run as a background service using the Non-Sucking Service Manager (NSSM). ## Installation You can in...</summary>
-                <keywords>view, binary, system&apos;s, guide, service, download, directory, status, setup, windows</keywords>
+                <keywords>system&apos;s, source, setup, download, service, binary, latest, directory, view, install</keywords>
               </chapter>
             </section>
           </section>

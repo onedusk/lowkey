@@ -20,72 +20,72 @@
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-custom-tools" path="shared/packages/lowkey/.claude/context/claude-code/sdk/custom-tools.md" modified="2025-10-23T17:18:59Z" size="23275" words="2248" readTime="8min" hash="sha256:b5de83977008e54e">
                     <title>Custom Tools</title>
                     <summary>Custom Tools &gt; Build and integrate custom tools to extend Claude Code SDK functionality Custom tools allow you to extend Claude Code&apos;s capabilities with your own functionality through in-process M...</summary>
-                    <keywords>format, example, allow, servers, functionality, server, multiple, type, tool, tools</keywords>
+                    <keywords>&lt;/codegroup&gt;, server, type, extend, servers, tool, format, custom, claude, allow</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-modifying-system-prompts" path="shared/packages/lowkey/.claude/context/claude-code/sdk/modifying-system-prompts.md" modified="2025-10-23T17:18:59Z" size="9598" words="1141" readTime="4min" hash="sha256:40ffad204e8216ad">
                     <title>Modifying system prompts</title>
                     <summary>Modifying system prompts &gt; Learn how to customize Claude&apos;s behavior by modifying system prompts using three approaches - output styles, appendSystemPrompt, and customSystemPrompt. System prompts d...</summary>
-                    <keywords>discoverable, preserved, tools, code, prompt, verbosity, duplication, system, option, claude</keywords>
+                    <keywords>must, additions, complete, using, discoverable, output, usage, maintained, code, methods</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-cost-tracking" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-cost-tracking.md" modified="2025-10-23T17:18:59Z" size="11102" words="1269" readTime="5min" hash="sha256:fae4d3a5fc7fcb73">
                     <title>Tracking Costs and Usage</title>
                     <summary>Tracking Costs and Usage &gt; Understand and track token usage for billing in the Claude Code SDK # SDK Cost Tracking The Claude Code SDK provides detailed token usage information for each interacti...</summary>
-                    <keywords>authoritative, track, billing, same, charge, &lt;codegroup&gt;, [sdk, messages, users, documentation</keywords>
+                    <keywords>[sdk, users, charge, used, total, dashboard, tools, &lt;codegroup&gt;, cases, token</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-headless" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-headless.md" modified="2025-10-23T17:18:59Z" size="8800" words="932" readTime="3min" hash="sha256:a3887800ab82e9ab">
                     <title>Headless mode</title>
                     <summary>Headless mode &gt; Run Claude Code programmatically without interactive UI ## Overview The headless mode allows you to run Claude Code programmatically from command line scripts and automation tools...</summary>
-                    <keywords>(default), messages, non-interactive, user, followed, multiple, options, complete, final, line</keywords>
+                    <keywords>/&gt;&lt;br, documentation, line, continue, comma-separated, (default), json, assistant, without, **use</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-mcp" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-mcp.md" modified="2025-10-23T17:18:59Z" size="7553" words="743" readTime="2min" hash="sha256:5f7f38093fbabb7c">
                     <title>MCP in the SDK</title>
                     <summary>MCP in the SDK &gt; Extend Claude Code with custom tools using Model Context Protocol servers ## Overview Model Context Protocol (MCP) servers extend Claude Code with custom tools and capabilities. ...</summary>
-                    <keywords>claude, custom, using, detailed, resources, extend, http/sse, application, processes, external</keywords>
+                    <keywords>protocol, servers, model, external, custom, processes, code, &lt;/codegroup&gt;, configuration, http/sse</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-overview" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-overview.md" modified="2025-10-23T17:18:59Z" size="4321" words="548" readTime="2min" hash="sha256:13d93fa8287184e2">
                     <title>Overview</title>
                     <summary>Overview &gt; Build custom AI agents with the Claude Code SDK ## SDK Options The Claude Code SDK is available in multiple forms to suit different use cases: * **[Headless Mode](/en/docs/claude-code...</summary>
-                    <keywords>best, support, building, build, same, commands, file, authentication, credentials, system</keywords>
+                    <keywords>third-party, assistants, issues, configuration, code, authentication, markdown, tools, building, files</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-permissions" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-permissions.md" modified="2025-10-23T17:18:59Z" size="18356" words="2060" readTime="8min" hash="sha256:ea987bf510050011">
                     <title>Handling Permissions</title>
                     <summary>Handling Permissions &gt; Control tool usage and permissions in the Claude Code SDK &lt;style&gt; {` .edgeLabel { padding: 8px 12px !important; } .edgeLabel rect { rx: 4; ry...</summary>
-                    <keywords>handles, behaviors, ways, mode**, dynamic, still, provide, etc.), complete, bash</keywords>
+                    <keywords>user, checks, commands, called, four, programmatic, accept, auto-approved, complete, integrated</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-python" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-python.md" modified="2025-10-23T17:18:59Z" size="47751" words="5176" readTime="20min" hash="sha256:da17274c1b6600e1">
                     <title>Python SDK reference</title>
                     <summary>Python SDK reference &gt; Complete API reference for the Claude Code Python SDK, including all functions, types, and classes. ## Choosing Between `query()` and `ClaudeSDKClient` The Python SDK provi...</summary>
-                    <keywords>object, list, using, usage, content, python, tool, server, text, including</keywords>
+                    <keywords>hook, raised, mode):**, hooks, need, -------------, claudesdkclient, **output:**, callback, --------</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-sessions" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-sessions.md" modified="2025-10-23T17:18:59Z" size="11526" words="1242" readTime="4min" hash="sha256:22f08be0fb8b14c6">
                     <title>Session Management</title>
                     <summary>Session Management &gt; Understanding how the Claude Code SDK handles sessions, session files, and session resumption &lt;style&gt; {` .edgeLabel { padding: 8px 12px !important; } .edge...</summary>
-                    <keywords>**on, system, file-based, line, handling, &lt;codegroup&gt;, persistence, creates, tool, metadata</keywords>
+                    <keywords>state, enabling, code, creates, handling, handles, claude, persisted, **on, system</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-slash-commands" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-slash-commands.md" modified="2025-10-23T17:18:59Z" size="12722" words="1465" readTime="5min" hash="sha256:eac1a66a8ab7bdbb">
                     <title>Slash Commands in the SDK</title>
                     <summary>Slash Commands in the SDK &gt; Learn how to use slash commands to control Claude Code sessions through the SDK Slash commands provide a way to control Claude Code sessions with special commands that ...</summary>
-                    <keywords>code, provides, file, arguments, bash, complete, &lt;/codegroup&gt;, configuration, available, include</keywords>
+                    <keywords>directories, similar, bash, custom, conversation, history, like, available, &lt;/codegroup&gt;, configuration</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-sdk-typescript" path="shared/packages/lowkey/.claude/context/claude-code/sdk/sdk-typescript.md" modified="2025-10-23T17:18:59Z" size="36351" words="4102" readTime="16min" hash="sha256:fd03a7987cb8cbc6">
                     <title>TypeScript SDK reference</title>
                     <summary>TypeScript SDK reference &gt; Complete API reference for the Claude Code TypeScript SDK, including all functions, types, and interfaces. &lt;script src=&quot;/components/typescript-sdk-type-links.js&quot; defer /...</summary>
-                    <keywords>default, model, available, methods, output, user, killbash, format, documentation, ----------------------------------------------------------------</keywords>
+                    <keywords>executes, output, local, **tool, response, parameter, results, async, list, final</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-streaming-vs-single-mode" path="shared/packages/lowkey/.claude/context/claude-code/sdk/streaming-vs-single-mode.md" modified="2025-10-23T17:18:59Z" size="8644" words="877" readTime="3min" hash="sha256:974cc9e7e3f47b3a">
                     <title>Streaming Input</title>
                     <summary>Streaming Input &gt; Understanding the two input modes for Claude Code SDK and when to use each ## Overview The Claude Code SDK supports two distinct input modes for interacting with agents: * **St...</summary>
-                    <keywords>attachments, benefits, claude, multiple, hooks, one-shot, message, handles, &lt;/card&gt;, implementation</keywords>
+                    <keywords>modes, handles, implementation, attachments, understanding, &lt;/codegroup&gt;, input, benefits, interactive, process</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-subagents" path="shared/packages/lowkey/.claude/context/claude-code/sdk/subagents.md" modified="2025-10-23T17:18:59Z" size="5817" words="756" readTime="3min" hash="sha256:2e4e0a7d2d42b103">
                     <title>Subagents in the SDK</title>
                     <summary>Subagents in the SDK &gt; Working with subagents in the Claude Code SDK Subagents in the Claude Code SDK are specialized AIs that are orchestrated by the main agent. Use subagents for context managem...</summary>
-                    <keywords>available, prompts, specialized, agent, knowledge, access, main, specific, overview, instructions</keywords>
+                    <keywords>code, frontmatter, documentation, subagent, review, creating, filesystem, context, parallelization, created</keywords>
                   </chapter>
                   <chapter id="shared-packages-lowkey-claude-context-claude-code-sdk-todo-tracking" path="shared/packages/lowkey/.claude/context/claude-code/sdk/todo-tracking.md" modified="2025-10-23T17:18:59Z" size="5556" words="603" readTime="2min" hash="sha256:89da2fa7bf2efabf">
                     <title>Todo Lists</title>
                     <summary>Todo Lists &gt; Track and display todos using the Claude Code SDK for organized task management Todo tracking provides a structured way to manage tasks and display progress to users. The Claude Code ...</summary>
-                    <keywords>&lt;codegroup&gt;, &lt;/codegroup&gt;, progress, users, todos, task, todo, tracking, lifecycle, claude</keywords>
+                    <keywords>&lt;/codegroup&gt;, task, display, lifecycle, users, &lt;codegroup&gt;, todo, todos, tracking, progress</keywords>
                   </chapter>
                 </section>
               </section>
